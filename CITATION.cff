@@ -20,4 +20,6 @@ keywords:
   - comparative law
   - Mexico
   - Costa Rica
-license: "LICENSE-IDENTIFIER"
+license:
+  - CC-BY-4.0
+  - MIT
