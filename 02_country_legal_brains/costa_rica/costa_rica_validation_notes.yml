@@ -1,0 +1,342 @@
+# Costa Rica Validation Notes — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+purpose: >
+  Documents known corpus limitations, interpretive cautions, and gaps that
+  the pipeline cannot resolve automatically. These notes are preserved in the
+  output tables as metadata for downstream analysis and human review.
+
+validation_notes:
+
+  - note_id: CRC-VN-001
+    category: jurisprudence_gap
+    severity: medium
+    title: "Sala IV jurisprudence not in corpus"
+    description: >
+      The Sala Constitucional (Sala IV) has produced an extensive body of
+      constitutional jurisprudence on political rights, including interpretations
+      of suffrage, party formation, parity, and constitutional remedies (amparo).
+      No Sala IV voto texts are included in the current corpus. This means that
+      interpretive enrichment of constitutional provisions — particularly for
+      Arts. 10, 48, 93–98, 105 CPCR — is absent.
+    affected_mechanisms:
+      - constitutional_remedies
+      - right_to_stand_for_election
+      - political_parties
+      - citizen_initiative
+      - referendum
+    gap_type: jurisprudence_gap
+    anchor_impact: >
+      anchor_type jurisprudential_interpretive cannot be assigned to any
+      provision from this corpus. All constitutional provisions show
+      anchor_strength based on text alone; Sala IV interpretive enrichment
+      is unavailable.
+    mitigation: >
+      Flag constitutional provisions affecting political rights as potentially
+      enriched by Sala IV jurisprudence. Set manual_review_required: true
+      where interpretive content is relevant to legal preparedness.
+    manual_review_required: true
+
+  - note_id: CRC-VN-002
+    category: tse_resolution_gap
+    severity: medium
+    title: "TSE resolutions and instructivos not in corpus"
+    description: >
+      The Tribunal Supremo de Elecciones issues binding resolutions, instructivos,
+      and acuerdos that operationalize electoral rules. These have significant
+      normative weight under Art. 102 Fr. 3 CPCR (exclusive and obligatory
+      interpretation). None of these TSE resolutions are in the current corpus.
+      This affects the operational completeness of mechanisms like party financing,
+      candidate registration procedures, and referendum processes.
+    affected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - citizen_initiative
+      - referendum
+      - electoral_remedies
+      - civil_registry_electoral_functions
+    gap_type: jurisprudence_gap
+    anchor_impact: >
+      Operational details of how TSE implements statutory mandates are
+      unavailable from corpus. Pipeline cannot detect TSE resolution-level
+      anchoring. anchor_type jurisprudential_interpretive cannot be assigned.
+    mitigation: >
+      Corpus coverage should be considered incomplete for operational
+      implementation details. Add flag corpus_incomplete where TSE resolution
+      content would be expected.
+    manual_review_required: true
+
+  - note_id: CRC-VN-003
+    category: excluded_source
+    severity: high
+    title: "Ley General de Administración Pública excluded — image-based PDF"
+    description: >
+      ley_general_administracion_publica.md is an image-based PDF converted to
+      Markdown without OCR text extraction. The file contains no extractable
+      operative text. The LGAP is the framework law governing public administrative
+      procedures in Costa Rica, and provisions relevant to transparency,
+      administrative responsibility, and petition rights cannot be extracted.
+      This source has been excluded from pipeline processing entirely.
+    affected_mechanisms:
+      - transparency_and_accountability
+      - legislative_petition_or_participation
+    gap_type: corpus_incomplete
+    anchor_impact: >
+      LGAP-based anchoring for transparency and petition mechanisms is unavailable.
+      Provisions on administrative procedure, public accountability, and access
+      to government information are absent from corpus coverage.
+    mitigation: >
+      Set gap_type corpus_incomplete for transparency_and_accountability and
+      legislative_petition_or_participation. Flag that administrative accountability
+      framework (LGAP) is not represented in corpus and requires separate
+      manual review against official LGAP text.
+    manual_review_required: true
+
+  - note_id: CRC-VN-004
+    category: commented_source_risk
+    severity: high
+    title: "RAL source is a commented compilation — commentary contamination risk"
+    description: >
+      reglamento_asamblea_legislativa_comentado.md is a 2014 annotated edition
+      of the Reglamento de la Asamblea Legislativa (RAL) that interspersesa
+      operative article text with Sala IV jurisprudence, Presidencia resolutions,
+      Servicios Técnicos criteria, bibliographic references, and editorial notes
+      in adjacent columns. PDF-to-Markdown conversion may have merged commentary
+      with operative text. All provisions extracted from this source must be
+      treated as potentially contaminated by non-operative text.
+    affected_mechanisms:
+      - legislative_petition_or_participation
+      - citizen_initiative
+    gap_type: update_review_needed
+    anchor_impact: >
+      Provisions from this source are classified regulatory_or_legislative_procedural
+      at anchor_strength 2 maximum. The operative text of the RAL cannot be
+      certified without manual cross-reference to the official RAL text.
+    mitigation: >
+      The pipeline strips known commentary patterns (Sala IV vote citations,
+      resolution IDs like YYYY-NNNNN, bibliographic markers). However, pattern-
+      based stripping is incomplete. Set manual_review_required: true for all
+      provisions from this source. Cross-reference with official TSE/Asamblea
+      publication before use in legal arguments.
+    manual_review_required: true
+
+  - note_id: CRC-VN-005
+    category: vigency_uncertainty
+    severity: medium
+    title: "Multiple sources carry vigency uncertainty flags"
+    description: >
+      Several corpus sources have metadata noting vigency uncertainty:
+      - Ley Orgánica TSE y Registro Civil: 'texto con reformas según fuente / sujeto a verificación'
+      - Código Electoral: 'vigente según fuente / sujeto a verificación'
+      - Reglamento para Procesos de Referéndum: 'verificar vigencia antes de uso jurídico fino'
+      - All statutory laws: 'vigente según fuente / sujeto a verificación'
+      These flags indicate that the corpus texts include reform annotations
+      but may not reflect the most current consolidated version.
+    affected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - citizen_initiative
+      - referendum
+      - electoral_remedies
+      - electoral_authority_internal_governance
+      - civil_registry_electoral_functions
+    gap_type: update_review_needed
+    anchor_impact: >
+      Provisions may reflect superseded text where reforms have modified or
+      repealed articles. Reform annotations are stripped from operative text
+      by the pipeline, but the underlying article content may itself be amended.
+    mitigation: >
+      Before any legal use, verify corpus text against official sources:
+      SINALEVI (Sistema Nacional de Legislación Vigente) for statutes,
+      TSE website for reglamentos, and official Gaceta publications.
+    manual_review_required: false
+
+  - note_id: CRC-VN-006
+    category: accessibility_gap
+    severity: medium
+    title: "No corpus provisions on disability or language accessibility for political rights"
+    description: >
+      The current corpus does not contain provisions specifically addressing
+      accessibility of electoral mechanisms for persons with disabilities,
+      indigenous language communities, or other groups with access barriers.
+      Costa Rica has ratified the CRPD (Convención sobre los Derechos de las
+      Personas con Discapacidad) and is subject to international standards on
+      accessible political participation. The corpus does not capture TSE
+      accessibility regulations or specific CRPD implementation measures
+      for the electoral domain.
+    affected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - citizen_initiative
+      - referendum
+    gap_type: accessibility_gap
+    anchor_impact: >
+      No provisions supporting accessibility-based anchoring are detectable
+      in corpus. Accessibility analysis must reference CRPD obligations and
+      TSE instructivos (not in corpus) separately.
+    mitigation: >
+      Flag accessibility_gap for mechanisms involving physical voting access,
+      signature collection (citizen initiative), and ballot design. Include
+      CRPD treaty obligations as external reference standard.
+    manual_review_required: true
+
+  - note_id: CRC-VN-007
+    category: international_standards_gap
+    severity: low
+    title: "Treaty texts not in corpus — ICCPR, ACHR, CRPD, CEDAW"
+    description: >
+      International human rights treaties ratified by Costa Rica — including
+      the International Covenant on Civil and Political Rights (ICCPR), American
+      Convention on Human Rights (ACHR / Pacto de San José), CRPD, and CEDAW —
+      are not included as corpus documents. Under Art. 7 CPCR and the Sala IV's
+      bloque de constitucionalidad doctrine, these treaties have supra-legal
+      and potentially constitutional rank in the Costa Rican legal order. Their
+      provisions on political participation (ICCPR Art. 25, ACHR Art. 23) serve
+      as interpretive standards above ordinary statutes.
+    affected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - citizen_initiative
+      - referendum
+      - constitutional_remedies
+    gap_type: corpus_incomplete
+    anchor_impact: >
+      International treaty anchoring is unavailable from corpus. Comparative
+      ICCPR/ACHR analysis must rely on treaty text outside the corpus.
+      Sala IV's incorporation of treaty standards via bloque de constitucionalidad
+      is not captured.
+    mitigation: >
+      For legal preparedness analysis, document that Costa Rica's treaty
+      obligations (especially ACHR Art. 23 on political rights) provide a
+      constitutional-rank interpretive frame above statutory provisions.
+      Note: Art. 7 CPCR makes treaties superior to ordinary laws.
+    manual_review_required: false
+
+  - note_id: CRC-VN-008
+    category: tse_reglamento_vigency
+    severity: medium
+    title: "TSE reglamentos for referendum and citizen initiative — vigency requires verification"
+    description: >
+      The Reglamento para los Procesos de Referéndum and Reglamento aplicación
+      art. 3 Ley Iniciativa Popular (extracted from procesos_referendum.md and
+      ley_iniciativa_popular.md respectively) carry metadata warnings:
+      'verificar vigencia antes de uso jurídico fino'. TSE reglamentos can be
+      amended by TSE acuerdo without formal legislative process and new versions
+      may not be reflected in corpus. These reglamentos provide critical
+      operational detail for referendum organization and signature verification.
+    affected_mechanisms:
+      - referendum
+      - citizen_initiative
+    gap_type: update_review_needed
+    anchor_impact: >
+      Operational procedural details (signature verification timelines, referendum
+      logistics) may be outdated. anchor_strength assigned for these procedural
+      elements should be treated as subject to vigency review.
+    mitigation: >
+      Verify current TSE reglamentos on TSE website (www.tse.go.cr) before
+      any legal use. Corpus text provides structural anchoring but operational
+      details require verification.
+    manual_review_required: true
+
+  - note_id: CRC-VN-009
+    category: parity_and_equality_coverage
+    severity: low
+    title: "Parity provisions in Código Electoral — corpus coverage confirmed"
+    description: >
+      Unlike Mexico's corpus, where equality and non-discrimination provisions
+      were partially gaps, Costa Rica's Código Electoral explicitly contains
+      parity and alternancia rules (Art. 2 CE) and the corpus includes this
+      source. Gender parity in candidate nominations is a statutory obligation
+      with TSE enforcement. The pipeline detects paridad and alternancia por sexo
+      keywords within the political_parties and right_to_stand_for_election
+      mechanisms. No gap is identified, but this note confirms coverage.
+    affected_mechanisms:
+      - right_to_stand_for_election
+      - political_parties
+    gap_type: none_detected
+    anchor_impact: >
+      Parity provisions are anchored at statutory level (Código Electoral Art. 2)
+      with TSE enforcement. Equality and non-discrimination anchoring is
+      confirmed for candidacy mechanisms.
+    mitigation: "No mitigation needed. Confirm extraction of Art. 2 Código Electoral in output."
+    manual_review_required: false
+
+  - note_id: CRC-VN-010
+    category: reglamento_autonomo_scope
+    severity: low
+    title: "Reglamento Autónomo de Servicios TSE — minimal political rights relevance"
+    description: >
+      The Reglamento Autónomo de Servicios del Tribunal Supremo de Elecciones
+      (reglamento_autonomo_servicios_tse.md) governs internal TSE employment
+      conditions, work schedules, leave, and HR procedures. It is an
+      administrative instrument under rank 7 with anchor_strength maximum of 1
+      for political rights. The pipeline includes this source for completeness
+      but provisions from it are classified electoral_administrative with
+      operational_dependence: high and manual_review_required: false.
+      No political rights mechanism depends on this reglamento.
+    affected_mechanisms:
+      - electoral_authority_internal_governance
+    gap_type: none_detected
+    anchor_impact: >
+      Provisions from this source contribute only to electoral_authority_internal_governance
+      mechanism at anchor_strength 1. They do not affect any core political
+      rights mechanisms.
+    mitigation: >
+      Ensure pipeline classifies all provisions from this source as
+      electoral_administrative and limits anchor_strength to 1.
+    manual_review_required: false
+
+  - note_id: CRC-VN-011
+    category: constitutionality_consultation_thin_coverage
+    severity: medium
+    title: "Consulta Previa y Facultativa de Constitucionalidad — thin statutory coverage"
+    description: >
+      The Ley para incorporar la Consulta Previa y Facultativa de Constitucionalidad
+      en el Proceso del Referéndum (2021) is a short statute (99 lines in corpus)
+      that creates a preliminary constitutional review procedure before referendums.
+      The corpus coverage of this mechanism is thin. The interaction between the
+      Sala Constitucional and TSE in this procedure is governed primarily by
+      Sala IV jurisprudence (not in corpus) and the mechanics of the procedure
+      depend on TSE reglamentos implementing the 2021 law (not confirmed in corpus).
+    affected_mechanisms:
+      - consultative_referendum_or_preliminary_consultation
+    gap_type: thin_statutory_anchoring
+    anchor_impact: >
+      Mechanism anchor_strength is set to 4 (statutory basis exists but
+      operational detail is thin). manual_review_required: true for all
+      provisions from this mechanism.
+    mitigation: >
+      Flag consultative_referendum_or_preliminary_consultation provisions
+      for human review. Verify whether TSE has issued implementing reglamento
+      for the 2021 law. Check Sala IV rulings on constitutionality review
+      procedures for referendum.
+    manual_review_required: true
+
+  - note_id: CRC-VN-012
+    category: corpus_scope_note
+    severity: informational
+    title: "Costa Rica corpus scope — 11 sources extracted, 1 excluded"
+    description: >
+      The Costa Rica corpus includes 12 source files. One (ley_general_administracion_publica.md)
+      is excluded because it is image-based. The 11 extractable sources cover:
+      constitutional provisions (CPCR), organic law (LOTSRC), the Código Electoral,
+      4 statutory laws (Ley Referéndum, Ley Iniciativa Popular, Ley Jurisdicción
+      Constitucional, Ley Consulta Previa), 2 TSE reglamentos, 1 commented
+      parliamentary reglamento (manual_review_required), and 1 administrative
+      TSE reglamento. Core political rights mechanisms (vote, right_to_stand,
+      parties, citizen initiative, referendum, electoral remedies) are well-covered
+      at constitutional and statutory level.
+    affected_mechanisms: []
+    gap_type: none_detected
+    anchor_impact: "Comprehensive for core mechanisms; incomplete for operational and interpretive layers."
+    mitigation: >
+      Priority gaps for corpus expansion: (1) Sala IV jurisprudence on political
+      rights, (2) TSE resolutions and instructivos, (3) ICCPR/ACHR treaty texts,
+      (4) LGAP (requires OCR re-extraction), (5) TSE accessibility regulations.
+    manual_review_required: false

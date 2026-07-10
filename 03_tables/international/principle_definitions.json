@@ -1,0 +1,124 @@
+{
+  "principles": [
+    {
+      "principle_id": "PRIN-001",
+      "principle_name": "legality_and_sufficient_legal_basis",
+      "short_label": "Legal Basis",
+      "description": "The right or mechanism must have a clear, accessible, and foreseeable legal basis in domestic law — constitutional, statutory, or regulatory. Mere administrative practice is insufficient. The legal basis must be sufficiently precise to allow individuals and authorities to regulate their conduct accordingly.",
+      "legal_preparedness_question": "Does domestic law provide a clear, accessible, foreseeable legal basis (constitutional or statutory) for the mechanism, sufficient to guide both rights-holders and duty-bearers without arbitrary application?",
+      "operational_dimensions": "constitutional_or_statutory_anchor_exists|provision_text_is_accessible_and_precise|legal_hierarchy_consistent_and_non_contradictory|enabling_legislation_or_implementing_regulation_present",
+      "primary_sources": "INT-ICCPR:Art.2|INT-ICCPR:Art.25|INT-ACHR:Art.30|INT-HRC-GC25:para.1-4|INT-IADC:Art.3",
+      "related_mechanisms": "vote|right_to_stand_for_election|political_parties|independent_candidacies|citizen_initiative|popular_consultation|recall|referendum|electoral_remedies|constitutional_remedies|electoral_authority_internal_governance|civil_registry_electoral_functions"
+    },
+    {
+      "principle_id": "PRIN-002",
+      "principle_name": "equality_and_non_discrimination",
+      "short_label": "Equality/Non-Disc.",
+      "description": "Political rights must be guaranteed without discrimination on any ground — race, ethnicity, sex, gender, language, religion, political opinion, national or social origin, disability, age, or other status. Temporary special measures (affirmative action, parity) are not discrimination; they are corrective obligations. Formal equality is insufficient; substantive equality requires addressing structural barriers.",
+      "legal_preparedness_question": "Does domestic law guarantee equal access to political rights without direct or indirect discrimination, and does it include provisions for substantive equality measures (parity, special measures) for underrepresented groups?",
+      "operational_dimensions": "non_discrimination_clause_present|parity_or_gender_equality_measure_present|ethnic_or_indigenous_inclusion_provision_present|disability_non_discrimination_for_political_rights_present",
+      "primary_sources": "INT-ICCPR:Art.2|INT-ICCPR:Art.26|INT-ICCPR:Art.25|INT-ACHR:Art.1|INT-ACHR:Art.24|INT-CEDAW:Arts.1-4,7|INT-CEDAW-GR23:paras.5-15|INT-IADC:Art.9|INT-HRC-GC25:para.3",
+      "related_mechanisms": "vote|right_to_stand_for_election|political_parties|citizen_initiative|referendum|popular_consultation|civil_registry_electoral_functions"
+    },
+    {
+      "principle_id": "PRIN-003",
+      "principle_name": "accessibility_and_reasonable_accommodation",
+      "short_label": "Accessibility",
+      "description": "Political processes, materials, and infrastructure must be physically, linguistically, and cognitively accessible to all rights-holders, including persons with disabilities, indigenous language speakers, and those with literacy barriers. Reasonable accommodation must be provided to ensure effective participation without undue burden on the individual.",
+      "legal_preparedness_question": "Does domestic law require accessible voting procedures, materials, and infrastructure for all voters, including persons with disabilities, and does it provide for language accessibility for indigenous communities?",
+      "operational_dimensions": "accessible_voting_procedures_required_by_law|accessible_materials_required_by_law|assistive_technology_provision|indigenous_language_accessibility_in_political_processes|literacy_barrier_accommodation",
+      "primary_sources": "INT-CRPD-A29:Art.29(a)(i)|INT-CRPD-A29:Art.29(a)(iii)|INT-HRC-GC25:para.12|INT-ICCPR:Art.25|INT-ILO169:Art.12|INT-UNDRIP:Art.13",
+      "related_mechanisms": "vote|right_to_stand_for_election|citizen_initiative|referendum|popular_consultation"
+    },
+    {
+      "principle_id": "PRIN-004",
+      "principle_name": "effective_participation",
+      "short_label": "Eff. Participation",
+      "description": "Rights-holders must be able to effectively exercise political rights, not merely formally. This requires that barriers (procedural, institutional, geographic, economic) are identified and addressed, and that the state takes positive measures to enable meaningful participation beyond declaratory recognition.",
+      "legal_preparedness_question": "Does domestic law go beyond declaratory recognition to establish positive measures enabling effective participation, including voter education, registration procedures, geographic distribution of polling infrastructure, and citizen initiative/consultation mechanisms?",
+      "operational_dimensions": "positive_measures_required_not_just_formal_recognition|voter_registration_procedure_accessible_and_defined|geographic_or_territorial_accessibility_of_process|voter_education_or_information_obligations|indigenous_peoples_consultation_process",
+      "primary_sources": "INT-HRC-GC25:paras.11-12|INT-ACHR:Art.23|INT-CEDAW-GR23:paras.16-26|INT-ILO169:Arts.6-7|INT-UNDRIP:Arts.18-19|INT-IADC:Art.6",
+      "related_mechanisms": "vote|right_to_stand_for_election|citizen_initiative|referendum|popular_consultation|legislative_petition_or_participation"
+    },
+    {
+      "principle_id": "PRIN-005",
+      "principle_name": "pluralism_and_collective_representation",
+      "short_label": "Pluralism",
+      "description": "Political pluralism — the existence of multiple parties, movements, and independent candidates — must be legally guaranteed and protected from state interference. Restrictions on party formation or operation must be justified by objective criteria and not weaponised to suppress opposition. Indigenous and minority collective political representation deserves specific legal recognition.",
+      "legal_preparedness_question": "Does domestic law guarantee the right to form and operate political parties, protect pluralism against state capture, and provide for collective political representation including for indigenous peoples and minorities?",
+      "operational_dimensions": "right_to_form_parties_legally_established|restrictions_on_parties_objective_and_proportionate|independent_candidacies_or_alternatives_to_parties_recognized|indigenous_collective_representation_mechanism_present",
+      "primary_sources": "INT-ICCPR:Arts.22,25|INT-ACHR:Arts.16,23|INT-HRC-GC25:para.17|INT-IADC:Art.5|INT-ILO169:Art.6|INT-UNDRIP:Arts.18-20",
+      "related_mechanisms": "political_parties|independent_candidacies|right_to_stand_for_election|citizen_initiative"
+    },
+    {
+      "principle_id": "PRIN-006",
+      "principle_name": "due_process_and_effective_remedy",
+      "short_label": "Due Process/Remedy",
+      "description": "Rights-holders must have access to effective, timely, and independent remedies when political rights are violated or electoral acts are contested. Remedies must be accessible (no prohibitive standing requirements or costs), heard by a competent independent body, and provide reparation or correction. Administrative and criminal remedies for electoral violations are also required.",
+      "legal_preparedness_question": "Does domestic law provide effective, accessible, and timely remedies before an independent body for violations of political rights, including electoral appeals, constitutional remedies, and criminal sanctions for electoral offences?",
+      "operational_dimensions": "electoral_appeal_mechanism_defined|constitutional_remedy_accessible|independent_adjudicator_designated|time_limits_for_remedies_defined|criminal_sanctions_for_electoral_violations|standing_requirements_not_prohibitive",
+      "primary_sources": "INT-ICCPR:Art.2(3)|INT-ACHR:Art.25|INT-HRC-GC25:para.20|INT-ACHR:Art.8",
+      "related_mechanisms": "electoral_remedies|constitutional_remedies|electoral_crimes|administrative_responsibility|electoral_authority_internal_governance"
+    },
+    {
+      "principle_id": "PRIN-007",
+      "principle_name": "transparency_and_accountability",
+      "short_label": "Transparency",
+      "description": "Electoral and political processes must be transparent: campaign financing must be disclosed, electoral administration decisions must be reasoned and public, results must be auditable, and information about political rights must be accessible. Accountability mechanisms for electoral authorities and political actors must exist.",
+      "legal_preparedness_question": "Does domestic law require disclosure of political financing, public communication of electoral administration decisions, results audits, and accountability mechanisms for electoral bodies and political parties?",
+      "operational_dimensions": "party_financing_disclosure_required|electoral_administration_transparency_required|results_auditing_mechanism_defined|sanctions_for_financing_violations_defined|public_access_to_electoral_information_required",
+      "primary_sources": "INT-HRC-GC25:para.20|INT-IADC:Art.4|INT-ACHR:Art.13|INT-CEDAW-GR23:para.26",
+      "related_mechanisms": "transparency_and_accountability|political_parties|electoral_authority_internal_governance"
+    },
+    {
+      "principle_id": "PRIN-008",
+      "principle_name": "institutional_competence_and_independence",
+      "short_label": "Inst. Independence",
+      "description": "The body responsible for organizing and adjudicating elections must be independent from the executive and legislative branches, have clearly defined legal competences, and operate with sufficient autonomy to prevent partisan influence. Appointment mechanisms must guarantee impartiality. The institution's decisions must be final (or subject only to judicial review) and its jurisdiction must be clearly delineated.",
+      "legal_preparedness_question": "Does domestic law establish an independent electoral authority with clearly defined, exclusive competences, an appointment mechanism that guarantees impartiality, and decision-making finality that prevents partisan interference?",
+      "operational_dimensions": "independent_electoral_body_legally_established|appointment_mechanism_defined_and_impartial|exclusive_competence_delineated|decision_finality_or_review_mechanism_defined|budget_autonomy_or_sufficiency_guaranteed",
+      "primary_sources": "INT-HRC-GC25:para.20|INT-ICCPR:Art.25|INT-ACHR:Art.23|INT-IADC:Art.3",
+      "related_mechanisms": "electoral_authority_internal_governance|electoral_remedies|civil_registry_electoral_functions"
+    },
+    {
+      "principle_id": "PRIN-009",
+      "principle_name": "procedural_certainty_and_time_limits",
+      "short_label": "Procedural Certainty",
+      "description": "Electoral and participatory processes must have clearly defined timelines, deadlines, and procedural steps known in advance to all participants. Arbitrary or unforeseeable changes to procedures impair rights-holders' ability to exercise their rights and undermine electoral integrity. Procedures must be stable, proportionate, and not create unreasonable barriers to participation.",
+      "legal_preparedness_question": "Does domestic law establish clear, advance-known timelines and procedural steps for electoral and participatory processes, including registration deadlines, campaign periods, voting procedures, and result certification?",
+      "operational_dimensions": "registration_deadlines_defined|election_calendar_or_schedule_defined|campaign_period_defined|signature_threshold_procedure_defined|result_certification_timeline_defined|stable_procedures_not_changeable_during_process",
+      "primary_sources": "INT-HRC-GC25:para.9,19|INT-ICCPR:Art.25(b)|INT-ACHR:Art.23(1)(b)",
+      "related_mechanisms": "vote|right_to_stand_for_election|citizen_initiative|referendum|popular_consultation|recall"
+    },
+    {
+      "principle_id": "PRIN-010",
+      "principle_name": "territorial_and_multilevel_implementation",
+      "short_label": "Territorial",
+      "description": "Political rights must be guaranteed at all levels of government — federal/national, state/provincial, and local/municipal — with appropriate institutional arrangements at each level. Federal or decentralized states must ensure rights are not unevenly distributed across territories. Indigenous peoples' political rights must be guaranteed in their territories with culturally appropriate mechanisms.",
+      "legal_preparedness_question": "Does domestic law guarantee political rights at all territorial levels (national, sub-national, local, indigenous communities), with defined institutional arrangements and mechanisms at each level, including for indigenous self-governance?",
+      "operational_dimensions": "national_level_guarantees_present|sub_national_electoral_mechanisms_defined|local_level_electoral_mechanisms_defined|indigenous_territory_political_rights_mechanism|federal_clause_or_competence_allocation_defined",
+      "primary_sources": "INT-ICCPR:Art.25|INT-ACHR:Art.28|INT-ILO169:Arts.6-7|INT-UNDRIP:Arts.4-5,18-19",
+      "related_mechanisms": "vote|right_to_stand_for_election|electoral_authority_internal_governance|civil_registry_electoral_functions"
+    },
+    {
+      "principle_id": "PRIN-011",
+      "principle_name": "administrative_capacity_and_resources",
+      "short_label": "Admin Capacity",
+      "description": "The state must have sufficient administrative capacity, trained personnel, logistical infrastructure, and financial resources to implement political rights in practice. A legal framework is legally prepared only if it allocates institutional responsibility and resource allocation for implementation — not merely declares rights.",
+      "legal_preparedness_question": "Does domestic law allocate institutional responsibility, mandate resource allocation, or otherwise ensure administrative capacity for implementing political rights mechanisms — particularly for electoral administration, voter registration, and participatory processes?",
+      "operational_dimensions": "institutional_mandate_for_implementation_defined|budget_allocation_or_funding_mechanism_present|personnel_or_staffing_requirements_defined|training_or_capacity_building_obligations_present|infrastructure_obligations_defined",
+      "primary_sources": "INT-HRC-GC25:paras.11,20|INT-CEDAW-GR23:paras.27-36|INT-ILO169:Art.6|INT-IADC:Art.6",
+      "related_mechanisms": "electoral_authority_internal_governance|civil_registry_electoral_functions|transparency_and_accountability"
+    },
+    {
+      "principle_id": "PRIN-012",
+      "principle_name": "restriction_legality_necessity_proportionality",
+      "short_label": "Restriction LNP",
+      "description": "Any restriction on political rights must meet a three-part test: (1) legality — based in law, not arbitrary; (2) necessity — serves a legitimate aim and is needed in a democratic society; (3) proportionality — narrowly tailored and not more restrictive than necessary. Restrictions based on disability, ethnicity, political opinion, or other protected grounds are per se impermissible. The ACHR Art. 23.2 exhaustive list of permissible restriction grounds must be respected.",
+      "legal_preparedness_question": "Are restrictions on political rights (e.g., age limits, residency requirements, prior conviction) expressly grounded in law, serve a legitimate aim, and meet a proportionality test? Are discriminatory restrictions on protected grounds expressly prohibited?",
+      "operational_dimensions": "restrictions_grounded_in_law_not_discretion|legitimate_aim_identified_for_restriction|proportionality_or_narrowly_tailored_test_present|discriminatory_restrictions_prohibited|age_or_residency_restrictions_objective_and_reasonable",
+      "primary_sources": "INT-ICCPR:Art.25|INT-ACHR:Art.23(2)|INT-HRC-GC25:paras.4,14-16|INT-OC2821",
+      "related_mechanisms": "vote|right_to_stand_for_election|political_parties|citizen_initiative|recall|referendum"
+    }
+  ]
+}

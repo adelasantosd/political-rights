@@ -1,0 +1,7 @@
+"country";"source_type";"rank";"function";"legal_preparedness_value";"can_create_core_right_or_mechanism";"can_create_restrictions";"can_create_remedies";"caution"
+"Mexico";"constitution";"1";"Establishes fundamental political rights and institutional design. Directly enforceable.";"highest";"true";"true";"true";"Check SCJN invalidation annotations in consolidated text."
+"Mexico";"general_law";"2";"Leyes generales — binding on federal and state levels. LGIPE, LGPP, LGSMIME, LGDE.";"high";"true";"true";"true";"Check SCJN 2023 invalidation annotations. LGSMIME restored from abrogation."
+"Mexico";"federal_law";"3";"Leyes federales — federal scope. LFCP, LFRM, LGRA, LGTAIP, LOAPF, LFPA.";"high";"true";"true";"true";"Federal scope only; state-level equivalents not in corpus."
+"Mexico";"parliamentary_regulation";"4";"Internal legislative procedure. Reglamentos of Cámara, Senado, Congreso General.";"medium";"false";"false";"false";"Procedural only. Cannot create substantive political rights or electoral mechanisms."
+"Mexico";"electoral_administrative";"5";"INE acuerdos, lineamientos, protocolos. Reglamento Interior INE.";"operational_only";"false";"false";"false";"CRITICAL: Cannot create rights or mechanisms. Max anchor_strength=2. Administrative_overdependence if no statute found."
+"Mexico";"jurisprudential_interpretive";"6";"SCJN and TEPJF jurisprudence. Not in current corpus.";"interpretive_complement";"false";"false";"false";"No jurisprudence files in corpus. All references require manual_review_required: true."

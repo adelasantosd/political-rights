@@ -1,0 +1,338 @@
+# Costa Rica Mechanism Map — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+mechanisms:
+
+  - mechanism_id: CRC-MECH-001
+    mechanism_name: vote
+    description: >
+      Right and civic obligation to vote in popular elections. Encompasses active
+      suffrage, voter registration (cédula de identidad), Juntas Electorales,
+      secret and direct ballot, and universality of suffrage.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Arts. 93–95 (suffrage as obligatory civic function; principles)"
+      - "CPCR Art. 90 (citizenship at 18)"
+    statutory_sources:
+      - "Código Electoral (electoral procedures, voter lists, voting day)"
+      - "Ley Orgánica TSE y Registro Civil (padrón electoral)"
+    regulatory_or_procedural_sources:
+      - "TSE reglamentos on electoral process"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Universal, direct, secret, obligatory suffrage (Art. 93 CPCR)"
+      - "Voter registration via Registro Civil (Art. 95 CPCR)"
+      - "Cédula de identidad as identifier (Art. 95 Fr. 5 CPCR)"
+      - "Juntas Electorales administration"
+      - "Proportional representation guarantee (Art. 95 Fr. 6)"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Core mechanism; comprehensive constitutional and statutory basis."
+
+  - mechanism_id: CRC-MECH-002
+    mechanism_name: right_to_stand_for_election
+    description: >
+      Right to register as a candidate for elected office (Presidente, Vicepresidentes,
+      Diputados, municipal positions). Includes eligibility criteria, restrictions,
+      party nomination processes, and parity requirements.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Arts. 107–109 (Deputy eligibility and restrictions)"
+      - "CPCR Art. 131 (President eligibility)"
+      - "CPCR Art. 98 (parties as vehicle for candidacy)"
+      - "CPCR Art. 95 Fr. 8 (democratic and non-discriminatory designation)"
+    statutory_sources:
+      - "Código Electoral (candidacy registration, eligibility, parity — Art. 2)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Citizenship requirement"
+      - "Age requirements by office"
+      - "Ineligibility restrictions (Art. 109 CPCR)"
+      - "Party nomination route"
+      - "Gender parity requirement (Art. 2 Código Electoral)"
+      - "TSE candidacy registration"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Strong constitutional and statutory basis."
+
+  - mechanism_id: CRC-MECH-003
+    mechanism_name: political_parties
+    description: >
+      Formation, registration, democratic functioning, financing, and dissolution of
+      political parties. Constitutional foundation in Art. 98 CPCR; detailed regulation
+      in Código Electoral.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Art. 98 (right to form parties; democratic structure)"
+      - "CPCR Art. 96 (state financing of parties)"
+    statutory_sources:
+      - "Código Electoral (party registration, statutes, financing, internal democracy, TSE oversight)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Right to form parties (Art. 98 CPCR)"
+      - "Party registration with TSE"
+      - "State financing formula (Art. 96 CPCR: 0.19% PIB)"
+      - "Democratic internal structure requirement"
+      - "TSE oversight and fiscalización"
+      - "Restrictions on funding"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Dedicated chapter in Código Electoral; comprehensive anchor."
+
+  - mechanism_id: CRC-MECH-004
+    mechanism_name: citizen_initiative
+    description: >
+      Right of citizens (minimum 5% of the electoral roll) to introduce legislation or
+      partially reform the constitution. Regulated by dedicated statute (Ley de
+      Iniciativa Popular No. 8491) and TSE regulation.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Art. 123 (legislative initiative; citizen initiative implicit)"
+      - "CPCR Art. 105 (sovereignty of the people; legislative delegation)"
+    statutory_sources:
+      - "Ley de Iniciativa Popular N.° 8491 (2006)"
+    regulatory_or_procedural_sources:
+      - "Reglamento aplicación art. 3 Ley Iniciativa Popular (TSE)"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "5% citizen signature threshold (Art. 1 LIP)"
+      - "Constitutional and partial reform scope"
+      - "Exclusions: budget, tax, loans, contracts, administrative acts"
+      - "TSE signature verification"
+      - "Asamblea Legislativa processing procedure"
+    likely_legal_anchor_strength: 5
+    operational_dependence: medium
+    manual_review_required: false
+    notes: >
+      Strong anchor: constitutional basis + dedicated statute + TSE implementing regulation.
+      Contrast with Mexico where no dedicated citizen initiative law was found in corpus.
+
+  - mechanism_id: CRC-MECH-005
+    mechanism_name: referendum
+    description: >
+      Binding popular referendum on legislative matters. Citizens can request referendum
+      through TSE with signature support. Asamblea Legislativa or Executive can also
+      request. Regulated by Ley de Regulación del Referéndum and TSE Reglamento.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Art. 105 (referendum as mechanism for legislative power)"
+    statutory_sources:
+      - "Ley de Regulación del Referéndum N.° 8492 (2006)"
+    regulatory_or_procedural_sources:
+      - "Reglamento para los Procesos de Referéndum (TSE)"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional basis in Art. 105 CPCR"
+      - "Who can request: Asamblea Legislativa, Ejecutivo, citizens (5% signature)"
+      - "Subject-matter restrictions"
+      - "TSE organization of referendum process"
+      - "40% participation threshold for validity"
+      - "TSE constitutionality consultation procedure (Ley Consulta Previa)"
+    likely_legal_anchor_strength: 5
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "Dedicated statute; TSE reglamento provides operational development."
+
+  - mechanism_id: CRC-MECH-006
+    mechanism_name: consultative_referendum_or_preliminary_consultation
+    description: >
+      Mechanism for prior (facultative) constitutional consultation before a referendum
+      process is finalized. The Sala Constitucional reviews constitutionality of the
+      referendum subject matter. Regulated by the 2021 reform law.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Art. 10 (Sala Constitucional jurisdiction)"
+      - "CPCR Art. 105 (referendum framework)"
+    statutory_sources:
+      - "Ley para incorporar la Consulta Previa y Facultativa de Constitucionalidad (2021)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Facultative constitutional review before referendum"
+      - "Sala Constitucional as reviewing body"
+      - "Integration with referendum procedure"
+      - "Timing and effect of constitutional opinion"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: true
+    notes: >
+      Thin corpus coverage for this mechanism — only one small law (99 lines).
+      Procedural details depend on Sala IV and TSE interaction.
+      manual_review_required: true.
+
+  - mechanism_id: CRC-MECH-007
+    mechanism_name: electoral_remedies
+    description: >
+      System of electoral appeals and remedies before the TSE. TSE decisions are
+      generally final and non-reviewable (Art. 103 CPCR). Includes appeals from
+      Registro Civil and Juntas Electorales. TSE is the exclusive and obligatory
+      interpreter of electoral constitutional and legal provisions.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPCR Art. 102 Fr. 3 (exclusive and obligatory interpretation)"
+      - "CPCR Art. 102 Fr. 4 (appeals from Registro Civil and Juntas Electorales)"
+      - "CPCR Art. 103 (non-reviewability of TSE decisions)"
+    statutory_sources:
+      - "Código Electoral (electoral appeal procedures)"
+      - "Ley Orgánica TSE y Registro Civil"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "TSE exclusive interpretive jurisdiction (Art. 102 Fr. 3 CPCR)"
+      - "Finality of TSE decisions (Art. 103 CPCR)"
+      - "Appeals from Registro Civil to TSE"
+      - "Appeals from Juntas Electorales to TSE"
+      - "Only exception: prevaricato"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: >
+      Strong constitutional basis. TSE finality is unusual — stronger than most
+      electoral tribunals. No separate judicial review available for electoral acts.
+
+  - mechanism_id: CRC-MECH-008
+    mechanism_name: constitutional_remedies
+    description: >
+      Constitutional remedies (amparo, habeas corpus, acción de inconstitucionalidad)
+      available before the Sala Constitucional (Sala IV). Relevant for political rights
+      violations. The Sala IV has jurisdiction over fundamental rights including
+      political rights infringed by public authorities, but defers to TSE on electoral matters.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Art. 10 (Sala Constitucional)"
+      - "CPCR Art. 48 (amparo and habeas corpus)"
+    statutory_sources:
+      - "Ley de la Jurisdicción Constitucional N.° 7135 (1989)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Amparo for fundamental rights protection (Arts. 29ff LJC)"
+      - "Habeas corpus for personal liberty"
+      - "Unconstitutionality action (acción de inconstitucionalidad)"
+      - "Human rights treaties as part of constitutional block"
+      - "Interface with TSE exclusive jurisdiction"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Strong statutory anchor. Sala IV jurisprudence not in corpus — interpretive anchor incomplete."
+
+  - mechanism_id: CRC-MECH-009
+    mechanism_name: legislative_petition_or_participation
+    description: >
+      Citizen right to petition and mechanisms for engagement with the legislative
+      process, including formal petition rights and citizen initiative processing by
+      the Asamblea Legislativa.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Art. 27 (right of petition)"
+      - "CPCR Art. 123 (legislative initiative)"
+    statutory_sources:
+      - "Ley de Iniciativa Popular (citizen route)"
+    regulatory_or_procedural_sources:
+      - "Reglamento de la Asamblea Legislativa (procedure for processing initiatives and petitions)"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Right of petition (Art. 27 CPCR)"
+      - "Legislative initiative processing in Asamblea"
+      - "Committee review procedure (Reglamento Asamblea)"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: true
+    notes: >
+      Partial anchor from Reglamento Asamblea (commented edition — manual_review_required).
+      Constitutional right is clear; procedural detail depends on Reglamento.
+
+  - mechanism_id: CRC-MECH-010
+    mechanism_name: transparency_and_accountability
+    description: >
+      Transparency in electoral and political financing, party financial disclosure,
+      and accountability of electoral bodies. Includes TSE proactive transparency,
+      party spending reporting, and access to electoral information.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Art. 96 (public financing; financial publicity principle)"
+    statutory_sources:
+      - "Código Electoral (party financing transparency and TSE fiscalización)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Party financial transparency (Art. 96 CPCR; Código Electoral)"
+      - "TSE fiscalización of party finances"
+      - "State financing conditions and reporting"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "LGAP not extractable — full accountability framework requires manual review."
+
+  - mechanism_id: CRC-MECH-011
+    mechanism_name: electoral_authority_internal_governance
+    description: >
+      Internal governance of the TSE: composition of Magistrados, appointment by
+      Corte Suprema de Justicia, terms of office, autonomy, and internal competences.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Arts. 99–103 (TSE mandate, composition, functions)"
+      - "CPCR Art. 9 (TSE rank)"
+    statutory_sources:
+      - "Ley Orgánica TSE y Registro Civil"
+      - "Código Electoral (TSE functions)"
+    regulatory_or_procedural_sources:
+      - "Reglamento Autónomo de Servicios TSE (internal HR)"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "TSE constitutional rank (Art. 9 CPCR)"
+      - "Magistrados: 3 propietarios + 6 suplentes"
+      - "Appointment by Corte Suprema (2/3 vote)"
+      - "6-year terms"
+      - "Exclusive electoral jurisdiction"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: >
+      Strong constitutional anchor. Reglamento Autónomo Servicios TSE is
+      classified administrative_reglamento — internal employment rules only.
+
+  - mechanism_id: CRC-MECH-012
+    mechanism_name: civil_registry_electoral_functions
+    description: >
+      Civil registry functions of the Registro Civil under exclusive TSE dependence:
+      voter rolls (padrón electoral), cédulas de identidad, citizenship records,
+      nationality, and electoral lists.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPCR Art. 104 (Registro Civil functions under TSE)"
+    statutory_sources:
+      - "Ley Orgánica TSE y Registro Civil"
+      - "Código Electoral (padrón electoral, voter lists)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Registro Civil under exclusive TSE dependence (Art. 104 CPCR)"
+      - "Padrón electoral and voter lists"
+      - "Cédula de identidad issuance"
+      - "Nationality and citizenship records"
+      - "Appeals to TSE from Registro Civil decisions"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Strong constitutional and statutory basis."

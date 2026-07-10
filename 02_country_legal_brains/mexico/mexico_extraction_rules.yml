@@ -1,0 +1,227 @@
+# Mexico Extraction Rules — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+purpose: >
+  Deterministic extraction rules for parsing provisions from Mexican legal
+  Markdown files. These rules govern: article detection, subdivision parsing,
+  editorial annotation exclusion, mechanism detection, actor detection,
+  right/obligation/restriction/remedy/sanction detection.
+  No LLM inference at extraction time.
+
+article_detection:
+
+  primary_patterns:
+    - "^#{1,4}\\s+Art[ií]culo\\s+(\\d+[°o]?\\.?(?:\\s+[Bb]is|\\s+[Tt]er|\\s+[Qq]uater)?)"
+    - "^#{1,4}\\s+ART[IÍ]CULO\\s+([A-ZÁÉÍÓÚÑ]+)"
+    - "^#{1,4}\\s+ARTÍCULO\\s+([A-ZÁÉÍÓÚÑ]+\\s+[A-ZÁÉÍÓÚÑ]+)"
+
+  transitory_patterns:
+    - "^#{1,4}\\s+ART[IÍ]CULO\\s+(PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO|SEXTO|SÉPTIMO|OCTAVO|NOVENO|DÉCIMO)"
+    - "^#{1,4}\\s+Art[ií]culo\\s+[Tt]ransitorio"
+    - "^(PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO|SEXTO|SÉPTIMO|OCTAVO|NOVENO|DÉCIMO)\\.\\s+"
+
+  article_number_normalization:
+    "1o" → "1"
+    "2o" → "2"
+    "3o" → "3"
+    "Bis" suffix → retain (e.g., "10 Bis" stays "10 Bis")
+    Ordinal words (transitory) → retain as-is
+
+subdivision_detection:
+
+  fracciones:
+    pattern: "^([IVX]+\\.?)\\s+(.+)"
+    notes: "Roman numeral followed by period or space. May include bis/ter/quater."
+
+  incisos:
+    pattern: "^([a-záéíóúñü]\\.?)\\s+(.+)"
+    notes: "Lowercase letter followed by period or space."
+
+  apartados:
+    pattern: "^([A-Z])\\.\\s+(.+)"
+    notes: "Uppercase single letter followed by period. Distinguishable from fracciones by letter type."
+
+  numerales:
+    pattern: "^(\\d+[°o]?)\\.\\s+(.+)"
+    notes: "Used in CPEUM Art. 35 for sub-items within fracciones (e.g., '1o.', '2o.')."
+
+  paragraphs:
+    pattern: "Non-heading text block following an article or subdivision header"
+    notes: "Paragraphs are not explicitly numbered in Mexican law. Capture as sequential blocks."
+
+editorial_annotation_exclusion:
+  description: >
+    Editorial reform annotations are NOT operative legal text. They must be
+    excluded from provision_text. Include them in a separate notes field only.
+  patterns_to_exclude:
+    - "Párrafo (reformado|adicionado|derogado)\\s+DOF\\s+[\\d-]+"
+    - "Fracción (reformada|adicionada|derogada)\\s+DOF\\s+[\\d-]+"
+    - "Inciso (reformado|adicionado|derogado)\\s+DOF\\s+[\\d-]+"
+    - "Artículo reformado DOF\\s+[\\d-]+"
+    - "Denominación (del (Capítulo|Título|Libro|Artículo))? (reformada|adicionada|suprimida|derogada)\\s+DOF\\s+[\\d-]+"
+    - "Numeral (reformado|adicionado|derogado)\\s+DOF\\s+[\\d-]+"
+    - "Fe de erratas.*DOF.*"
+    - "Reforma DOF\\s+[\\d-]+:"
+    - "Texto (vigente|que recupera vigencia)"
+    - "Declarada inválida.*sentencia.*SCJN"
+    - "declaratoria de invalidez"
+    - "recupera su vigencia con el texto que tenía"
+    - "por sentencia de la SCJN"
+    - "notificada para efectos legales"
+    - "Ley Abrogada DOF"
+    - "<!-- Page \\d+ -->"
+  strip_inline: true
+  notes: >
+    Remove these annotations from provision_text before storing.
+    Capture them separately in an 'editorial_notes' buffer (not exported
+    to main tables but available for internal logging). If a provision
+    carries a "declarada inválida" annotation, set manual_review_required: true
+    and add gap_type: update_review_needed.
+
+mechanism_keyword_rules:
+
+  vote:
+    keywords: ["sufragio", "votar", "votación", "voto", "lista nominal", "padrón electoral",
+               "elecciones libres", "sufragio universal", "sufragio secreto", "urna",
+               "casilla", "jornada electoral", "boleta electoral", "escrutinio"]
+    structural: ["Art. 35 Fr. I", "Art. 36 Fr. III", "Art. 41"]
+    sources_priority: [MEX-CPEUM, MEX-LGIPE]
+
+  right_to_stand_for_election:
+    keywords: ["poder ser votad", "candidat", "candidatura", "registro de candidat",
+               "requisitos de elegibilidad", "paridad", "candidatura independiente",
+               "postulación", "aspirante", "elegibilidad"]
+    structural: ["Art. 35 Fr. II", "Art. 38"]
+    sources_priority: [MEX-CPEUM, MEX-LGIPE, MEX-LGPP]
+
+  political_parties:
+    keywords: ["partido político", "partidos políticos", "registro de partido",
+               "financiamiento de partido", "prerrogativas", "militantes",
+               "democracia interna", "coalición", "fiscalización de partido",
+               "documentos básicos"]
+    structural: ["Art. 41", "Art. 35 Fr. III"]
+    sources_priority: [MEX-LGPP, MEX-LGIPE, MEX-CPEUM]
+
+  independent_candidacies:
+    keywords: ["candidatura independiente", "candidatos independientes",
+               "candidato independiente", "registro independiente",
+               "firmas de apoyo ciudadano", "apoyo ciudadano para candidatura"]
+    structural: ["Art. 35 Fr. II"]
+    sources_priority: [MEX-CPEUM, MEX-LGIPE]
+
+  citizen_initiative:
+    keywords: ["iniciativa ciudadana", "iniciativa de ley", "iniciativa de los ciudadanos",
+               "derecho de iniciar leyes", "iniciativa popular",
+               "firmas de ciudadanos para iniciativa"]
+    structural: ["Art. 35 Fr. VII"]
+    sources_priority: [MEX-CPEUM, MEX-REGCD, MEX-REGSN]
+
+  popular_consultation:
+    keywords: ["consulta popular", "consultas populares", "consulta de trascendencia",
+               "lista nominal electores", "40 por ciento", "dos por ciento inscrit",
+               "primer domingo de agosto", "convocatoria al congreso consulta",
+               "resultado vinculatorio"]
+    structural: ["Art. 35 Fr. VIII"]
+    sources_priority: [MEX-CPEUM, MEX-LFCP, MEX-INECP]
+
+  recall:
+    keywords: ["revocación de mandato", "revocar mandato", "revocación del presidente",
+               "tres por ciento", "diecisiete entidades", "mandato revocado",
+               "revocación de cargo"]
+    structural: ["Art. 35 Fr. IX"]
+    sources_priority: [MEX-CPEUM, MEX-LFRM, MEX-INERM]
+
+  electoral_remedies:
+    keywords: ["medio de impugnación", "medios de impugnación", "recurso de apelación",
+               "juicio de revisión constitucional", "JRC", "JDC", "RAP", "REC",
+               "juicio para la protección de derechos político-electorales",
+               "impugnación electoral", "recurso de reconsideración",
+               "impugnar resolución", "Sala Superior", "Sala Regional"]
+    structural: ["Art. 41 Fr. VI", "Art. 99"]
+    sources_priority: [MEX-LGSMIME, MEX-CPEUM]
+
+  electoral_crimes:
+    keywords: ["delito electoral", "delitos electorales", "compra de voto",
+               "coacción electoral", "fraude electoral", "alteración de resultados",
+               "obstaculizar proceso electoral", "violencia política", "sanción penal",
+               "pena privativa de libertad electoral"]
+    structural: []
+    sources_priority: [MEX-LGDE]
+
+  legislative_petition_or_participation:
+    keywords: ["derecho de petición", "petición legislativa", "iniciativa ciudadana",
+               "participación ciudadana", "comisión de petición",
+               "dictaminación de iniciativa", "registro de petición"]
+    structural: ["Art. 35 Fr. V", "Art. 35 Fr. VII"]
+    sources_priority: [MEX-REGCD, MEX-REGSN, MEX-REGCONG]
+
+  transparency_and_accountability:
+    keywords: ["transparencia", "acceso a la información", "sujeto obligado",
+               "información pública", "proactive transparency",
+               "transparencia proactiva", "fiscalización", "rendición de cuentas",
+               "auditoría", "informe de cuenta pública"]
+    structural: ["Art. 6 CPEUM"]
+    sources_priority: [MEX-LGTAIP, MEX-LGPP, MEX-LGRA]
+
+  administrative_responsibility:
+    keywords: ["responsabilidad administrativa", "servidor público", "falta administrativa",
+               "sanción administrativa", "inhabilitación", "suspensión de empleo",
+               "destitución", "órgano interno de control", "Secretaría de la Función Pública"]
+    structural: ["Art. 108–114 CPEUM"]
+    sources_priority: [MEX-LGRA]
+
+  electoral_authority_internal_governance:
+    keywords: ["Consejo General", "consejero electoral", "Junta General Ejecutiva",
+               "Secretaría Ejecutiva INE", "estructura orgánica INE",
+               "órganos del INE", "reglamento interior INE",
+               "Sala Superior TEPJF", "magistrado electoral"]
+    structural: ["Art. 41", "Art. 99"]
+    sources_priority: [MEX-LGIPE, MEX-REGINE, MEX-CPEUM]
+
+right_dimension_keywords:
+  - {keywords: ["votar", "sufragio", "voto"], right: "active_suffrage"}
+  - {keywords: ["ser votad", "candidat", "postulac"], right: "passive_suffrage"}
+  - {keywords: ["asociarse", "asociación política", "partido", "militante"], right: "freedom_of_association"}
+  - {keywords: ["petición", "iniciar leyes", "iniciativa"], right: "petition_and_initiative"}
+  - {keywords: ["consulta popular", "referéndum"], right: "direct_democracy"}
+  - {keywords: ["revocación de mandato"], right: "recall"}
+  - {keywords: ["impugnar", "recurso", "juicio electoral"], right: "electoral_remedy"}
+  - {keywords: ["transparencia", "acceso a la información"], right: "access_to_information"}
+  - {keywords: ["no discriminación", "igualdad", "paridad"], right: "equality_non_discrimination"}
+
+obligation_keywords:
+  - "deberá", "deben", "tienen la obligación", "están obligados", "corresponde", "le compete"
+
+faculty_keywords:
+  - "podrá", "pueden", "tiene la facultad", "le corresponde", "está facultado", "puede"
+
+restriction_keywords:
+  - "no podrá", "no pueden", "queda prohibido", "está prohibido", "se prohíbe",
+    "no procede", "sin perjuicio de", "no se permitirá"
+
+remedy_keywords:
+  - "impugnar", "recurso", "juicio", "apelación", "reconsideración",
+    "acción de inconstitucionalidad", "amparo", "reparación"
+
+sanction_keywords:
+  - "sanción", "pena", "multa", "inhabilitación", "destitución", "prisión",
+    "suspensión de derechos", "pérdida de registro"
+
+procedure_keywords:
+  - "plazo", "término", "requisito", "procedimiento", "convocatoria", "registro",
+    "solicitud", "verificación", "cómputo", "resolución"
+
+requirement_keywords:
+  - "requisito", "condición", "calidad", "acreditar", "demostrar",
+    "porcentaje", "umbral", "mínimo de", "por ciento"
+
+notes: >
+  All keyword matching is case-insensitive. Use regex with unicode flag.
+  Keyword detection is indicative, not definitive — mechanism assignment
+  requires at least one keyword match AND source context consistency.
+  If mechanism is ambiguous (matches multiple), assign the primary mechanism
+  based on source_id priority and set manual_review_required: true for secondary.

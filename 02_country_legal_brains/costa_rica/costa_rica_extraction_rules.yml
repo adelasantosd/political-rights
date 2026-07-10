@@ -1,0 +1,253 @@
+# Costa Rica Extraction Rules — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+article_detection_patterns:
+  description: >
+    Costa Rican corpus uses at least 5 distinct heading formats for articles.
+    All patterns are case-insensitive. Patterns listed in priority order.
+
+  pattern_A:
+    description: "Markdown heading + ARTÍCULO/Artículo + number + dash (CPEUM-style)"
+    regex: "^#{1,6}\\s+ART[IÍ]CULO\\s+(\\d+[°o]?\\.?(?:\\s+bis)?)\\.?\\s*[-–]?\\s*(.*)"
+    examples: ["### Artículo 93.- El sufragio...", "##### ARTÍCULO 1.- Principios..."]
+    sources: [constitucion_politica_costa_rica, codigo_electoral_costa_rica, procesos_referendum, ley_organica_tse_registro_civil, reglamento_autonomo_servicios_tse, reglamento_asamblea_legislativa_comentado]
+
+  pattern_B:
+    description: "Markdown heading + Artículo + number + period + title (no dash)"
+    regex: "^#{1,6}\\s+Art[ií]culo\\s+(\\d+[°o]?\\.?(?:\\s*bis|\\.?bis)?)\\.?\\s+(.*)"
+    examples: ["### Artículo 1. Deberes y atribuciones de los diputados"]
+    sources: [reglamento_asamblea_legislativa_comentado]
+
+  pattern_C:
+    description: "## ARTÍCULO N.- (two-hash, uppercase, dash)"
+    regex: "^#{1,3}\\s+ARTÍCULO\\s+(\\d+[°o]?)\\.?\\s*[-–]?\\s*(.*)"
+    examples: ["## ARTÍCULO 1.- Iniciativa"]
+    sources: [ley_iniciativa_popular, ley_regulacion_referendum, ley_consulta_previa_facultativa_referendum]
+
+  pattern_D:
+    description: "Bold ARTICULO (no heading marker) — Ley Jurisdicción Constitucional"
+    regex: "^\\*\\*ART[IÍ]CULO\\s+(\\d+\\.?)\\s*[-–]?\\*\\*\\s*(.*)"
+    examples: ["**ARTICULO 1.-** La presente ley..."]
+    sources: [ley_jurisdiccion_constitucional]
+
+  pattern_E:
+    description: "Bare Artículo N. (no heading marker) — some TSE documents"
+    regex: "^Art[ií]culo\\s+(\\d+[°o]?\\.?(?:\\s*bis)?)\\.?\\s*[-–]?\\s*(.*)"
+    examples: ["Artículo 5.- Para el cumplimiento..."]
+    sources: [fallback]
+
+  transitory_patterns:
+    - "ART[IÍ]CULO\\s+(PRIMERO|SEGUNDO|TERCERO|CUARTO|QUINTO)\\s*[-–]?"
+    - "Transitorio"
+    - "TRANSITORIO"
+    - "Disposici[oó]n\\s+transitoria"
+
+excluded_sources:
+  - ley_general_administracion_publica.md  # image-based — skip entirely
+
+commented_source_handling:
+  source: reglamento_asamblea_legislativa_comentado.md
+  rule: >
+    Extract article headers and immediately following paragraph text ONLY.
+    Exclude: lines beginning with "Votos Sala Constitucional", resolution identifiers
+    (e.g., "1990-00392"), bibliographic references, page markers ("<!-- Page N -->"),
+    column references, and editorial annotations. Set manual_review_required: true
+    for ALL provisions from this source. Do not extract Sala IV resolution text
+    as operative law.
+  patterns_to_exclude_from_text:
+    - "Votos Sala Constitucional"
+    - "\\d{4}-\\d{4,5}"  # resolution numbers like 1990-00392
+    - "Acta de la Sesi[oó]n Plenaria"
+    - "RAL 20\\d{2}"
+    - "ISBN:"
+    - "CEDIL"
+    - "<!-- Page \\d+ -->"
+    - "^[ivxlcdm]+\\s+[ivxlcdm]+"  # Roman numerals used as page headers
+
+editorial_annotation_exclusion:
+  description: >
+    Exclude reform and editorial annotations from operative provision text.
+  patterns_to_exclude:
+    - "\\(Reforma Constitucional\\s+\\d+[^)]*\\)"
+    - "\\(Reforma\\s+[^)]+\\)"
+    - "\\(Adicionado[^)]+\\)"
+    - "\\[Extraction note[^\\]]*\\]"
+    - "<!-- Page \\d+ -->"
+    - "\\(ver art[ií]culo[^)]*\\)"
+  strip_inline: true
+
+mechanism_keyword_rules:
+
+  vote:
+    keywords:
+      - r"sufragio\b"
+      - r"votar\b"
+      - r"votaci[oó]n\b"
+      - r"\bvoto\b"
+      - r"padr[oó]n electoral"
+      - r"lista de electores"
+      - r"junta[s]? (receptora|electoral)"
+      - r"c[eé]dula de identidad"
+      - r"c[eé]dula.*identidad"
+      - r"elecciones? populares?"
+      - r"sufragio universal"
+      - r"sufragio secreto"
+      - r"sufragio directo"
+      - r"jornada electoral"
+      - r"escrutinio"
+      - r"registro civil.*elector"
+    structural: ["Art. 93 CPCR", "Art. 95 CPCR"]
+
+  right_to_stand_for_election:
+    keywords:
+      - r"candidat[ao]\b"
+      - r"candidatura\b"
+      - r"ser elegid[ao]\b"
+      - r"inscri[bp][ci]i[oó]n.*candidat"
+      - r"paridad"
+      - r"alternancia por sexo"
+      - r"n[oó]mina.*elecci[oó]n"
+      - r"requisitos.*diputado"
+      - r"elegibilidad"
+      - r"inelegibilidad"
+      - r"no pueden ser elegidos"
+    structural: ["Arts. 107-109 CPCR", "Art. 131 CPCR"]
+
+  political_parties:
+    keywords:
+      - r"partido pol[ií]tico"
+      - r"partidos pol[ií]ticos"
+      - r"deuda pol[ií]tica"
+      - r"financiamiento.*partido"
+      - r"contribuci[oó]n.*partido"
+      - r"inscripci[oó]n.*partido"
+      - r"estatutos.*partido"
+      - r"democracia interna"
+      - r"agruparse.*partido"
+      - r"cero coma diecinueve"
+      - r"0[,.]19.*producto interno"
+    structural: ["Art. 96 CPCR", "Art. 98 CPCR"]
+
+  citizen_initiative:
+    keywords:
+      - r"iniciativa popular"
+      - r"cinco por ciento.*padr[oó]n"
+      - r"5%.*padr[oó]n"
+      - r"iniciativa.*ciudadanos"
+      - r"firmas.*iniciativa"
+      - r"derecho de iniciativa"
+      - r"ley de iniciativa"
+      - r"recolect.*firmas"
+    structural: ["Art. 123 CPCR", "Art. 105 CPCR"]
+
+  referendum:
+    keywords:
+      - r"refer[eé]ndum\b"
+      - r"referendo\b"
+      - r"consulta popular"
+      - r"consulta.*ciudadana"
+      - r"cuarenta por ciento"
+      - r"40%.*inscritos"
+      - r"potestad.*legislar.*pueblo"
+      - r"delegaci[oó]n.*legislativa"
+      - r"convocatoria.*refer[eé]ndum"
+    structural: ["Art. 105 CPCR"]
+
+  consultative_referendum_or_preliminary_consultation:
+    keywords:
+      - r"consulta previa.*constitucionalidad"
+      - r"consulta facultativa"
+      - r"sala (constitucional|iv).*refer[eé]ndum"
+      - r"constitucionalidad.*refer[eé]ndum"
+    structural: ["Art. 10 CPCR"]
+
+  electoral_remedies:
+    keywords:
+      - r"resoluciones.*tribunal"
+      - r"apelaci[oó]n.*electoral"
+      - r"recurso.*electoral"
+      - r"alzada"
+      - r"impugnaci[oó]n.*electoral"
+      - r"prevaricato"
+      - r"no tienen recurso"
+      - r"interpretar.*exclusiva.*obligatoria"
+      - r"interpretaci[oó]n.*electoral"
+    structural: ["Arts. 102-103 CPCR"]
+
+  constitutional_remedies:
+    keywords:
+      - r"amparo\b"
+      - r"h[aá]beas corpus"
+      - r"acci[oó]n de inconstitucionalidad"
+      - r"sala constitucional"
+      - r"jurisdicci[oó]n constitucional"
+      - r"derechos fundamentales"
+      - r"supremac[ií]a constitucional"
+    structural: ["Arts. 10, 48 CPCR"]
+
+  legislative_petition_or_participation:
+    keywords:
+      - r"derecho de petici[oó]n"
+      - r"iniciativa.*asamblea"
+      - r"proyecto de ley"
+      - r"formaci[oó]n de las leyes"
+      - r"debate.*plenario"
+      - r"comisi[oó]n.*asamblea"
+    structural: ["Arts. 27, 123 CPCR"]
+
+  transparency_and_accountability:
+    keywords:
+      - r"transparencia\b"
+      - r"fiscalizaci[oó]n\b"
+      - r"rendici[oó]n de cuentas"
+      - r"publicidad.*contribuciones"
+      - r"gastos.*partido"
+      - r"control.*financiero.*partido"
+      - r"cauci[oó]n.*partido"
+      - r"comprobar.*gastos"
+    structural: ["Art. 96 CPCR"]
+
+  electoral_authority_internal_governance:
+    keywords:
+      - r"tribunal supremo de elecciones"
+      - r"\bTSE\b"
+      - r"magistrados.*elecciones"
+      - r"magistrado.*propietario"
+      - r"magistrado.*suplente"
+      - r"composici[oó]n.*tribunal"
+      - r"independencia.*tribunal"
+      - r"cometido.*tribunal"
+    structural: ["Arts. 9, 99-103 CPCR"]
+
+  civil_registry_electoral_functions:
+    keywords:
+      - r"registro civil"
+      - r"estado civil"
+      - r"listas de electores"
+      - r"c[eé]dula.*identidad"
+      - r"padr[oó]n"
+      - r"nacionalidad.*registro"
+      - r"ciudadan[ií]a.*registro"
+    structural: ["Art. 104 CPCR"]
+
+right_dimension_keywords:
+  - {keywords: [r"sufragio", r"votar", r"voto"], right: "active_suffrage"}
+  - {keywords: [r"candidat", r"ser elegid", r"inscripci[oó]n.*candidat"], right: "passive_suffrage"}
+  - {keywords: [r"partido", r"agruparse", r"pluralismo"], right: "freedom_of_association"}
+  - {keywords: [r"iniciativa popular", r"derecho.*iniciativa"], right: "petition_and_initiative"}
+  - {keywords: [r"refer[eé]ndum", r"consulta popular"], right: "direct_democracy"}
+  - {keywords: [r"amparo", r"h[aá]beas corpus"], right: "constitutional_remedy"}
+  - {keywords: [r"petici[oó]n", r"proyecto de ley"], right: "petition_and_legislative_participation"}
+  - {keywords: [r"paridad", r"igualdad", r"no discriminaci[oó]n"], right: "equality_non_discrimination"}
+  - {keywords: [r"transparencia", r"publicidad"], right: "access_to_information"}
+
+obligation_keywords: [r"\bdeberá\b", r"\bdeben\b", r"\bcorresponde\b", r"\bcompete\b", r"\bobligatorio\b", r"\bes obligaci[oó]n\b"]
+faculty_keywords: [r"\bpodrá\b", r"\bpueden\b", r"\btiene la facultad\b", r"\bpuede\b", r"\bfaculta\b"]
+restriction_keywords: [r"\bno podrá\b", r"\bno pueden\b", r"\bprohibido\b", r"\bse proh[ií]be\b", r"\bno procede\b", r"\bno tendrá\b"]
+remedy_keywords: [r"\bamparo\b", r"\bhábeas corpus\b", r"\bapelaci[oó]n\b", r"\brecurso\b", r"\b(alzada|recurrir|impugnar)\b"]
+sanction_keywords: [r"\bsanci[oó]n\b", r"\bpena\b", r"\bmulta\b", r"\bdestituci[oó]n\b", r"\binhabilit", r"\bprevaricato\b"]
+procedure_keywords: [r"\bplazo\b", r"\bt[eé]rmino\b", r"\bprocedimiento\b", r"\bconvocatoria\b", r"\bregistro\b", r"\bsolicitud\b", r"\bverificaci[oó]n\b", r"\brequisito\b"]
+requirement_keywords: [r"\brequisito\b", r"\bporcentaje\b", r"\b5%\b", r"\bcinco por ciento\b", r"\b40%\b", r"\bcuarenta por ciento\b", r"\bacreditar\b"]

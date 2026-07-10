@@ -1,0 +1,247 @@
+# Mexico Actor Map — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+actors:
+
+  - actor_id: MEX-ACT-001
+    actor_name: "Instituto Nacional Electoral (INE)"
+    actor_type: autonomous_electoral_authority
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 41 (autonomous constitutional authority, Consejo General)"
+      - "LGIPE (statutory development of INE mandate)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-LGIPE
+      - MEX-LGPP
+      - MEX-REGINE
+      - MEX-INECP
+      - MEX-INERM
+    mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - independent_candidacies
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - electoral_authority_internal_governance
+    functions:
+      - "Organization and administration of federal elections"
+      - "Voter registration (Padrón Electoral, Lista Nominal)"
+      - "Candidate registration and verification"
+      - "Party registration and oversight"
+      - "Public financing distribution to parties"
+      - "Media access (radio/TV) management for electoral campaigns"
+      - "Organization of consultas populares and revocación de mandato"
+      - "Citizen initiative signature verification"
+      - "Proactive transparency (sujeto obligado under LGTAIP)"
+    legal_preparedness_role: primary_electoral_administrator
+    manual_review_required: false
+    notes: "INE is the primary autonomous electoral authority in Mexico. Created by 2014 electoral reform."
+
+  - actor_id: MEX-ACT-002
+    actor_name: "Tribunal Electoral del Poder Judicial de la Federación (TEPJF)"
+    actor_type: electoral_court
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 99 (maximum electoral jurisdiction)"
+      - "LGSMIME (statutory development of TEPJF jurisdiction)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-LGSMIME
+      - MEX-LFCP
+      - MEX-LFRM
+    mechanisms:
+      - electoral_remedies
+      - popular_consultation
+      - recall
+    functions:
+      - "Final and definitive resolution of electoral disputes"
+      - "Juicio de revisión constitucional (JRC)"
+      - "Juicio para la protección de derechos político-electorales del ciudadano (JDC)"
+      - "Review of impugnations against INE resolutions"
+      - "Final count in revocación de mandato"
+      - "Impugnation route for consulta popular resolutions"
+    legal_preparedness_role: supreme_electoral_tribunal
+    manual_review_required: false
+    notes: "TEPJF jurisprudence (tesis y criterios) not in corpus — interpretive anchor incomplete."
+
+  - actor_id: MEX-ACT-003
+    actor_name: "Suprema Corte de Justicia de la Nación (SCJN)"
+    actor_type: supreme_court
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 105 Fr. II (acciones de inconstitucionalidad in electoral matters)"
+      - "CPEUM Art. 35 Fr. VIII numeral 3o (constitutionality review of consulta popular subject matter)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-LGIPE
+      - MEX-LGSMIME
+      - MEX-LFCP
+    mechanisms:
+      - popular_consultation
+      - electoral_remedies
+    functions:
+      - "Constitutionality review of electoral laws (acciones de inconstitucionalidad)"
+      - "Pre-consultation constitutionality review of consulta popular subject matter"
+      - "Invalidation of unconstitutional electoral provisions"
+    legal_preparedness_role: constitutional_review_court
+    manual_review_required: false
+    notes: >
+      SCJN role in electoral matters is primarily constitutionality review.
+      SCJN 2023 invalidation of the 2023 electoral reform has direct impact on
+      LGIPE and LGSMIME provisions in corpus.
+
+  - actor_id: MEX-ACT-004
+    actor_name: "Congreso de la Unión — Cámara de Diputados"
+    actor_type: legislative_body
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 50–70 (legislative power)"
+      - "CPEUM Art. 35 Fr. VII (receives citizen initiatives)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-REGCD
+      - MEX-REGCONG
+    mechanisms:
+      - citizen_initiative
+      - legislative_petition_or_participation
+      - popular_consultation
+    functions:
+      - "Legislative function — enactment of electoral laws"
+      - "Reception and processing of citizen legislative initiatives"
+      - "Convocation of consultas populares (on petition)"
+      - "Electoral budget approval"
+    legal_preparedness_role: legislature
+    manual_review_required: false
+    notes: "Cámara de Diputados is the lower chamber; citizen initiatives must pass through both chambers."
+
+  - actor_id: MEX-ACT-005
+    actor_name: "Congreso de la Unión — Senado de la República"
+    actor_type: legislative_body
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 50–58 (legislative power)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-REGSN
+      - MEX-REGCONG
+    mechanisms:
+      - citizen_initiative
+      - legislative_petition_or_participation
+      - popular_consultation
+    functions:
+      - "Legislative function — enactment of electoral laws"
+      - "Processing of citizen legislative initiatives (joint procedure)"
+      - "Convocation of consultas populares (on petition)"
+    legal_preparedness_role: legislature
+    manual_review_required: false
+    notes: "Senado de la República is the upper chamber."
+
+  - actor_id: MEX-ACT-006
+    actor_name: "Partidos Políticos Nacionales"
+    actor_type: political_organization
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 41 (constitutionally recognized; receive public financing)"
+      - "LGPP (registration, rights, obligations, financing)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-LGPP
+      - MEX-LGIPE
+    mechanisms:
+      - political_parties
+      - vote
+      - right_to_stand_for_election
+    functions:
+      - "Election of candidates for popular election"
+      - "Participation in election campaigns"
+      - "Receive and administer public financing"
+      - "Internal democracy and governance"
+    legal_preparedness_role: political_actor
+    manual_review_required: false
+    notes: "Parties are constitutionally recognized entities with autonomous legal status under LGPP."
+
+  - actor_id: MEX-ACT-007
+    actor_name: "Ciudadanos / Ciudadanas (Citizens)"
+    actor_type: rights_holder
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 34 (citizenship criteria), Art. 35 (citizen rights), Art. 36 (obligations)"
+    relevant_sources:
+      - MEX-CPEUM
+      - MEX-LGIPE
+      - MEX-LGPP
+      - MEX-LFCP
+      - MEX-LFRM
+    mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - legislative_petition_or_participation
+    functions:
+      - "Exercise active and passive suffrage"
+      - "Submit citizen legislative initiatives"
+      - "Request and vote in consultas populares"
+      - "Request and vote in revocación de mandato"
+      - "Register as independent candidates"
+    legal_preparedness_role: primary_rights_holder
+    manual_review_required: false
+    notes: "Citizens are the primary rights holders. Citizenship defined at Art. 34 CPEUM (age 18+, Mexican nationality)."
+
+  - actor_id: MEX-ACT-008
+    actor_name: "Ministerio Público Federal / Fiscalía General de la República (FGR)"
+    actor_type: prosecutorial_authority
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 102 A (FGR)"
+      - "Ley General en Materia de Delitos Electorales (LGDE)"
+    relevant_sources:
+      - MEX-LGDE
+    mechanisms:
+      - electoral_crimes
+    functions:
+      - "Prosecution of electoral crimes (LGDE)"
+      - "Investigation of electoral fraud, vote buying, coercion"
+    legal_preparedness_role: electoral_crimes_prosecutor
+    manual_review_required: false
+    notes: "FGR has specialized unit for electoral crimes (FEPADE, or equivalent post-reform)."
+
+  - actor_id: MEX-ACT-009
+    actor_name: "Secretaría de Función Pública (SFP) / Órganos Internos de Control"
+    actor_type: oversight_body
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 113 (national anti-corruption system)"
+      - "Ley General de Responsabilidades Administrativas (LGRA)"
+    relevant_sources:
+      - MEX-LGRA
+    mechanisms:
+      - administrative_responsibility
+    functions:
+      - "Administrative oversight of public servants in electoral bodies"
+      - "Sanctions procedures for administrative offences"
+    legal_preparedness_role: administrative_oversight
+    manual_review_required: false
+    notes: "SFP role in INE/TEPJF oversight limited — autonomous bodies have own internal control."
+
+  - actor_id: MEX-ACT-010
+    actor_name: "Organismos Públicos Locales (OPLEs)"
+    actor_type: local_electoral_authority
+    constitutional_or_statutory_basis:
+      - "CPEUM Art. 116 Fr. IV (state electoral systems)"
+      - "LGIPE (OPLEs as local electoral authorities under INE oversight)"
+    relevant_sources:
+      - MEX-LGIPE
+      - MEX-CPEUM
+    mechanisms:
+      - vote
+      - right_to_stand_for_election
+    functions:
+      - "Organization of local elections"
+      - "Local candidate registration"
+      - "Under supervision of INE on federal matters"
+    legal_preparedness_role: local_electoral_administrator
+    manual_review_required: true
+    notes: >
+      OPLEs operate at state level. State legislation not in corpus.
+      manual_review_required: true for state-level analysis.
+      Federal-only corpus limits analysis here.

@@ -1,0 +1,137 @@
+# Mexico Source Hierarchy — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+hierarchy:
+  - source_type: constitution
+    rank: 1
+    function: >
+      Establishes fundamental political rights, citizen rights, electoral
+      principles, institutional design (INE, TEPJF), and federal-state
+      distribution of electoral competences. Directly enforceable; cannot
+      be overridden by statute.
+    legal_preparedness_value: highest
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      Reform annotations (DOF references) and SCJN invalidation notices
+      within consolidated text require careful reading. A provision marked
+      "declarada inválida" has been annulled; one marked "recupera vigencia"
+      was restored. Do not extract annulled text as operative law.
+
+  - source_type: general_law
+    rank: 2
+    function: >
+      Leyes generales enacted by Congress, binding on both federal and
+      state levels. These develop constitutional mandates for the entire
+      national electoral system. Core instruments: LGIPE, LGPP, LGSMIME, LGDE.
+    legal_preparedness_value: high
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      Some provisions have been declared invalid by SCJN (particularly
+      from the 2023 electoral reform DOF 02-03-2023 and its invalidation
+      DOF 24-11-2023). Check inline annotations before extracting operative text.
+      LGSMIME was temporarily abrogated by the 2023 reform and later restored —
+      use only restored/vigent text.
+
+  - source_type: federal_law
+    rank: 3
+    function: >
+      Leyes federales enacted by Congress, applicable at federal scope.
+      Includes LFCP (consulta popular), LFRM (revocación de mandato),
+      LGRA (administrative responsibility), LGTAIP (transparency),
+      LOAPF (federal public administration).
+    legal_preparedness_value: high
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      Federal laws apply at federal level only; state-level equivalents
+      may exist but are not in this corpus. LGRA and LGTAIP have broad
+      applicability to accountability and transparency but are not
+      specific electoral laws.
+
+  - source_type: parliamentary_regulation
+    rank: 4
+    function: >
+      Reglamentos of the Cámara de Diputados, Senado de la República,
+      and the Reglamento para el Gobierno Interior del Congreso General.
+      Govern internal legislative procedure, including initiative processing,
+      debate rules, and committee functions. Created by each chamber or
+      Congress autonomously under constitutional authorization.
+    legal_preparedness_value: medium
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      Parliamentary regulations govern internal procedure only.
+      They cannot create substantive rights, restrict citizenship rights,
+      or create electoral mechanisms. They operationalize constitutional
+      and statutory mandates for legislative petition and participation.
+      Do not classify parliamentary procedural rules as statutory anchors.
+
+  - source_type: electoral_administrative
+    rank: 5
+    function: >
+      INE acuerdos (agreements of the Consejo General), lineamientos,
+      protocolos, and the Reglamento Interior del INE. Operational
+      instruments for electoral administration. Created by INE under
+      its legal mandate. Examples: Lineamientos Consulta Popular 2021,
+      Lineamientos Revocación de Mandato 2022, Reglamento Interior INE 2025.
+    legal_preparedness_value: operational_only
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      CRITICAL: Electoral administrative instruments cannot create new
+      rights, new competences, or new mechanisms. They implement what
+      statute already authorizes. A mechanism found ONLY in INE
+      administrative documents must be flagged as administrative_overdependence.
+      Do not classify an INE acuerdo or lineamiento as statutory or
+      constitutional anchoring. Anchor type = electoral_administrative.
+      Anchor strength max = 2 unless supported by statute.
+
+  - source_type: jurisprudential_interpretive
+    rank: 6
+    function: >
+      SCJN and TEPJF jurisprudence (tesis, criterios, sentencias).
+      Interpretive authority; shapes application of constitutional and
+      statutory provisions. Not in the current corpus as text files.
+    legal_preparedness_value: interpretive_complement
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      No jurisprudence files are in the current Mexico corpus.
+      Any reference to TEPJF or SCJN criteria must be flagged
+      manual_review_required: true. Do not infer jurisprudential
+      content from non-jurisprudential sources.
+
+anchor_type_to_source_type_mapping:
+  constitutional: constitution
+  statutory: general_law or federal_law
+  regulatory_or_parliamentary_procedural: parliamentary_regulation
+  electoral_administrative: electoral_administrative
+  jurisprudential_interpretive: jurisprudential_interpretive
+  operational_practice_only: electoral_administrative (administrative only, no statute)
+  no_identifiable_anchor: none
+
+anchor_strength_rules:
+  0: "No provision in corpus supports the mechanism or right"
+  1: "Contextual or implicit constitutional/statutory reference only"
+  2: "INE administrative or operational instrument only; no statutory development"
+  3: "Statutory basis exists but incomplete — gaps in procedure, actors, or remedies"
+  4: "Statutory basis with operational development; minor gaps only"
+  5: "Integrated constitutional + statutory + procedural anchoring; comprehensive"
+
+notes: >
+  Source hierarchy is deterministic — do not upgrade a lower-tier source
+  to a higher anchor type based on its content alone. An INE lineamiento
+  that describes a mechanism in detail is still electoral_administrative rank.
+  Upgrade requires identifying the statutory or constitutional basis separately.

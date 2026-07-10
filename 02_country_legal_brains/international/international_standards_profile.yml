@@ -1,0 +1,254 @@
+# International Standards Profile — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+purpose: >
+  Profiles each international standard source in the corpus. Used by the
+  principle traceability pipeline to assign source-level normative weight,
+  determine legal character (binding/interpretive/soft-law), and flag
+  extraction caveats. Does not replace country-specific brain files.
+
+critical_note: >
+  These standards do not constitute domestic law directly. Their role in
+  the principle traceability layer is to establish minimum requirements that
+  domestic legal frameworks should address for legal preparedness. Treaty
+  ratification and constitutional incorporation vary by country — see
+  country profiles. For Mexico (Art. 1 CPEUM 2011 reform) and Costa Rica
+  (Art. 7 CPCR + Sala IV bloque de constitucionalidad), most ICCPR, ACHR,
+  CEDAW, and CRPD obligations are incorporated at constitutional or
+  supra-legal rank. ILO 169 and UNDRIP have specific ratification contexts.
+  OC-28/21 is interpretive only.
+
+sources:
+
+  - source_id: INT-ICCPR
+    filename_stem: iccpr
+    title: "International Covenant on Civil and Political Rights"
+    short_title: "ICCPR"
+    instrument_type: treaty
+    issuing_body: "United Nations General Assembly"
+    date: "1966-12-16"
+    entry_into_force: "1976-03-23"
+    legal_character: binding
+    normative_rank: 1
+    ratification_note: >
+      Ratified by Mexico (1981) and Costa Rica (1968).
+      For Mexico: supra-constitutional via Art. 1 CPEUM 2011.
+      For Costa Rica: part of bloque de constitucionalidad (Sala IV).
+    political_rights_articles: [2, 3, 19, 21, 22, 25, 26]
+    primary_principle_sources: >
+      Arts. 2/3/26 (equality, non-discrimination), Art. 25 (vote, stand for
+      election, public service), Art. 19 (expression), Arts. 21-22
+      (assembly, association), Art. 14 (due process for remedies)
+    manual_review_required: false
+    notes: "Core binding treaty; ICCPR Art. 25 is primary international standard for political rights."
+
+  - source_id: INT-HRC-GC25
+    filename_stem: observacion_general_25_comite_derechos_humanos
+    title: "Observación General No. 25 del Comité de Derechos Humanos — Artículo 25 PIDCP"
+    short_title: "HRC GC25"
+    instrument_type: treaty_body_general_comment
+    issuing_body: "United Nations Human Rights Committee"
+    date: "1996"
+    legal_character: authoritative_interpretive
+    normative_rank: 2
+    metadata_error: false
+    metadata_error_note: >
+      VERIFIED: This file is correctly identified. Content is HRC General Comment
+      No. 25 on ICCPR Article 25 (participation in public affairs, voting rights,
+      elections, public service access). Language: Spanish. File was flagged for
+      verification per task instructions because of a possible confusion with a
+      CRC GC on children's digital rights. Verification confirms: correct document.
+    political_rights_articles: ["paras 1-29"]
+    primary_principle_sources: >
+      Full detailed interpretation of ICCPR Art. 25: voting procedures (paras
+      9-19), access to public service (paras 21-23), electoral administration
+      guarantees (paras 10-20), periodic elections (para 9), restrictions (paras
+      4, 14-16), accessibility (para 12), transparency (para 20)
+    manual_review_required: false
+    notes: >
+      This GC is in Spanish; paragraph numbering used for citations.
+      Authoritative interpretation of ICCPR Art. 25 — highest-weight interpretive
+      source in corpus for political rights.
+
+  - source_id: INT-ACHR
+    filename_stem: american_convention_human_rights
+    title: "American Convention on Human Rights"
+    short_title: "ACHR (Pact of San José)"
+    instrument_type: treaty
+    issuing_body: "Organization of American States"
+    date: "1969-11-22"
+    entry_into_force: "1978-07-18"
+    legal_character: binding
+    normative_rank: 1
+    ratification_note: >
+      Ratified by Mexico (1981, with reservations) and Costa Rica (1970).
+      Costa Rica recognised Inter-American Court compulsory jurisdiction 1980.
+      Mexico recognised IACtHR jurisdiction 1998.
+    political_rights_articles: [1, 2, 13, 15, 16, 23, 24, 25, 27, 28]
+    primary_principle_sources: >
+      Art. 23 (political rights: vote, stand for election, access to public service,
+      restrictions clause), Arts. 1/2 (obligation to respect and adopt measures),
+      Art. 24 (equal protection), Art. 25 (judicial protection/effective remedy),
+      Arts. 13/15/16 (expression, assembly, association), Arts. 27/28 (federal
+      clause, suspension limits)
+    manual_review_required: false
+    notes: "ACHR Art. 23 is the primary Inter-American political rights standard. Art. 23.2 restricts permissible grounds for limiting suffrage."
+
+  - source_id: INT-IADC
+    filename_stem: inter_american_democratic_charter
+    title: "Inter-American Democratic Charter"
+    short_title: "IADC"
+    instrument_type: charter
+    issuing_body: "OAS General Assembly"
+    date: "2001-09-11"
+    legal_character: soft_law_with_political_commitment
+    normative_rank: 3
+    political_rights_articles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    primary_principle_sources: >
+      Arts. 1-3 (right to democracy, representative democracy essentials: free
+      elections, universal suffrage, pluralism, separation of powers), Arts. 4-6
+      (transparency, political parties, citizen participation), Arts. 7-9 (human
+      rights, remedies, non-discrimination and inclusion)
+    manual_review_required: false
+    notes: >
+      Not a binding treaty. Functions as a regional political commitment and
+      interpretive standard for democratic institutions. Relevant for
+      institutional_competence_and_independence and pluralism principles.
+
+  - source_id: INT-CEDAW
+    filename_stem: cedaw
+    title: "Convention on the Elimination of All Forms of Discrimination against Women"
+    short_title: "CEDAW"
+    instrument_type: treaty
+    issuing_body: "United Nations General Assembly"
+    date: "1979-12-18"
+    entry_into_force: "1981-09-03"
+    legal_character: binding
+    normative_rank: 1
+    ratification_note: >
+      Ratified by Mexico (1981) and Costa Rica (1984). Both countries subject to
+      CEDAW Committee review.
+    political_rights_articles: [1, 2, 3, 4, 7, 8]
+    primary_principle_sources: >
+      Art. 7 (political and public life: vote, stand for election, hold public
+      office, participate in civic/community life), Art. 8 (international
+      representation), Arts. 1-4 (discrimination definition, state obligations,
+      temporary special measures)
+    manual_review_required: false
+    notes: "Art. 7 is the core CEDAW political rights provision. Parity and gender-balance obligations derive primarily from Arts. 4 and 7 read together."
+
+  - source_id: INT-CEDAW-GR23
+    filename_stem: cedaw_general_recommendation_23
+    title: "CEDAW General Recommendation No. 23: Political and Public Life"
+    short_title: "CEDAW GR23"
+    instrument_type: treaty_body_general_recommendation
+    issuing_body: "CEDAW Committee"
+    date: "1997"
+    legal_character: authoritative_interpretive
+    normative_rank: 2
+    political_rights_articles: ["paras 1-44"]
+    primary_principle_sources: >
+      Detailed interpretation of CEDAW Art. 7: temporary special measures
+      (including quotas/parity), barriers to political participation, obligations
+      for political parties, electoral systems, capacity-building, monitoring.
+    manual_review_required: false
+    notes: "Large document (155KB). Authoritative interpretation of CEDAW political rights obligations. Key source for equality_and_non_discrimination and effective_participation principles."
+
+  - source_id: INT-CRPD-A29
+    filename_stem: crpd_article_29
+    title: "CRPD Article 29: Participation in Political and Public Life"
+    short_title: "CRPD Art. 29"
+    instrument_type: treaty_provision_excerpt
+    issuing_body: "United Nations"
+    date: "2006-12-13"
+    entry_into_force: "2008-05-03"
+    legal_character: binding
+    normative_rank: 1
+    ratification_note: >
+      Ratified by Mexico (2007) and Costa Rica (2008). Both ratified Optional Protocol.
+    political_rights_articles: ["Art. 29(a)", "Art. 29(b)"]
+    primary_principle_sources: >
+      Art. 29(a): accessible voting procedures, facilities and materials;
+      secret ballot; right to stand for election and hold office; assistive
+      technologies. Art. 29(b): environment for full participation without
+      discrimination; disability organizations' participation in public life.
+    manual_review_required: false
+    notes: >
+      Corpus contains only Art. 29 (extracted article). Full CRPD not in corpus.
+      Primary source for accessibility_and_reasonable_accommodation principle.
+
+  - source_id: INT-ILO169
+    filename_stem: ilo_169_articles_6_7
+    title: "ILO Convention No. 169 — Articles on Indigenous Consultation and Participation"
+    short_title: "ILO 169"
+    instrument_type: convention_excerpt
+    issuing_body: "International Labour Organization"
+    date: "1989-06-27"
+    entry_into_force: "1991-09-05"
+    legal_character: binding
+    normative_rank: 1
+    ratification_note: >
+      Ratified by Mexico (1990) and Costa Rica (1993). ILO 169 was the first
+      binding international instrument specifically on indigenous peoples' rights.
+    political_rights_articles: [2, 3, 4, 5, 6, 7, 8, 12]
+    primary_principle_sources: >
+      Arts. 6-7 (consultation and participation obligations: prior, free, informed
+      consultation; participation in development decisions; response measures);
+      Art. 8 (customary law); Art. 12 (access to justice without discrimination);
+      Arts. 2-5 (general state obligations).
+    manual_review_required: false
+    notes: >
+      Primary source for indigenous peoples' political participation dimension.
+      Relevant to territorial_and_multilevel_implementation (Art. 6 consultation
+      at appropriate levels) and effective_participation.
+      Corpus contains full convention text despite title suggesting only Arts. 6-7.
+
+  - source_id: INT-UNDRIP
+    filename_stem: undrip_participation_consultation
+    title: "United Nations Declaration on the Rights of Indigenous Peoples"
+    short_title: "UNDRIP"
+    instrument_type: declaration
+    issuing_body: "United Nations General Assembly"
+    date: "2007-09-13"
+    legal_character: soft_law
+    normative_rank: 4
+    ratification_note: >
+      Not a treaty — UN General Assembly Declaration. Mexico and Costa Rica voted
+      in favour (2007). Political and moral authority; increasingly treated as
+      reflecting customary international law norms.
+    political_rights_articles: [1, 2, 3, 4, 5, 13, 18, 19, 20, 21, 22, 23]
+    primary_principle_sources: >
+      Arts. 18-19 (participation in decision-making; free, prior and informed
+      consent); Art. 3 (self-determination); Arts. 4-5 (autonomy institutions);
+      Art. 13 (language rights in political processes); Arts. 20-23 (social,
+      economic, cultural rights as foundation for political participation).
+    manual_review_required: false
+    notes: >
+      Soft law; complementary to ILO 169. Key source for FPIC dimension and
+      indigenous languages in electoral processes. Relevant for
+      territorial_and_multilevel_implementation and effective_participation.
+
+  - source_id: INT-OC2821
+    filename_stem: inter_american_court_oc_28_21
+    title: "Inter-American Court Advisory Opinion OC-28/21"
+    short_title: "IACtHR OC-28/21"
+    instrument_type: advisory_opinion
+    issuing_body: "Inter-American Court of Human Rights"
+    date: "2021-06-07"
+    legal_character: interpretive_authoritative
+    normative_rank: 2
+    political_rights_articles: ["OC paragraphs on democratic continuity, political rights, electoral integrity"]
+    primary_principle_sources: >
+      ACHR Art. 23 interpretation: democratic continuity, electoral integrity,
+      separation of powers as political rights safeguards. Term limits as
+      democratic institution. Political rights restrictions must meet Art. 30 ACHR
+      (legality, necessity, proportionality).
+    manual_review_required: true
+    notes: >
+      CRITICAL: Use OC-28/21 ONLY as interpretive standard for democratic
+      institutions and political rights restrictions, NOT as a general domestic
+      rule. Its primary subject is presidential reelection without term limits;
+      its broader value is the methodology for assessing ACHR Art. 23 restrictions.
+      Large document (244KB); paragraph-level extraction requires careful scoping.
+      manual_review_required for all provisions extracted from this source.

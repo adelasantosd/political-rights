@@ -1,0 +1,230 @@
+# Standard Extraction Rules — International Sources
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+purpose: >
+  Deterministic rules for parsing article and paragraph provisions from
+  international standard Markdown files. Each source uses different
+  structural formats. Rules define detection patterns, targeted articles
+  for political rights extraction, and annotation handling.
+
+global_rules:
+  min_provision_text_length: 30
+  max_provision_text_length: 3000
+  strip_html_links: true
+  strip_navigation_boilerplate: true
+  skip_patterns:
+    - "^ABOUT US$"
+    - "^Our Mandates"
+    - "^Home \\("
+    - "<!--.*?-->"
+    - "^Next: Article"
+    - "^List of Articles"
+
+sources:
+
+  - source_id: INT-ICCPR
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [2, 3, 14, 19, 21, 22, 25, 26]
+    transitory_patterns: []
+    notes: "Clean structure: ### Article N followed by text paragraphs. Subdivision: (a), (b), (c) with line indent."
+
+  - source_id: INT-HRC-GC25
+    heading_pattern: null
+    paragraph_pattern: "^(\\d+)\\."
+    targeted_articles: null
+    targeted_paragraphs: "all"
+    transitory_patterns: []
+    notes: >
+      No article headings — numbered paragraphs only (1–29).
+      Pattern: line starting with digit(s) followed by period.
+      All paragraphs are relevant to ICCPR Art. 25 interpretation.
+
+  - source_id: INT-ACHR
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [1, 2, 8, 13, 15, 16, 23, 24, 25, 27, 28]
+    transitory_patterns: []
+    notes: >
+      Some article titles may be truncated (e.g., '### Article 1' without full title).
+      Bold-text patterns within articles should be captured as part of provision text.
+
+  - source_id: INT-IADC
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    transitory_patterns: []
+    notes: "Short articles, no sub-paragraphs. Full article text follows heading."
+
+  - source_id: INT-CEDAW
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [1, 2, 3, 4, 7, 8]
+    transitory_patterns: []
+    notes: "Standard UN treaty format."
+
+  - source_id: INT-CEDAW-GR23
+    heading_pattern: "^#{1,4}\\s+\\d+\\."
+    paragraph_pattern: "^(\\d+)\\."
+    targeted_articles: null
+    targeted_paragraphs: "all"
+    transitory_patterns: []
+    notes: >
+      Large file (155KB). Mix of numbered paragraphs and section headings.
+      Paragraph detection is primary. Section headings may also use ## format.
+      All paragraphs are relevant to CEDAW Art. 7 interpretation.
+
+  - source_id: INT-CRPD-A29
+    heading_pattern: "^### Article\\s+29"
+    paragraph_pattern: null
+    targeted_articles: [29]
+    transitory_patterns: []
+    notes: >
+      Single article file. Navigation boilerplate at start and end must be stripped.
+      Subsections a/b with roman numerals i/ii/iii.
+
+  - source_id: INT-ILO169
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [1, 2, 3, 4, 5, 6, 7, 8, 9, 12]
+    transitory_patterns: []
+    notes: >
+      Parts structure (## Part I, ## Part II). Article headings use ### Article N.
+      Subsections use numbered lists (1., 2.) and lettered lists (a., b., c.).
+
+  - source_id: INT-UNDRIP
+    heading_pattern: "^### Article\\s+(\\d+)"
+    paragraph_pattern: null
+    targeted_articles: [1, 2, 3, 4, 5, 13, 18, 19, 20, 21, 22, 23]
+    transitory_patterns: []
+    notes: "Standard format. Some articles very short (1-2 sentences)."
+
+  - source_id: INT-OC2821
+    heading_pattern: "^#{1,4}\\s+\\d+\\."
+    paragraph_pattern: "^(\\d+)\\."
+    targeted_articles: null
+    targeted_paragraphs: "selective"
+    targeted_paragraph_range: [1, 200]
+    transitory_patterns: []
+    manual_review_required: true
+    notes: >
+      Very large file (244KB). Advisory opinion format with numbered paragraphs.
+      Extract only paragraphs directly relevant to political rights and
+      ACHR Art. 23 interpretation. All extractions marked manual_review_required.
+      Restrict to interpretive use — do not use as domestic law rule source.
+
+principle_assignment_keywords:
+  PRIN-001:
+    keywords:
+      - "shall ensure"
+      - "states.*must"
+      - "shall establish"
+      - "required by law"
+      - "deber[aá]"
+      - "establece"
+      - "establish"
+      - "provide by law"
+  PRIN-002:
+    keywords:
+      - "without discrimination"
+      - "equal"
+      - "non-discrimination"
+      - "paridad"
+      - "temporary special measures"
+      - "measures.*address"
+      - "disparit"
+  PRIN-003:
+    keywords:
+      - "accessible"
+      - "accesib"
+      - "disability"
+      - "discapacidad"
+      - "assistive"
+      - "barrier"
+  PRIN-004:
+    keywords:
+      - "effective"
+      - "genuine"
+      - "meaningful"
+      - "positive measures"
+      - "opportunity"
+      - "enable"
+      - "participation"
+  PRIN-005:
+    keywords:
+      - "political parties"
+      - "pluralism"
+      - "independent candidate"
+      - "freedom of association"
+      - "multiple"
+      - "partisan"
+  PRIN-006:
+    keywords:
+      - "remedy"
+      - "judicial"
+      - "amparo"
+      - "appeal"
+      - "recourse"
+      - "judicial review"
+      - "impartial tribunal"
+      - "sanctions"
+  PRIN-007:
+    keywords:
+      - "transparency"
+      - "transparencia"
+      - "accountability"
+      - "disclosure"
+      - "reporting"
+      - "audit"
+      - "public information"
+  PRIN-008:
+    keywords:
+      - "independent"
+      - "impartial"
+      - "electoral body"
+      - "tribunal"
+      - "competence"
+      - "authority"
+      - "separation of powers"
+  PRIN-009:
+    keywords:
+      - "periodic"
+      - "regular"
+      - "timely"
+      - "deadline"
+      - "calendar"
+      - "schedule"
+      - "advance notice"
+      - "plazo"
+      - "t[eé]rmino"
+  PRIN-010:
+    keywords:
+      - "local"
+      - "municipal"
+      - "all levels"
+      - "national"
+      - "regional"
+      - "territories"
+      - "indigenous.*territories"
+      - "multilevel"
+  PRIN-011:
+    keywords:
+      - "resources"
+      - "capacity"
+      - "training"
+      - "staff"
+      - "infrastructure"
+      - "budget"
+      - "administrative"
+      - "implement"
+  PRIN-012:
+    keywords:
+      - "restriction"
+      - "limitation"
+      - "restricci[oó]n"
+      - "objective criteria"
+      - "reasonable"
+      - "proportionate"
+      - "necessary"
+      - "legitimate aim"

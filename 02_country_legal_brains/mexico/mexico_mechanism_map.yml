@@ -1,0 +1,364 @@
+# Mexico Mechanism Map — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+mechanisms:
+
+  - mechanism_id: MEX-MECH-001
+    mechanism_name: vote
+    description: >
+      Right to vote in popular elections (suffrage). Encompasses active suffrage,
+      electoral rolls, voting day procedures, secret ballot, universal and free suffrage.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 34 (citizenship), Art. 35 Fr. I (right to vote), Art. 36 Fr. III (obligation to vote), Art. 38 (suspension), Art. 41 (electoral principles)"
+    statutory_sources:
+      - "LGIPE (electoral procedures, voter registration, electoral roll)"
+      - "LGPP (party-mediated electoral participation)"
+    regulatory_or_procedural_sources:
+      - "Reglamento de la Cámara de Diputados (passive suffrage procedures)"
+    administrative_sources:
+      - "INE acuerdos on voter roll (Padrón Electoral, Lista Nominal)"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Universal suffrage (Art. 35 Fr. I CPEUM)"
+      - "Secret, free, direct ballot"
+      - "Electoral roll (padrón electoral / lista nominal)"
+      - "Voting day organization"
+      - "Vote counting and results"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Core mechanism; comprehensive constitutional and statutory basis in corpus."
+
+  - mechanism_id: MEX-MECH-002
+    mechanism_name: right_to_stand_for_election
+    description: >
+      Right to be registered and stand as a candidate for elected office.
+      Includes eligibility requirements, party nomination, independent candidacy,
+      gender parity requirements, and registration procedures.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. II (right to stand; independent candidacy; parity), Art. 38 (restrictions on candidacy by suspension of rights), Art. 41 (party system)"
+    statutory_sources:
+      - "LGIPE (candidacy registration, eligibility, parity)"
+      - "LGPP (party nomination procedures)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "INE acuerdos on candidate registration and verification"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Eligibility criteria (Art. 35 Fr. II CPEUM)"
+      - "Independent candidacy (Art. 35 Fr. II CPEUM)"
+      - "Gender parity (Art. 35 Fr. II CPEUM; LGIPE)"
+      - "Party nomination route (LGPP)"
+      - "Candidacy registration with INE"
+      - "Restrictions: Art. 38 CPEUM (suspension of rights)"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Core mechanism; well-anchored constitutionally and statutorily."
+
+  - mechanism_id: MEX-MECH-003
+    mechanism_name: political_parties
+    description: >
+      Formation, registration, functioning, financing, internal democracy,
+      and dissolution of political parties. Includes national and local parties.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. III (freedom of association for political purposes), Art. 41 (party system, INE oversight, public financing)"
+    statutory_sources:
+      - "LGPP (primary statute — registration, rights, obligations, financing, internal democracy)"
+      - "LGIPE (party participation in elections)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "INE acuerdos on party registration and financing oversight"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Right of association for political purposes (Art. 35 Fr. III CPEUM)"
+      - "Party registration with INE"
+      - "Public financing formula (Art. 41 CPEUM; LGPP)"
+      - "Internal democracy requirements (LGPP)"
+      - "Financial transparency and fiscalización"
+      - "Party dissolution criteria"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Core mechanism; LGPP is dedicated statute."
+
+  - mechanism_id: MEX-MECH-004
+    mechanism_name: independent_candidacies
+    description: >
+      Mechanism for citizens to register as candidates without party affiliation.
+      Requires collection of citizen support signatures verified by INE.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. II (explicit recognition of independent candidacy right)"
+    statutory_sources:
+      - "LGIPE (specific chapter on independent candidacies: requirements, signature collection, campaign rules)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "INE acuerdos on signature verification for independent candidates"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional recognition (Art. 35 Fr. II CPEUM)"
+      - "Statutory procedure (LGIPE)"
+      - "Signature collection and INE verification"
+      - "Access to public financing for independent candidates"
+      - "Campaign and media access rules"
+    likely_legal_anchor_strength: 5
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "Strong anchor; operationally dependent on INE administrative procedure for signature verification."
+
+  - mechanism_id: MEX-MECH-005
+    mechanism_name: citizen_initiative
+    description: >
+      Right of citizens to initiate legislation before Congress. Requires
+      minimum threshold of citizen signatures. INE verifies signatures.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. VII (citizen legislative initiative right)"
+    statutory_sources:
+      - "Reglamento de la Cámara de Diputados (processing of citizen initiatives)"
+      - "Reglamento del Senado de la República (processing of citizen initiatives)"
+    regulatory_or_procedural_sources:
+      - "Reglamento del Congreso General (congressional procedure)"
+    administrative_sources:
+      - "INE: verification of signature threshold (Art. 35 Fr. VII CPEUM)"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional right (Art. 35 Fr. VII CPEUM)"
+      - "INE signature verification mandate"
+      - "Congress processing rules (Reglamentos)"
+      - "Minimum threshold (CPEUM + statute — specific law pending per Art. 35)"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: true
+    notes: >
+      Art. 35 Fr. VII refers to a specific Ley del Congreso for detailed procedure.
+      No dedicated ley de iniciativa ciudadana found in corpus for Mexico (contrast:
+      Costa Rica has one). The congressional reglamentos provide partial procedural basis.
+      Flag thin_statutory_anchoring — dedicated statute may exist outside corpus.
+      manual_review_required: true.
+
+  - mechanism_id: MEX-MECH-006
+    mechanism_name: popular_consultation
+    description: >
+      Mechanism for citizens and authorities to call binding or non-binding
+      popular consultations on matters of national or regional importance.
+      Regulated by dedicated statute (Ley Federal de Consulta Popular) and
+      INE administrative instruments.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. VIII (right to vote in consultas populares; conditions and restrictions)"
+    statutory_sources:
+      - "Ley Federal de Consulta Popular (LFCP)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "Lineamientos INE Consulta Popular 2021 (MEX-INECP)"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional basis (Art. 35 Fr. VIII CPEUM)"
+      - "Petitioners: President, 33% of any chamber, 2% of nominal list"
+      - "40% participation threshold for binding result"
+      - "Subject-matter restrictions (Art. 35 Fr. VIII numeral 3o)"
+      - "INE organization and results"
+      - "SCJN constitutionality review"
+      - "TEPJF impugnation"
+    likely_legal_anchor_strength: 5
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "Comprehensive anchor. INE lineamientos are process-specific (2021 only)."
+
+  - mechanism_id: MEX-MECH-007
+    mechanism_name: recall
+    description: >
+      Revocación de mandato: mechanism for citizens to initiate revocation of
+      the President's mandate through popular vote. New mechanism; first applied 2022.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. IX (right to participate in revocación de mandato)"
+    statutory_sources:
+      - "Ley Federal de Revocación de Mandato (LFRM)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "Lineamientos INE Revocación de Mandato 2022 (MEX-INERM)"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional basis (Art. 35 Fr. IX CPEUM)"
+      - "3% citizen signature threshold (17+ states, 3% per state)"
+      - "40% participation threshold for validity"
+      - "Majority absolute for revocation"
+      - "INE organization"
+      - "TEPJF impugnation route"
+      - "Prohibition on public resource use for signature collection"
+    likely_legal_anchor_strength: 5
+    operational_dependence: medium
+    manual_review_required: false
+    notes: >
+      Mechanism only covers revocación del Presidente; sub-national application
+      depends on local legislation not in corpus.
+
+  - mechanism_id: MEX-MECH-008
+    mechanism_name: electoral_remedies
+    description: >
+      System of electoral remedies (medios de impugnación) for challenging
+      electoral acts and results. Includes JRC, JDC, RAP, REC, JDCN, JDCE.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 41 Fr. VI (impugnation system), Art. 99 (TEPJF jurisdiction)"
+    statutory_sources:
+      - "Ley General del Sistema de Medios de Impugnación en Materia Electoral (LGSMIME)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "INE resolutions subject to impugnation"
+    interpretive_sources: []
+    core_legal_elements:
+      - "TEPJF as supreme electoral jurisdiction (Art. 99 CPEUM)"
+      - "Juicio de revisión constitucional (JRC)"
+      - "Juicio para la protección de derechos político-electorales del ciudadano (JDC)"
+      - "Recurso de apelación (RAP)"
+      - "Recurso de reconsideración (REC)"
+      - "Remedies against INE acts"
+      - "Definitive and final electoral decisions"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: >
+      LGSMIME was temporarily abrogated (2023 reform) and restored by SCJN.
+      Use only vigent text. Comprehensive anchor.
+
+  - mechanism_id: MEX-MECH-009
+    mechanism_name: electoral_crimes
+    description: >
+      Criminal offences in electoral matters. Includes vote buying, coercion,
+      fraud, alteration of results, obstruction of electoral processes.
+    legal_preparedness_relevance: core
+    constitutional_sources:
+      - "CPEUM Art. 41 (electoral principles imply criminal protection)"
+    statutory_sources:
+      - "Ley General en Materia de Delitos Electorales (LGDE)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Criminal typification of electoral offences (LGDE)"
+      - "Sanctions (imprisonment, fines)"
+      - "Active/passive corruption of vote"
+      - "Obstruction of electoral authorities"
+      - "Electoral coercion by public servants"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: "Dedicated statute (LGDE). Strong criminal law anchor."
+
+  - mechanism_id: MEX-MECH-010
+    mechanism_name: legislative_petition_or_participation
+    description: >
+      Citizen right to petition and procedural channels for citizens to
+      engage with the legislative process, including right to submit
+      citizen initiatives (Art. 35 Fr. VII) and right of petition (Art. 35 Fr. V).
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPEUM Art. 35 Fr. V (right of petition), Art. 35 Fr. VII (citizen initiative)"
+    statutory_sources: []
+    regulatory_or_procedural_sources:
+      - "Reglamento de la Cámara de Diputados"
+      - "Reglamento del Senado de la República"
+      - "Reglamento para el Gobierno Interior del Congreso General"
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Right of petition (Art. 35 Fr. V CPEUM)"
+      - "Citizen initiative procedure (Reglamentos del Congreso)"
+      - "Committee processing of petitions and initiatives"
+    likely_legal_anchor_strength: 3
+    operational_dependence: medium
+    manual_review_required: true
+    notes: >
+      Procedural anchor only; no dedicated citizen petition law in corpus.
+      Parliamentary reglamentos provide partial operational basis.
+      thin_statutory_anchoring for the petition right beyond constitutional text.
+
+  - mechanism_id: MEX-MECH-011
+    mechanism_name: transparency_and_accountability
+    description: >
+      Transparency and access to information rights as applied to electoral
+      and political institutions. Includes proactive transparency, access to
+      information requests, and party financial disclosure.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPEUM Art. 6 (right to access information)"
+    statutory_sources:
+      - "Ley General de Transparencia y Acceso a la Información Pública (LGTAIP)"
+      - "LGPP (party financial transparency and fiscalización)"
+      - "LGRA (administrative responsibility — public servants in electoral bodies)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "INE acuerdos on proactive transparency (Reglamento Interior INE 2025)"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Constitutional right to information (Art. 6 CPEUM)"
+      - "LGTAIP: INE and TEPJF as sujetos obligados"
+      - "LGPP: party financial reporting and audit by INE"
+      - "LGRA: accountability for electoral officials"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "Well-anchored but secondary to core electoral mechanisms."
+
+  - mechanism_id: MEX-MECH-012
+    mechanism_name: administrative_responsibility
+    description: >
+      Administrative responsibility and accountability of public servants
+      in electoral bodies and broader federal administration. Includes
+      disciplinary procedures and sanctions.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPEUM Art. 108–114 (responsibility of public servants)"
+    statutory_sources:
+      - "Ley General de Responsabilidades Administrativas (LGRA)"
+    regulatory_or_procedural_sources: []
+    administrative_sources: []
+    interpretive_sources: []
+    core_legal_elements:
+      - "Typification of administrative offences (LGRA)"
+      - "Sanctions (suspension, removal, economic sanctions)"
+      - "Internal control bodies"
+      - "Oversight Commission (SFP)"
+    likely_legal_anchor_strength: 4
+    operational_dependence: medium
+    manual_review_required: false
+    notes: "LGRA is dedicated statute; relevance to electoral accountability is indirect."
+
+  - mechanism_id: MEX-MECH-013
+    mechanism_name: electoral_authority_internal_governance
+    description: >
+      Internal governance structure of the INE, including composition of
+      Consejo General, electoral councillors (consejeros), and internal
+      units. TEPJF internal governance also included.
+    legal_preparedness_relevance: secondary
+    constitutional_sources:
+      - "CPEUM Art. 41 (INE composition and mandate), Art. 99 (TEPJF)"
+    statutory_sources:
+      - "LGIPE (INE statutory framework)"
+    regulatory_or_procedural_sources: []
+    administrative_sources:
+      - "Reglamento Interior INE 2025"
+    interpretive_sources: []
+    core_legal_elements:
+      - "Consejo General composition (Art. 41 CPEUM)"
+      - "Electoral councillor selection procedure"
+      - "INE internal units and secretariats (Reglamento Interior INE 2025)"
+      - "INE autonomous status"
+    likely_legal_anchor_strength: 5
+    operational_dependence: low
+    manual_review_required: false
+    notes: >
+      Constitutional and statutory basis strong. Reglamento Interior INE 2025
+      is correctly classified as electoral_administrative for internal operational
+      detail — it does not alter the constitutional/statutory mandate.

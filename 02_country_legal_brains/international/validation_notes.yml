@@ -1,0 +1,326 @@
+# Validation Notes — International Standards Layer
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+purpose: >
+  Documents validation findings, metadata verifications, corpus gaps, and
+  analytical caveats for the international standards brain and principle
+  traceability layer. All notes are permanent records; they do not change
+  pipeline behaviour but must be consulted when interpreting output tables.
+
+---
+
+notes:
+
+  # ── METADATA VERIFICATION ──────────────────────────────────────────────────
+
+  - note_id: INT-VN-001
+    category: metadata_verification
+    status: VERIFIED_CORRECT
+    source_id: INT-HRC-GC25
+    title: "HRC General Comment 25 — Identity Verified"
+    description: >
+      The file observacion_general_25_comite_derechos_humanos.md was flagged
+      for mandatory verification before pipeline use because a possible
+      confusion existed with a CRC (Committee on the Rights of the Child)
+      general comment on children's digital rights, which shares a similar
+      short-form citation in some databases.
+    verification_findings: >
+      Content confirmed as United Nations Human Rights Committee (HRC)
+      General Comment No. 25 on Article 25 of the International Covenant
+      on Civil and Political Rights (ICCPR), titled 'Participation in
+      Public Affairs and the Right to Vote'. Language: Spanish. Content
+      covers: right to participate in public affairs (para. 1–8), right to
+      vote and be elected (paras. 9–19), access to public service (paras.
+      20–23), restrictions permissible under Art. 25 (paras. 4, 14–16),
+      electoral administration (para. 20), periodic elections (para. 9).
+      Document: 29 numbered paragraphs, consistent with the 1996 HRC GC25.
+    verdict: metadata_error_false — correct document, no pipeline modification required
+    date_verified: "2026-05-18"
+
+  - note_id: INT-VN-002
+    category: metadata_verification
+    status: VERIFIED_CORRECT
+    source_id: INT-OC2821
+    title: "OC-28/21 Use Restriction — Confirmed and Enforced"
+    description: >
+      Inter-American Court Advisory Opinion OC-28/21 (2021) addresses
+      presidential reelection without term limits. Its primary subject
+      matter is not a general political rights rule but a specific
+      institutional constraint on indefinite reelection.
+    restriction_rule: >
+      OC-28/21 MUST NOT be used as a general domestic legal rule source.
+      Permitted uses only: (a) interpreting proportionality of restrictions
+      on political rights under ACHR Art. 23; (b) assessing independence
+      and competence requirements for electoral institutions; (c) democratic
+      continuity principles where ACHR Art. 23 is at issue. All provisions
+      extracted from OC-28/21 must have manual_review_required=true. The
+      oc2821_restriction rule in international_source_hierarchy.yml encodes
+      this constraint and must be respected in all downstream analytical use.
+    pipeline_enforcement: >
+      standard_extraction_rules.yml sets manual_review_required=true for
+      all INT-OC2821 provisions. principle_traceability_rules.yml
+      oc2821_special_rule restricts extraction to paragraphs explicitly
+      referencing political rights, Art. 23 ACHR, or democratic continuity.
+    date_verified: "2026-05-18"
+
+  # ── CORPUS GAPS ────────────────────────────────────────────────────────────
+
+  - note_id: INT-VN-003
+    category: corpus_gap
+    severity: medium
+    title: "CRPD Full Text Absent — Only Art. 29 Extracted"
+    description: >
+      The international corpus contains only a single-article extract
+      (crpd_article_29.md) from the Convention on the Rights of Persons
+      with Disabilities (CRPD). The full CRPD text is not in the corpus.
+    impact: >
+      Articles 1, 2, 4, 5, 12, 13, 29 of the full CRPD provide
+      complementary obligations relevant to PRIN-003 (accessibility) and
+      PRIN-002 (equality). The single Art. 29 extract is sufficient for
+      the core political participation obligation but does not cover the
+      CRPD general principles (Art. 3) or the reasonable accommodation
+      obligation in Art. 2, which theoretically applies to all rights
+      including political rights.
+    mitigation: >
+      The accessibility analysis in PRIN-003 should be supplemented by
+      reference to CEDAW GR23 and HRC GC25 where disability-specific
+      analysis is required. For full CRPD analysis, a complete CRPD file
+      should be added to corpus/international/md/ in a future cycle.
+    affects_principles: [PRIN-003]
+    affects_countries: [MEX, CRC]
+
+  - note_id: INT-VN-004
+    category: corpus_gap
+    severity: low
+    title: "ILO 169 Corpus File Contains More Than Title Suggests"
+    description: >
+      The file ilo_169_articles_6_7.md is titled as if it contains only
+      Articles 6–7 (consultation and participation) but the pipeline audit
+      confirmed it contains the full ILO Convention No. 169 text.
+    impact: >
+      Positive impact: the full convention provides richer extraction
+      for PRIN-002, PRIN-004, PRIN-010, and PRIN-012. The standard_extraction_rules.yml
+      targeted_articles list for INT-ILO169 correctly includes Arts. 1–9
+      and 12, which covers the relevant provisions regardless of title ambiguity.
+    recommendation: >
+      Rename ilo_169_articles_6_7.md to ilo_convention_169.md in a future
+      corpus cycle for accurate naming, and update international_standards_profile.yml
+      filename_stem accordingly.
+    affects_principles: [PRIN-002, PRIN-004, PRIN-010, PRIN-012]
+    affects_countries: [MEX, CRC]
+
+  - note_id: INT-VN-005
+    category: corpus_gap
+    severity: medium
+    title: "No CRPD General Comment on Art. 29 in Corpus"
+    description: >
+      The CRPD Committee has issued a General Comment (GC No. 7, 2018)
+      specifically on political participation for persons with disabilities
+      under Art. 29. This document is not in the corpus.
+    impact: >
+      GC7 would be the authoritative interpretive standard for Art. 29
+      equivalent to what HRC GC25 is for ICCPR Art. 25. Its absence means
+      PRIN-003 (accessibility) lacks an authoritative interpretive source
+      at the same level as PRIN-001 and PRIN-002 enjoy through HRC GC25
+      and CEDAW GR23.
+    recommendation: >
+      Add CRPD Committee GC7 (2018) to corpus in next expansion cycle.
+      Until then, PRIN-003 scores should be treated as conservative.
+    affects_principles: [PRIN-003]
+    affects_countries: [MEX, CRC]
+
+  - note_id: INT-VN-006
+    category: corpus_gap
+    severity: low
+    title: "No IACHR Thematic Reports in Corpus"
+    description: >
+      The Inter-American Commission on Human Rights (IACHR) has published
+      thematic reports on political rights, indigenous participation, and
+      electoral systems that provide regional soft-law context. None of
+      these are in the current corpus.
+    impact: >
+      Minor: the IACtHR OC-28/21 provides authoritative regional interpretation
+      for binding ACHR obligations. IACHR reports would add depth to
+      PRIN-005 (pluralism) and PRIN-010 (territorial) analysis but are not
+      required for the core analytical framework.
+    recommendation: >
+      Consider adding IACHR Special Rapporteur reports on indigenous
+      political participation for Phase 2 corpus expansion.
+    affects_principles: [PRIN-005, PRIN-010]
+    affects_countries: [MEX, CRC]
+
+  # ── ANALYTICAL CAVEATS ─────────────────────────────────────────────────────
+
+  - note_id: INT-VN-007
+    category: analytical_caveat
+    severity: high
+    title: "Scores Are Diagnostic Legal Preparedness — Not Legal Compliance"
+    description: >
+      The implementation_readiness_score (0–5) assigned in the principle
+      traceability layer measures how operationally prepared domestic law
+      appears to be based on the corpus of provisions, not whether a country
+      is in compliance with international human rights obligations.
+    elaboration: >
+      Legal preparedness and legal compliance are analytically distinct:
+      (a) A country may have a score of 5 on paper but fail in implementation.
+      (b) A score of 2 may reflect corpus incompleteness rather than genuine
+          legislative gap (e.g., if relevant secondary legislation is not in
+          the corpus).
+      (c) Scores cannot substitute for judicial determinations, treaty body
+          reviews, or expert legal assessment.
+      This caveat applies to all downstream use of INT-OUT-04 through INT-OUT-07.
+    display_requirement: >
+      All tables and visualisations derived from scores MUST display the note:
+      "Scores reflect corpus-based diagnostic legal preparedness, not legal
+      compliance. NormTrace is an analytical tool, not a legal opinion."
+
+  - note_id: INT-VN-008
+    category: analytical_caveat
+    severity: medium
+    title: "Cross-Country Score Comparisons Reflect Corpus Composition Differences"
+    description: >
+      Mexico and Costa Rica corpus sizes differ substantially (7,502 vs 1,884
+      provisions). Several Costa Rica sources are incomplete or contested:
+      CRC-RAL (622 provisions, commentary contamination), CRC-RATSRE (low
+      relevance HR reglamento), LGAP absent (image-based PDF). Sala IV
+      jurisprudence and TSE resolutions — both critical to Costa Rica's
+      actual legal preparedness — are not in the corpus.
+    impact: >
+      Costa Rica scores may be systematically conservative because:
+      (a) key constitutional adjudication (Sala IV) is absent;
+      (b) TSE resolutions and circulares operacionales are not captured;
+      (c) the smaller corpus means fewer keyword matches even where the
+          legal framework is substantively prepared.
+    recommendation: >
+      Principal-level comparisons should note corpus_coverage_note in
+      INT-OUT-04/05. The comparison table (INT-OUT-06) should flag
+      CRC scores as corpus-conservative where relevant.
+    affects_tables: [INT-OUT-04, INT-OUT-05, INT-OUT-06, INT-OUT-07]
+
+  - note_id: INT-VN-009
+    category: analytical_caveat
+    severity: low
+    title: "ILO 169 and UNDRIP Coverage Requires Indigenous-Specific Analysis"
+    description: >
+      PRIN-010 (territorial_and_multilevel_implementation) and parts of
+      PRIN-004 (effective_participation) draw on ILO 169 and UNDRIP for
+      indigenous political participation dimensions. The domestic corpus
+      for both Mexico and Costa Rica contains limited indigenous-specific
+      provisions (no indigenous customary law materials, no CPEUM
+      indigenous autonomy chapter beyond Art. 2, no CR indigenous law).
+    impact: >
+      Indigenous-dimension scores within PRIN-004 and PRIN-010 will
+      be systematically low. This reflects genuine corpus incompleteness,
+      not necessarily weak domestic frameworks (Mexico Art. 2 CPEUM and
+      Costa Rica have separate indigenous governance frameworks not yet
+      digitised in corpus).
+    recommendation: >
+      Flag indigenous-dimension scores in output tables with
+      corpus_coverage_note: "indigenous_framework_corpus_incomplete".
+      Do not treat low indigenous dimension scores as evidence of
+      legislative absence without consulting national indigenous law corpus.
+    affects_principles: [PRIN-004, PRIN-010]
+    affects_countries: [MEX, CRC]
+
+  - note_id: INT-VN-010
+    category: analytical_caveat
+    severity: medium
+    title: "HRC GC25 File is in Spanish — Keyword Matching is Language-Specific"
+    description: >
+      The HRC General Comment 25 file (observacion_general_25_comite_derechos_humanos.md)
+      is in Spanish. Principle assignment keywords in standard_extraction_rules.yml
+      include both Spanish and English patterns but the primary text is Spanish.
+    impact: >
+      No direct impact on provision extraction — the Spanish text is the
+      operative text for this file and keywords are correctly coded in Spanish.
+      However, provision_text fields in INT-OUT-01 for this source will be
+      in Spanish, which should be documented for any downstream multilingual
+      processing.
+    recommendation: >
+      When populating provision_text in international_standard_provisions table,
+      tag HRC GC25 rows with language='es'. All other international sources
+      in corpus are in English except this one.
+    source_language_map:
+      INT-ICCPR: en
+      INT-HRC-GC25: es
+      INT-ACHR: en
+      INT-IADC: en
+      INT-CEDAW: en
+      INT-CEDAW-GR23: en
+      INT-CRPD-A29: en
+      INT-ILO169: en
+      INT-UNDRIP: en
+      INT-OC2821: en
+
+  # ── PIPELINE TECHNICAL NOTES ───────────────────────────────────────────────
+
+  - note_id: INT-VN-011
+    category: pipeline_technical
+    severity: low
+    title: "CEDAW GR23 is 155KB — Extraction May Produce Large Row Count"
+    description: >
+      cedaw_general_recommendation_23.md is approximately 155KB. The
+      paragraph_pattern extraction will yield a large number of paragraphs
+      (estimated 40–80 substantive provisions). All are targeted (all paragraphs
+      relevant to CEDAW Art. 7).
+    impact: >
+      No structural problem. The INT-OUT-01 table will simply have more rows
+      from this source than from shorter documents. The pipeline should process
+      this file last to avoid memory pressure on smaller systems.
+    recommendation: >
+      Pipeline should cap individual provision text at 3000 characters (per
+      max_provision_text_length in global_rules). Long GR23 paragraphs may
+      require mid-paragraph truncation — add truncation_flag to output row
+      where truncation occurs.
+
+  - note_id: INT-VN-012
+    category: pipeline_technical
+    severity: medium
+    title: "OC-28/21 is 244KB — Selective Paragraph Extraction Required"
+    description: >
+      inter_american_court_oc_28_21.md is approximately 244KB. Without
+      selective filtering, this file would produce hundreds of provisions,
+      most irrelevant to the core political rights analysis.
+    pipeline_rule: >
+      Apply oc2821_special_rule from principle_traceability_rules.yml:
+      restrict to paragraphs explicitly containing at least one of
+      [derecho político, artículo 23, restricción, reelección, continuidad
+      democrática, integridad electoral, derechos políticos].
+      Expected yield: 20–60 paragraphs. All must have manual_review_required=true.
+    note: >
+      If the pipeline yields 0 paragraphs from OC-28/21, the filter is too
+      restrictive and should fall back to targeted_paragraph_range [1, 200]
+      as specified in standard_extraction_rules.yml.
+
+  - note_id: INT-VN-013
+    category: pipeline_technical
+    severity: low
+    title: "CRPD Art. 29 File Has Navigation Boilerplate"
+    description: >
+      crpd_article_29.md was extracted from the OHCHR website and begins
+      with navigation elements (Back to full list of Articles, List of
+      Articles). The global_rules skip_patterns in standard_extraction_rules.yml
+      include patterns to remove this boilerplate.
+    pipeline_rule: >
+      strip_navigation_boilerplate=true already covers this. Verify that
+      extraction result does not include lines matching:
+      ["^Next: Article", "^List of Articles", "^ABOUT US$"].
+
+  - note_id: INT-VN-014
+    category: pipeline_technical
+    severity: low
+    title: "Principle Assignment Is Keyword-Heuristic — Not Exhaustive"
+    description: >
+      The principle_assignment_keywords in standard_extraction_rules.yml use
+      keyword detection to assign candidate principles to international
+      provisions. This is a heuristic method. Some provisions may:
+      (a) match multiple principles correctly (multi-principle provisions);
+      (b) match on keyword without genuine normative relevance to that principle;
+      (c) not match any keyword despite genuine relevance.
+    mitigation: >
+      All principle assignments from keyword matching are treated as
+      'candidate' in INT-OUT-01. The mechanism_principle_requirements table
+      (INT-OUT-03) uses the principle_map.yml primary_sources field as the
+      authoritative source-to-principle mapping, not the keyword heuristic.
+      Keyword matching supplements but does not override the structured mapping.

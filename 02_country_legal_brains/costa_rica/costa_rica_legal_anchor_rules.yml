@@ -1,0 +1,154 @@
+# Costa Rica Legal Anchor Rules — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+purpose: >
+  Deterministic rules for assigning legal_anchor_type and anchor_strength to
+  extracted provisions. Rules are source-type based, not LLM-inferred.
+  Conservative defaults apply where evidence is ambiguous.
+
+anchor_type_assignment_rules:
+
+  - rule_id: CRC-ANCH-001
+    anchor_type: constitutional
+    condition: >
+      Source metadata instrument_type = "Constitución" OR source_id = CRC-CPOL.
+      Provision is an operative article (not a reform annotation or editorial note).
+    notes: "CPCR articles are constitutional anchors."
+
+  - rule_id: CRC-ANCH-002
+    anchor_type: statutory
+    condition: >
+      Source metadata instrument_type in ["Ley orgánica", "Ley / Código", "Ley", "Código", "Ley reformatoria"]
+      AND source rank <= 4.
+      Applies to: CRC-LOTSRC, CRC-CE, CRC-LREF, CRC-LIP, CRC-LJC, CRC-LCPREF.
+    notes: "All Asamblea Legislativa-enacted laws classified as statutory anchors."
+
+  - rule_id: CRC-ANCH-003
+    anchor_type: regulatory_or_legislative_procedural
+    condition: >
+      Source metadata instrument_type in ["Reglamento / Decreto electoral", "Reglamento"]
+      AND issuing_body contains "Tribunal Supremo de Elecciones" (TSE reglamentos).
+      OR source metadata instrument_type = "Reglamento parlamentario comentado / compilación normativa y jurisprudencial"
+      (legislative reglamento).
+    override: >
+      TSE reglamentos implementing a statutory mandate = regulatory_or_legislative_procedural.
+      Legislative Reglamento (Asamblea) = regulatory_or_legislative_procedural.
+    notes: >
+      TSE reglamentos are not purely administrative — they carry normative weight
+      under Art. 102 Fr. 9 CPCR. Distinguish from administrative reglamentos.
+
+  - rule_id: CRC-ANCH-004
+    anchor_type: electoral_administrative
+    condition: >
+      Source metadata instrument_type = "Reglamento" AND issuing_body = "Tribunal Supremo de Elecciones"
+      AND the provision is purely operational/HR in nature (e.g., Reglamento Autónomo de Servicios TSE).
+    notes: "Reglamento Autónomo Servicios TSE = electoral_administrative (internal HR)."
+
+  - rule_id: CRC-ANCH-005
+    anchor_type: jurisprudential_interpretive
+    condition: "Source is TSE resolution, Sala IV voto, or other jurisprudence."
+    notes: "No jurisprudence text files in current corpus. This rule is for future sources."
+
+  - rule_id: CRC-ANCH-006
+    anchor_type: no_identifiable_anchor
+    condition: >
+      No matching rule above applies, OR provision text is extracted from commentary
+      in reglamento_asamblea_legislativa_comentado.md (commentary is not operative law),
+      OR source is image-based (ley_general_administracion_publica.md).
+    notes: "Default fallback. Set manual_review_required: true."
+
+anchor_strength_rules:
+
+  - rule_id: CRC-STRN-001
+    anchor_strength: 5
+    condition: >
+      Provision is constitutional (CRC-ANCH-001) AND mechanism also has statutory
+      development in corpus. OR provision integrates constitutional + statutory + TSE
+      regulatory anchoring for the same mechanism.
+    applies_to: [vote, right_to_stand_for_election, political_parties, citizen_initiative, referendum, electoral_remedies, electoral_authority_internal_governance, civil_registry_electoral_functions, constitutional_remedies]
+
+  - rule_id: CRC-STRN-002
+    anchor_strength: 4
+    condition: >
+      Provision is statutory (CRC-ANCH-002) with partial operational development.
+      OR provision is TSE-regulatory implementing a clear statutory mandate.
+    applies_to: [transparency_and_accountability, legislative_petition_or_participation, consultative_referendum_or_preliminary_consultation]
+
+  - rule_id: CRC-STRN-003
+    anchor_strength: 3
+    condition: >
+      Statutory provision exists but mechanism has significant procedural gaps,
+      or the source is a TSE reglamento without clear statutory basis identified
+      in corpus.
+    applies_to: []
+
+  - rule_id: CRC-STRN-004
+    anchor_strength: 2
+    condition: >
+      Provision comes only from Reglamento Autónomo Servicios TSE (administrative)
+      OR from Reglamento Asamblea (commented, manual_review_required),
+      with no constitutional or statutory source found for same mechanism.
+    applies_to: []
+
+  - rule_id: CRC-STRN-005
+    anchor_strength: 1
+    condition: >
+      Only indirect or contextual reference exists; the specific mechanism is not
+      directly developed in any corpus source.
+    applies_to: []
+
+  - rule_id: CRC-STRN-006
+    anchor_strength: 0
+    condition: "No provision in corpus supports the mechanism or right."
+    applies_to: []
+
+operational_dependence_rules:
+  low:
+    - "Self-executing constitutional rights (vote, suffrage principles)"
+    - "TSE exclusive jurisdiction (Art. 103 CPCR — no secondary instrument required)"
+    - "Electoral remedies before TSE"
+  medium:
+    - "Mechanisms requiring TSE administrative action (signature verification, referendum organization)"
+    - "Party registration and oversight"
+    - "Constitutional remedies before Sala IV"
+  high:
+    - "Mechanisms dependent on TSE reglamentos or implementing rules that are operational"
+  unknown:
+    - "Mechanisms where corpus evidence is insufficient"
+
+gap_type_detection:
+  legal_silence: "anchor_strength == 0 OR no source identified"
+  thin_statutory_anchoring: "Constitutional right exists but statute incomplete or absent from corpus"
+  administrative_overdependence: "Only TSE administrative/operational instrument anchors the mechanism"
+  procedural_gap: "Statutory right exists but key procedural rules absent or only in lower-tier source"
+  remedy_gap: "Mechanism has no appeal route identified in corpus"
+  corpus_incomplete: "LGAP not extractable; TSE resolutions absent; Sala IV jurisprudence absent"
+  update_review_needed: "Source has reform annotations or vigency uncertainty"
+  accessibility_gap: "No provisions on disability or language accessibility for the mechanism"
+  equality_or_non_discrimination_gap: "Parity or non-discrimination provisions incomplete"
+  none_detected: "Comprehensive anchoring; no gap identified"
+
+commentary_exclusion_rule:
+  source: reglamento_asamblea_legislativa_comentado.md
+  rule: >
+    This file contains the RAL operative text PLUS commentary columns (Sala IV
+    resolutions, Presidencia resolutions, Servicios Técnicos criteria). The pipeline
+    must extract only the operative article text from the left-column / article header
+    structure. All Sala IV voto references, page-number references, and editorial
+    annotations must be excluded. Set manual_review_required: true for all provisions
+    from this source because the PDF-to-Markdown conversion may have merged commentary
+    with operative text.
+
+manual_review_triggers:
+  - "metadata status contains 'sujeto a verificación'"
+  - "metadata status contains 'requires manual OCR'"
+  - "source = reglamento_asamblea_legislativa_comentado"
+  - "source = ley_general_administracion_publica (excluded)"
+  - "anchor_strength <= 2"
+  - "mechanism = consultative_referendum_or_preliminary_consultation"
+  - "metadata missing or ambiguous"
+  - "provision extracted from reform annotation or preamble only"
+  - "TSE reglamento vigency uncertain"

@@ -1,0 +1,148 @@
+{
+  "principle_summary": [
+    {
+      "principle_id": "PRIN-001",
+      "principle_name": "legality_and_sufficient_legal_basis",
+      "mexico_avg_score": 3.5,
+      "mexico_gap_count": 3,
+      "mexico_critical_gaps": 3,
+      "costa_rica_avg_score": 3.5,
+      "costa_rica_gap_count": 3,
+      "costa_rica_critical_gaps": 3,
+      "binding_sources_count": 3,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-002",
+      "principle_name": "equality_and_non_discrimination",
+      "mexico_avg_score": 3.29,
+      "mexico_gap_count": 2,
+      "mexico_critical_gaps": 2,
+      "costa_rica_avg_score": 4.0,
+      "costa_rica_gap_count": 1,
+      "costa_rica_critical_gaps": 1,
+      "binding_sources_count": 6,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-003",
+      "principle_name": "accessibility_and_reasonable_accommodation",
+      "mexico_avg_score": 3.2,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 3.4,
+      "costa_rica_gap_count": 1,
+      "costa_rica_critical_gaps": 1,
+      "binding_sources_count": 4,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-004",
+      "principle_name": "effective_participation",
+      "mexico_avg_score": 3.83,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 3.67,
+      "costa_rica_gap_count": 1,
+      "costa_rica_critical_gaps": 1,
+      "binding_sources_count": 2,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-005",
+      "principle_name": "pluralism_and_collective_representation",
+      "mexico_avg_score": 4.5,
+      "mexico_gap_count": 0,
+      "mexico_critical_gaps": 0,
+      "costa_rica_avg_score": 3.25,
+      "costa_rica_gap_count": 1,
+      "costa_rica_critical_gaps": 1,
+      "binding_sources_count": 3,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-006",
+      "principle_name": "due_process_and_effective_remedy",
+      "mexico_avg_score": 3.4,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 2.8,
+      "costa_rica_gap_count": 2,
+      "costa_rica_critical_gaps": 2,
+      "binding_sources_count": 3,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-007",
+      "principle_name": "transparency_and_accountability",
+      "mexico_avg_score": 4.0,
+      "mexico_gap_count": 0,
+      "mexico_critical_gaps": 0,
+      "costa_rica_avg_score": 4.0,
+      "costa_rica_gap_count": 0,
+      "costa_rica_critical_gaps": 0,
+      "binding_sources_count": 1,
+      "overall_preparedness_flag": "adequate"
+    },
+    {
+      "principle_id": "PRIN-008",
+      "principle_name": "institutional_competence_and_independence",
+      "mexico_avg_score": 3.0,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 4.67,
+      "costa_rica_gap_count": 0,
+      "costa_rica_critical_gaps": 0,
+      "binding_sources_count": 2,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-009",
+      "principle_name": "procedural_certainty_and_time_limits",
+      "mexico_avg_score": 4.0,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 3.17,
+      "costa_rica_gap_count": 2,
+      "costa_rica_critical_gaps": 2,
+      "binding_sources_count": 2,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-010",
+      "principle_name": "territorial_and_multilevel_implementation",
+      "mexico_avg_score": 3.25,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 4.5,
+      "costa_rica_gap_count": 0,
+      "costa_rica_critical_gaps": 0,
+      "binding_sources_count": 3,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-011",
+      "principle_name": "administrative_capacity_and_resources",
+      "mexico_avg_score": 2.67,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 4.33,
+      "costa_rica_gap_count": 0,
+      "costa_rica_critical_gaps": 0,
+      "binding_sources_count": 1,
+      "overall_preparedness_flag": "partial"
+    },
+    {
+      "principle_id": "PRIN-012",
+      "principle_name": "restriction_legality_necessity_proportionality",
+      "mexico_avg_score": 3.67,
+      "mexico_gap_count": 1,
+      "mexico_critical_gaps": 1,
+      "costa_rica_avg_score": 3.5,
+      "costa_rica_gap_count": 1,
+      "costa_rica_critical_gaps": 1,
+      "binding_sources_count": 2,
+      "overall_preparedness_flag": "partial"
+    }
+  ]
+}

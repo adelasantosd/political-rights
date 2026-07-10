@@ -1,0 +1,173 @@
+# Mexico Country Legal Brain — Country Profile
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+# Do not cite as legal authority
+
+country: Mexico
+iso3: MEX
+legal_family: Civil law (Romano-Germanic); federal constitutional system
+constitutional_system: Federal presidential republic
+constitution_title: "Constitución Política de los Estados Unidos Mexicanos (CPEUM)"
+constitution_date: "1917-02-05"
+constitution_last_reform: "2026-04-23"
+
+federal_structure:
+  type: federal
+  levels:
+    - Federal (Federación)
+    - States (31 estados) + Ciudad de México
+    - Municipalities (municipios)
+  notes: >
+    Political rights are established at the federal constitutional level (CPEUM Arts. 34–38, 41, 99, 116)
+    and developed through federal general laws binding on federal and local levels.
+    Sub-national electoral legislation exists but falls outside this corpus.
+
+electoral_system_overview:
+  suffrage: Universal, direct, secret, equal, free
+  voting_age: 18
+  citizenship_basis: Articles 34–38 CPEUM
+  electoral_authority_primary: Instituto Nacional Electoral (INE)
+  electoral_tribunal_primary: Tribunal Electoral del Poder Judicial de la Federación (TEPJF)
+  key_constitutional_articles:
+    - "Art. 34 — Citizenship criteria"
+    - "Art. 35 — Citizen rights (vote, candidacy, initiative, consultation, recall)"
+    - "Art. 36 — Citizen obligations"
+    - "Art. 38 — Suspension of citizen rights"
+    - "Art. 41 — Electoral principles, political parties, INE"
+    - "Art. 54 — Proportional representation"
+    - "Art. 99 — TEPJF jurisdiction"
+    - "Art. 116 IV — State electoral systems"
+    - "Art. 122 — CDMX electoral system"
+
+treaty_reception:
+  model: Monist with constitutional supremacy clause
+  article: "Art. 1 CPEUM (as reformed 2011) — pro persona principle; international human rights treaties at constitutional rank for rights protection"
+  notes: >
+    Post-2011 constitutional reform: human rights treaties have constitutional protection
+    floor. Electoral matters have specific federal statutory framework. ICCPR Art. 25,
+    ACHR Art. 23 apply; no specific corpus files for these in current Mexico corpus.
+    Manual review required for international standard comparisons.
+
+normative_hierarchy:
+  1_constitution: "CPEUM (constitutional amendments require qualified majorities)"
+  2_international_treaties: "Human rights treaties — constitutional protection floor (Art. 1 CPEUM); other treaties — federal law rank"
+  3_general_laws: "Leyes generales (Congress) — binding on federal and state levels (e.g., LGIPE, LGPP, LGSMIME)"
+  4_federal_laws: "Leyes federales (Congress) — federal scope (e.g., LFCP, LFRM, LGDE)"
+  5_parliamentary_regulations: "Reglamentos del Congreso (Cámara de Diputados, Senado) — internal parliamentary procedure"
+  6_electoral_administrative: "INE acuerdos, lineamientos, protocolos — operational/administrative, cannot create new rights or competences"
+
+primary_corpus_sources:
+  - id: MEX-CPEUM
+    title: "Constitución Política de los Estados Unidos Mexicanos"
+    file: mexico_constitution_cpeum_latest_reform_2026_04_23.md
+    type: constitution
+    rank: 1
+  - id: MEX-LGIPE
+    title: "Ley General de Instituciones y Procedimientos Electorales"
+    file: ley_general_instituciones_procedimientos_electorales.md
+    type: general_law
+    rank: 3
+  - id: MEX-LGPP
+    title: "Ley General de Partidos Políticos"
+    file: ley_general_partidos_politicos.md
+    type: general_law
+    rank: 3
+  - id: MEX-LGSMIME
+    title: "Ley General del Sistema de Medios de Impugnación en Materia Electoral"
+    file: ley_general_medios_impugnacion_electoral.md
+    type: general_law
+    rank: 3
+  - id: MEX-LGDE
+    title: "Ley General en Materia de Delitos Electorales"
+    file: ley_general_delitos_electorales.md
+    type: general_law
+    rank: 3
+  - id: MEX-LFCP
+    title: "Ley Federal de Consulta Popular"
+    file: ley_federal_consulta_popular.md
+    type: federal_law
+    rank: 4
+  - id: MEX-LFRM
+    title: "Ley Federal de Revocación de Mandato"
+    file: ley_federal_revocacion_mandato.md
+    type: federal_law
+    rank: 4
+  - id: MEX-LGRA
+    title: "Ley General de Responsabilidades Administrativas"
+    file: ley_general_responsabilidades_administrativas.md
+    type: general_law
+    rank: 3
+  - id: MEX-LGTAIP
+    title: "Ley General de Transparencia y Acceso a la Información Pública"
+    file: mexico_general_transparency_access_information_law_lgtaip_2025.md
+    type: general_law
+    rank: 3
+  - id: MEX-REGCD
+    title: "Reglamento de la Cámara de Diputados"
+    file: reglamento_camara_diputados.md
+    type: parliamentary_regulation
+    rank: 5
+  - id: MEX-REGSN
+    title: "Reglamento del Senado de la República"
+    file: reglamento_senado_republica.md
+    type: parliamentary_regulation
+    rank: 5
+  - id: MEX-REGCONG
+    title: "Reglamento para el Gobierno Interior del Congreso General"
+    file: reglamento_gobierno_interior_congreso_general.md
+    type: parliamentary_regulation
+    rank: 5
+  - id: MEX-REGINE
+    title: "Reglamento Interior del INE"
+    file: reglamento_interior_ine_2025.md
+    type: electoral_administrative
+    rank: 6
+  - id: MEX-INECP
+    title: "Lineamientos INE Consulta Popular 2021"
+    file: ine_consulta_popular_2021.md
+    type: electoral_administrative
+    rank: 6
+  - id: MEX-INERM
+    title: "Lineamientos INE Revocación de Mandato 2022"
+    file: ine_revocacion_mandato_2022.md
+    type: electoral_administrative
+    rank: 6
+  - id: MEX-LFPA
+    title: "Ley Federal de Procedimiento Administrativo"
+    file: mexico_federal_administrative_procedure_law_lfpa_2025.md
+    type: federal_law
+    rank: 4
+  - id: MEX-LOAPF
+    title: "Ley Orgánica de la Administración Pública Federal"
+    file: mexico_organic_law_federal_public_administration_loapf_2025.md
+    type: federal_law
+    rank: 4
+
+secondary_corpus_sources:
+  - id: MEX-LFPRH
+    title: "Ley Federal de Presupuesto y Responsabilidad Hacendaria"
+    file: mexico_federal_budget_and_fiscal_responsibility_law_lfprh_2026.md
+    type: federal_law
+    rank: 4
+    notes: "Secondary relevance — electoral budget and INE funding"
+  - id: MEX-LPLAN
+    title: "Ley de Planeación"
+    file: mexico_planning_law_lplan_2026.md
+    type: federal_law
+    rank: 4
+    notes: "Marginal political rights relevance"
+
+gap_cautions:
+  - "No sub-national (state) legislation in corpus — federal analysis only"
+  - "No TEPJF jurisprudence in corpus — interpretive anchor incomplete"
+  - "No international human rights treaty texts in Mexico corpus — conventionality analysis requires manual review"
+  - "INE operational documents (lineamientos) cover only specific 2021/2022 processes — not comprehensive operational coverage"
+  - "Recent 2023 SCJN invalidation of certain electoral reform provisions creates complexity in LGIPE and LGSMIME; provisions restored to pre-2023 text"
+
+manual_review_required: true
+notes: >
+  Profile built from offline corpus analysis only. No internet access used.
+  International standards (ICCPR Art. 25, ACHR Art. 23, CEDAW, CRPD Art. 29)
+  not available as text files in Mexico corpus — conventionality checks flagged
+  for manual review throughout.

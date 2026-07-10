@@ -1,0 +1,160 @@
+# Costa Rica Country Legal Brain — Country Profile
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+# Do not cite as legal authority
+
+country: "Costa Rica"
+iso3: CRC
+legal_family: Civil law (Romano-Germanic); unitary constitutional republic
+constitutional_system: Unitary presidential republic
+constitution_title: "Constitución Política de la República de Costa Rica"
+constitution_date: "1949-11-07"
+constitution_last_reform: "texto con reformas / sujeto a verificación"
+
+critical_institutional_distinction:
+  note: >
+    The Tribunal Supremo de Elecciones (TSE) in Costa Rica is NOT equivalent to
+    Mexico's Instituto Nacional Electoral (INE). The TSE has constitutional rank
+    equivalent to the three Branches of Government (Art. 9 CPCR), exercises
+    EXCLUSIVE and non-reviewable jurisdiction over all electoral acts (Arts. 99–103),
+    and its decisions cannot be appealed except by prevaricato (Art. 103).
+    The TSE also issues binding reglamentos and interprets electoral law exclusively
+    and obligatorily (Art. 102 Fr. 3). This dual administrative-jurisdictional role
+    is constitutionally grounded, not merely administrative.
+
+federal_structure:
+  type: unitary
+  levels:
+    - National (República)
+    - Provinces (7)
+    - Cantons and Districts (municipalities)
+  notes: >
+    Costa Rica is a unitary state. Electoral law is governed at the national level
+    by the TSE and the Asamblea Legislativa. Sub-national electoral dimensions
+    (municipal elections) fall under the same national framework.
+
+electoral_system_overview:
+  suffrage: Universal, direct, secret, obligatory (Art. 93 CPCR)
+  voting_age: 18
+  citizenship_basis: Arts. 90–92 CPCR
+  electoral_authority_primary: "Tribunal Supremo de Elecciones (TSE)"
+  secondary_electoral_bodies: "Registro Civil (under TSE), Juntas Electorales"
+  constitutional_court: "Sala Constitucional de la Corte Suprema de Justicia (Sala IV)"
+  key_constitutional_articles:
+    - "Art. 9 — TSE rank and independence"
+    - "Art. 90–92 — Citizenship and suffrage eligibility"
+    - "Art. 93–95 — Suffrage as civic function, principles"
+    - "Art. 96 — State contribution to political parties"
+    - "Art. 97 — TSE consultation on electoral laws"
+    - "Art. 98 — Political parties"
+    - "Art. 99–104 — TSE organization, functions; Registro Civil"
+    - "Art. 105 — Legislative power delegation; referendum"
+    - "Art. 107–109 — Deputy eligibility"
+    - "Art. 123 — Legislative initiative"
+
+treaty_reception:
+  model: >
+    Dualist with supra-legal treaty status. Art. 7 CPCR: duly approved international
+    treaties have authority superior to ordinary laws. Art. 48 CPCR (as reformed):
+    rights from international instruments can be invoked via amparo before Sala
+    Constitucional. Human rights treaties have constitutional or supra-constitutional
+    protection in Sala IV jurisprudence.
+  notes: >
+    ICCPR Art. 25, ACHR Art. 23, and other political rights treaties are not
+    available as text files in the current corpus. Conventionality analysis requires
+    manual review.
+
+normative_hierarchy:
+  1_constitution: "Constitución Política (1949, with reforms)"
+  2_international_treaties: "Human rights treaties — supra-legal rank (Art. 7 CPCR); constitutional or higher per Sala IV jurisprudence"
+  3_organic_laws: "Leyes orgánicas (e.g., Ley Orgánica TSE y Registro Civil)"
+  4_statutory_laws: "Leyes ordinarias (e.g., Código Electoral, Ley de Referéndum, Ley de Iniciativa Popular, Ley de Jurisdicción Constitucional)"
+  5_tse_reglamentos: "TSE reglamentos (electoral regulations) — binding interpretations under Art. 102 Fr. 3; subordinate to constitution and law"
+  6_legislative_reglamentos: "Reglamento de la Asamblea Legislativa — internal parliamentary procedure"
+  7_administrative_reglamentos: "Administrative regulations (e.g., Reglamento Autónomo de Servicios TSE) — internal HR/operations"
+
+primary_corpus_sources:
+  - id: CRC-CPOL
+    title: "Constitución Política de la República de Costa Rica"
+    file: constitucion_politica_costa_rica.md
+    type: constitution
+    rank: 1
+  - id: CRC-CE
+    title: "Código Electoral"
+    file: codigo_electoral_costa_rica.md
+    type: codigo_ley
+    rank: 4
+  - id: CRC-LOTSRC
+    title: "Ley Orgánica del TSE y del Registro Civil"
+    file: ley_organica_tse_registro_civil.md
+    type: organic_law
+    rank: 3
+  - id: CRC-LREF
+    title: "Ley de Regulación del Referéndum"
+    file: ley_regulacion_referendum.md
+    type: statutory_law
+    rank: 4
+  - id: CRC-LIP
+    title: "Ley de Iniciativa Popular"
+    file: ley_iniciativa_popular.md
+    type: statutory_law
+    rank: 4
+  - id: CRC-LJC
+    title: "Ley de la Jurisdicción Constitucional"
+    file: ley_jurisdiccion_constitucional.md
+    type: statutory_law
+    rank: 4
+  - id: CRC-LCPREF
+    title: "Ley para incorporar la Consulta Previa de Constitucionalidad en Referéndum"
+    file: ley_consulta_previa_facultativa_referendum.md
+    type: statutory_law
+    rank: 4
+  - id: CRC-REGREF
+    title: "Reglamento para los Procesos de Referéndum (TSE)"
+    file: procesos_referendum.md
+    type: tse_reglamento
+    rank: 5
+  - id: CRC-REGIP
+    title: "Reglamento aplicación art. 3 Ley de Iniciativa Popular (TSE)"
+    file: reglamento_aplicacion_articulo_3_ley_iniciativa_popular.md
+    type: tse_reglamento
+    rank: 5
+  - id: CRC-RAL
+    title: "Reglamento de la Asamblea Legislativa (commented edition 2014)"
+    file: reglamento_asamblea_legislativa_comentado.md
+    type: legislative_reglamento
+    rank: 6
+    caution: >
+      COMMENTED COMPILATION — commentary, Sala IV resolutions, and editorial notes
+      must NOT be extracted as operative legal text. Only the article text itself
+      is operative. Manual review required before any provision extraction.
+  - id: CRC-RATSRE
+    title: "Reglamento Autónomo de Servicios TSE"
+    file: reglamento_autonomo_servicios_tse.md
+    type: administrative_reglamento
+    rank: 7
+
+excluded_corpus_sources:
+  - id: CRC-LGAP
+    title: "Ley General de la Administración Pública"
+    file: ley_general_administracion_publica.md
+    reason: >
+      Image-based PDF — text not extractable with sufficient quality.
+      Do not use for legal extraction until manually reviewed.
+      manual_review_required: true
+
+gap_cautions:
+  - "No TSE jurisprudencia / resoluciones in corpus — interpretive anchor incomplete"
+  - "No Sala IV / Sala Constitucional jurisprudence text files in corpus"
+  - "No international human rights treaty texts in corpus — conventionality analysis requires manual review"
+  - "reglamento_asamblea_legislativa_comentado.md contains commentary — operative text extraction requires caution"
+  - "ley_general_administracion_publica.md not extractable — image-based"
+  - "No municipal electoral legislation in corpus"
+
+manual_review_required: true
+notes: >
+  Profile built from offline corpus analysis only. No internet access used.
+  International standards (ICCPR Art.25, ACHR Art.23, HRC GC25, CEDAW Art.7,
+  CRPD Art.29) not available as text files — conventionality checks flagged for
+  manual review throughout.

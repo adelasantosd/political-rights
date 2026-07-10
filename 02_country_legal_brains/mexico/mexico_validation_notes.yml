@@ -1,0 +1,170 @@
+# Mexico Validation Notes — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+validation_notes:
+
+  - note_id: VN-001
+    note_type: corpus_gap
+    severity: high
+    affected_source: "All Mexico corpus sources"
+    affected_mechanism: "electoral_remedies, political_parties, vote, right_to_stand_for_election"
+    description: >
+      No TEPJF or SCJN jurisprudence files are included in the Mexico corpus.
+      The TEPJF tesis and sentencias are a critical interpretive layer for
+      all political rights mechanisms. Conventionality analysis cannot be
+      completed without these sources.
+    recommended_action: >
+      Add TEPJF tesis de jurisprudencia for key mechanisms (JDC, JRC,
+      parity, independent candidacies) as corpus sources in a future update.
+      Flag all jurisprudential_interpretive anchor references as
+      manual_review_required until then.
+    manual_review_required: true
+
+  - note_id: VN-002
+    note_type: corpus_gap
+    severity: high
+    affected_source: "N/A — international standards not in Mexico corpus"
+    affected_mechanism: "all"
+    description: >
+      International human rights standards relevant to political rights
+      (ICCPR Art. 25, ACHR Art. 23, HRC General Comment 25, CEDAW Art. 7,
+      CRPD Art. 29, UNDRIP participation provisions) are not available
+      as text files in the Mexico corpus. Conventionality comparison
+      with these standards is not possible from the offline pipeline alone.
+    recommended_action: >
+      Conduct manual conventionality review by comparing extracted provisions
+      against ICCPR Art. 25, ACHR Art. 23, and HRC General Comment 25.
+      Add international standards as corpus sources for a future update.
+    manual_review_required: true
+
+  - note_id: VN-003
+    note_type: legal_complexity
+    severity: high
+    affected_source: "ley_general_instituciones_procedimientos_electorales.md, ley_general_medios_impugnacion_electoral.md, ley_general_partidos_politicos.md"
+    affected_mechanism: "vote, right_to_stand_for_election, political_parties, electoral_remedies"
+    description: >
+      The 2023 electoral reform (DOF 02-03-2023) was substantially declared
+      invalid by SCJN (published DOF 24-11-2023). The LGSMIME was temporarily
+      abrogated and then restored. Multiple provisions in LGIPE and LGPP
+      carry inline annotations: "declarada inválida", "recupera su vigencia
+      con el texto que tenía al 2 de marzo de 2023". The pipeline must
+      exclude invalidated text and flag affected provisions for manual review.
+    recommended_action: >
+      Apply editorial_annotation_exclusion rules to detect all SCJN
+      invalidation annotations. Set manual_review_required: true and
+      gap_type: update_review_needed for any provision with such annotations.
+      Do not extract invalidated provisions as operative law.
+    manual_review_required: true
+
+  - note_id: VN-004
+    note_type: corpus_gap
+    severity: medium
+    affected_source: "N/A — state legislation not in corpus"
+    affected_mechanism: "vote, right_to_stand_for_election, electoral_authority_internal_governance"
+    description: >
+      Sub-national (state) electoral legislation is not in the corpus.
+      CPEUM Art. 116 Fr. IV requires states to have their own electoral
+      systems; OPLEs operate under state legislation. Federal analysis
+      in this corpus is not exhaustive for state-level political rights.
+    recommended_action: >
+      Flag all provisions relating to state-level electoral systems
+      as federal_or_subnational_implementation_gap.
+      Consider adding key state constitutions and electoral codes in future.
+    manual_review_required: true
+
+  - note_id: VN-005
+    note_type: anchoring_caution
+    severity: medium
+    affected_source: "ine_consulta_popular_2021.md, ine_revocacion_mandato_2022.md, reglamento_interior_ine_2025.md"
+    affected_mechanism: "popular_consultation, recall, electoral_authority_internal_governance"
+    description: >
+      INE administrative instruments (lineamientos, reglamento interior)
+      must not be classified as statutory or constitutional anchors.
+      They are process-specific and operational only. The INE lineamientos
+      for consulta popular 2021 and revocación de mandato 2022 cover
+      specific past processes — they do not constitute general ongoing
+      legal anchoring for these mechanisms.
+    recommended_action: >
+      Classify all INE lineamientos and acuerdos as electoral_administrative.
+      anchor_strength max 2 unless supported by statutory sources for same provision.
+      Flag administrative_overdependence if no statutory source found.
+    manual_review_required: false
+
+  - note_id: VN-006
+    note_type: corpus_gap
+    severity: medium
+    affected_source: "N/A — no dedicated citizen initiative law in corpus"
+    affected_mechanism: "citizen_initiative"
+    description: >
+      CPEUM Art. 35 Fr. VII refers to "la Ley del Congreso" to develop
+      the citizen legislative initiative procedure. No dedicated citizen
+      initiative law (comparable to Costa Rica's Ley de Iniciativa Popular)
+      appears to be in the corpus. The congressional reglamentos provide
+      partial procedural basis only.
+    recommended_action: >
+      Verify whether a Ley de Iniciativa Ciudadana exists as a separate
+      federal statute not currently in corpus. If confirmed absent,
+      flag thin_statutory_anchoring for citizen_initiative mechanism.
+      Flag corpus_incomplete gap type.
+    manual_review_required: true
+
+  - note_id: VN-007
+    note_type: scope_note
+    severity: low
+    affected_source: "mexico_federal_budget_and_fiscal_responsibility_law_lfprh_2026.md, mexico_planning_law_lplan_2026.md"
+    affected_mechanism: "transparency_and_accountability"
+    description: >
+      LFPRH and Ley de Planeación are in corpus but have limited direct
+      relevance to core political rights mechanisms. Their main relevance
+      is indirect: electoral budget (INE funding), fiscal accountability
+      of public institutions including INE/TEPJF.
+    recommended_action: >
+      Extract provisions relevant to INE/TEPJF budget and accountability only.
+      Do not over-classify fiscal provisions as electoral political rights anchors.
+    manual_review_required: false
+
+  - note_id: VN-008
+    note_type: scope_note
+    severity: low
+    affected_source: "mexico_organic_law_federal_public_administration_loapf_2025.md"
+    affected_mechanism: "administrative_responsibility, transparency_and_accountability"
+    description: >
+      LOAPF is in corpus but is not a primary electoral law. Its relevance
+      is to the organization of the federal executive, which interacts with
+      electoral processes primarily through the SFP (Secretaría de la
+      Función Pública) for administrative responsibility of public servants.
+    recommended_action: >
+      Extract only provisions relevant to SFP/oversight role and any
+      cross-references to INE or electoral process. Do not over-classify.
+    manual_review_required: false
+
+  - note_id: VN-009
+    note_type: scope_note
+    severity: low
+    affected_source: "conversion_log.md"
+    affected_mechanism: "all"
+    description: >
+      conversion_log.md is an editorial/log file, not a legal source.
+      It must be excluded from provision extraction entirely.
+    recommended_action: "Skip conversion_log.md in pipeline."
+    manual_review_required: false
+
+  - note_id: VN-010
+    note_type: accessibility_gap
+    severity: medium
+    affected_source: "all"
+    affected_mechanism: "vote, right_to_stand_for_election, popular_consultation, recall"
+    description: >
+      CRPD Art. 29 requires accessible voting and participation for persons
+      with disabilities. The corpus does not include CRPD text or specific
+      accessibility provisions for electoral processes. INE has operational
+      guidelines on accessibility but these are not in the corpus.
+    recommended_action: >
+      Flag accessibility_gap for all core political rights mechanisms.
+      Manual review required to assess CRPD compliance.
+      Consider adding INE accessibility protocols to corpus.
+    manual_review_required: true

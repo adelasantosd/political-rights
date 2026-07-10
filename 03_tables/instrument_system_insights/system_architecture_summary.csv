@@ -1,0 +1,3 @@
+country;total_sources;constitutional_sources;statutory_sources;regulatory_sources;administrative_sources;total_provisions;total_mechanisms;total_principles;total_actors;functional_edges;high_medium_confidence_edges;manual_review_flags;dominant_anchor_type;dominant_operational_layer;system_profile;system_caveat;notes
+Mexico;6;1;2;1;2;7502;13;12;0;0;0;1341;Administrative;National;Integrated Mexico legal system mapping.;Administrative dependence noted in several mechanisms.;
+Costa Rica;12;0;0;0;12;1884;12;12;0;0;0;814;Administrative;National;Integrated Costa Rica legal system mapping.;Administrative dependence noted in several mechanisms.;

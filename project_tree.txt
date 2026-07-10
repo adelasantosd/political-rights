@@ -1,0 +1,211 @@
+.
+├── __init__.py
+├── .Rhistory
+├── 00_project
+│   ├── ai_use_disclosure.md
+│   ├── data_dictionary.md
+│   ├── methodology_note.md
+│   ├── project_scope.md
+│   ├── source_protocol.md
+│   └── validation_protocol.md
+├── 02_country_legal_brains
+│   ├── costa_rica
+│   ├── germany
+│   │   └── README.md
+│   ├── mexico
+│   │   ├── .Rhistory
+│   │   ├── mexico_legal_document_structure_patterns.md
+│   │   ├── mexico_legal_reasoning_rules.md
+│   │   └── mexico_legal_system_profile.md
+│   ├── README.md
+│   └── switzerland
+│       └── README.md
+├── 05_webapp
+│   ├── backend_placeholder.md
+│   ├── frontend_placeholder.md
+│   ├── index.html
+│   ├── package.json
+│   ├── public
+│   │   └── data
+│   │       └── network
+│   │           ├── edges.json
+│   │           ├── metrics.json
+│   │           ├── nodes.json
+│   │           └── summary.json
+│   ├── src
+│   │   ├── App.jsx
+│   │   ├── components
+│   │   │   └── ActorsExplorer.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   └── vite.config.js
+├── app
+│   ├── __init__.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   └── country_profiles.py
+│   ├── routers
+│   │   ├── __init__.py
+│   │   ├── analysis.py
+│   │   ├── countries.py
+│   │   └── instruments.py
+│   └── services
+│       ├── __init__.py
+│       ├── analysis_service.py
+│       └── claude_service.py
+├── corpus
+│   ├── comparative
+│   │   ├── CDL-AD(2002)023rev2-cor-spa.pdf
+│   │   ├── Compendio_Institucionalidad_Democratica_DDHH-2.pdf
+│   │   ├── direct-democracy-the-international-idea-handbook.pdf
+│   │   └── voter-turnout-since-1945.pdf
+│   ├── costa_rica
+│   │   ├── costa_rica_discovery_table.csv
+│   │   ├── md
+│   │   │   ├── .gitkeep
+│   │   │   ├── codigo_electoral_costa_rica.md
+│   │   │   ├── constitucion_politica_costa_rica.md
+│   │   │   ├── ley_consulta_previa_facultativa_referendum.md
+│   │   │   ├── ley_general_administracion_publica.md
+│   │   │   ├── ley_iniciativa_popular.md
+│   │   │   ├── ley_jurisdiccion_constitucional.md
+│   │   │   ├── ley_organica_tse_registro_civil.md
+│   │   │   ├── ley_regulacion_referendum.md
+│   │   │   ├── procesos_referendum.md
+│   │   │   ├── reglamento_aplicacion_articulo_3_ley_iniciativa_popular.md
+│   │   │   ├── reglamento_asamblea_legislativa_comentado.md
+│   │   │   └── reglamento_autonomo_servicios_tse.md
+│   │   ├── metadata
+│   │   │   ├── .gitkeep
+│   │   │   ├── codigo_electoral_costa_rica.metadata.yml
+│   │   │   ├── constitucion_politica_costa_rica.metadata.yml
+│   │   │   ├── ley_consulta_previa_facultativa_referendum.metadata.yml
+│   │   │   ├── ley_general_administracion_publica.metadata.yml
+│   │   │   ├── ley_iniciativa_popular.metadata.yml
+│   │   │   ├── ley_jurisdiccion_constitucional.metadata.yml
+│   │   │   ├── ley_organica_tse_registro_civil.metadata.yml
+│   │   │   ├── ley_regulacion_referendum.metadata.yml
+│   │   │   ├── procesos_referendum.metadata.yml
+│   │   │   ├── reglamento_aplicacion_articulo_3_ley_iniciativa_popular.metadata.yml
+│   │   │   ├── reglamento_asamblea_legislativa_comentado.metadata.yml
+│   │   │   └── reglamento_autonomo_servicios_tse.metadata.yml
+│   │   ├── municipal
+│   │   │   └── md
+│   │   │       └── .gitkeep
+│   │   └── pdf
+│   │       ├── .gitkeep
+│   │       ├── aplicaciondelarticulo3.pdf
+│   │       ├── autonomodeservicios.pdf
+│   │       ├── cr_CÓDIGO ELECTORAL.docx
+│   │       ├── cr_constitucion-de-costa-rica.pdf
+│   │       ├── cr_incorporar consulta previa y ref.docx
+│   │       ├── cr_LEY DE INICIATIVA POPULAR.docx
+│   │       ├── cr_LEY DE LA JURISDICCION CONSTITUCIONAL.docx
+│   │       ├── cr_REGULACIÓN DEL REFERÉNDUM.docx
+│   │       ├── ley6227.pdf
+│   │       ├── leyorganicaTSE.pdf
+│   │       ├── procesosdelreferendum.pdf
+│   │       └── ral_comentado.pdf
+│   ├── international
+│   │   ├── md
+│   │   ├── metadata
+│   │   └── pdf
+│   │       ├──  american_convention.pdf
+│   │       ├──  iachr_or_interamerican_democratic_charter.pdf
+│   │       ├──  ilo_169_articles_6_7.pdf
+│   │       ├── cedaw_general_recommendation_23.pdf
+│   │       ├── cedaw.pdf
+│   │       ├── crpd_article_29.pdf
+│   │       ├── hrc_general_comment_25.pdf
+│   │       ├── iccpr.pdf
+│   │       ├── inter_american_court_oc_28_21.pdf
+│   │       └── undrip_participation_consultation.pdf
+│   ├── jurisprudencia
+│   │   └── jurisprudence_discovery_table.csv
+│   └── mexico
+│       ├── ine_tepjf_table.csv
+│       ├── log
+│       │   └── conversion_log.md
+│       ├── md
+│       │   ├── .gitkeep
+│       │   ├── .Rhistory
+│       │   ├── conversion_log.md
+│       │   ├── ine_consulta_popular_2021.md
+│       │   ├── ine_revocacion_mandato_2022.md
+│       │   ├── ley_federal_consulta_popular.md
+│       │   ├── ley_federal_revocacion_mandato.md
+│       │   ├── ley_general_delitos_electorales.md
+│       │   ├── ley_general_instituciones_procedimientos_electorales.md
+│       │   ├── ley_general_medios_impugnacion_electoral.md
+│       │   ├── ley_general_partidos_politicos.md
+│       │   ├── ley_general_responsabilidades_administrativas.md
+│       │   ├── mexico_constitution_cpeum_latest_reform_2026_04_23.md
+│       │   ├── mexico_federal_administrative_procedure_law_lfpa_2025.md
+│       │   ├── mexico_federal_budget_and_fiscal_responsibility_law_lfprh_2026.md
+│       │   ├── mexico_general_transparency_access_information_law_lgtaip_2025.md
+│       │   ├── mexico_organic_law_federal_public_administration_loapf_2025.md
+│       │   ├── mexico_planning_law_lplan_2026.md
+│       │   ├── reglamento_camara_diputados.md
+│       │   ├── reglamento_gobierno_interior_congreso_general.md
+│       │   ├── reglamento_interior_ine_2025.md
+│       │   └── reglamento_senado_republica.md
+│       ├── metadata
+│       │   ├── .gitkeep
+│       │   ├── ine_consulta_popular_2021.metadata.yml
+│       │   ├── ine_revocacion_mandato_2022.metadata.yml
+│       │   ├── ley_federal_consulta_popular.metadata.yml
+│       │   ├── ley_federal_revocacion_mandato.metadata.yml
+│       │   ├── ley_general_delitos_electorales.metadata.yml
+│       │   ├── ley_general_instituciones_procedimientos_electorales.metadata.yml
+│       │   ├── ley_general_medios_impugnacion_electoral.metadata.yml
+│       │   ├── ley_general_partidos_politicos.metadata.yml
+│       │   ├── ley_general_responsabilidades_administrativas.metadata.yml
+│       │   ├── mexico_constitution_cpeum_latest_reform_2026_04_23_metadata.yml
+│       │   ├── mexico_federal_administrative_procedure_law_lfpa_2025_metadata.yml
+│       │   ├── mexico_federal_budget_and_fiscal_responsibility_law_lfprh_2026_metadata.yml
+│       │   ├── mexico_general_transparency_access_information_law_lgtaip_2025_metadata.yml
+│       │   ├── mexico_organic_law_federal_public_administration_loapf_2025_metadata.yml
+│       │   ├── mexico_planning_law_lplan_2026_metadata.yml
+│       │   ├── reglamento_camara_diputados.metadata.yml
+│       │   ├── reglamento_gobierno_interior_congreso_general.metadata.yml
+│       │   ├── reglamento_interior_ine_2025.metadata.yml
+│       │   └── reglamento_senado_republica.metadata.yml
+│       └── pdf
+│           ├── .gitkeep
+│           ├── CGext202104_06_ap_6.pdf
+│           ├── CPEUM.pdf
+│           ├── D_LFPA.pdf
+│           ├── D_LOAPF-10.pdf
+│           ├── F_LFPRH-7.pdf
+│           ├── F_LPlan-4.pdf
+│           ├── H_LAmp.pdf
+│           ├── INE-CG360-2025_Proyecto_DJ_663.pdf
+│           ├── INE-CG51-2022_Proyecto_DJ_1440.pdf
+│           ├── LFCPo_190521-2.pdf
+│           ├── LFRM.pdf
+│           ├── LGIPE.pdf
+│           ├── LGMDE_200521-2.pdf
+│           ├── LGPP-2.pdf
+│           ├── LGRA.pdf
+│           ├── LGSMIME.pdf
+│           ├── LGTAIP.pdf
+│           ├── LOCGEUM.pdf
+│           ├── Reg_Congreso.pdf
+│           ├── Reg_Diputados.pdf
+│           └── Reg_Senado.pdf
+├── instruments
+│   ├── __init__.py
+│   └── electoral_rights.py
+├── main.py
+├── project_tree.txt
+├── README_IMPROVED_FILES.md
+├── README.md
+└── source_discovery
+    ├── .gitkeep
+    ├── .Rhistory
+    ├── final_download_conversion_checklist.md
+    ├── missing_sources_list.csv
+    ├── priority_corpus_list.csv
+    └── verification_checklist.md
+
+37 directories, 172 files

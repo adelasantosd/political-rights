@@ -1,0 +1,233 @@
+# Costa Rica Actor Map — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+actors:
+
+  - actor_id: CRC-ACT-001
+    actor_name: "Tribunal Supremo de Elecciones (TSE)"
+    actor_type: constitutional_electoral_authority
+    constitutional_or_statutory_basis:
+      - "CPCR Arts. 9, 99–103 (constitutional rank; exclusive and independent jurisdiction)"
+      - "Código Electoral Art. 12 (statutory development of TSE functions)"
+      - "Ley Orgánica TSE y Registro Civil"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-CE
+      - CRC-LOTSRC
+      - CRC-REGREF
+      - CRC-REGIP
+      - CRC-RATSRE
+    mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - citizen_initiative
+      - referendum
+      - consultative_referendum_or_preliminary_consultation
+      - electoral_remedies
+      - electoral_authority_internal_governance
+      - civil_registry_electoral_functions
+    functions:
+      - "Exclusive organization, direction and surveillance of electoral acts (Art. 99 CPCR)"
+      - "Exclusive and obligatory interpretation of electoral constitutional and legal provisions (Art. 102 Fr. 3)"
+      - "Convocation of elections (Art. 102 Fr. 1)"
+      - "Appointment of Juntas Electorales members (Art. 102 Fr. 2)"
+      - "Definitive scrutiny of ballots for President, Deputies, municipalities (Art. 102 Fr. 7)"
+      - "Declaration of election results (Art. 102 Fr. 8)"
+      - "Organization of referendums and citizen initiatives (Ley Referéndum, Ley IP)"
+      - "Oversight of political party financing"
+      - "Investigation of political partisanship of public servants (Art. 102 Fr. 5)"
+    legal_preparedness_role: supreme_and_exclusive_electoral_authority
+    manual_review_required: false
+    notes: >
+      CRITICAL: TSE in Costa Rica is NOT equivalent to INE in Mexico. The TSE has
+      constitutional rank equal to the three Branches of Government (Art. 9 CPCR),
+      exclusive and non-reviewable jurisdiction (Art. 103), and binding interpretive
+      power (Art. 102 Fr. 3). Do not model as an administrative body only.
+
+  - actor_id: CRC-ACT-002
+    actor_name: "Registro Civil"
+    actor_type: civil_registry_electoral_body
+    constitutional_or_statutory_basis:
+      - "CPCR Art. 104 (Registro Civil under exclusive TSE dependence)"
+      - "Ley Orgánica TSE y Registro Civil"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-LOTSRC
+      - CRC-CE
+    mechanisms:
+      - civil_registry_electoral_functions
+      - vote
+    functions:
+      - "Maintain Central Registry of Civil Status"
+      - "Form and maintain electoral voter lists (padrón electoral)"
+      - "Process nationality and citizenship applications"
+      - "Issue cédulas de identidad"
+      - "Execute judicial sentences suspending citizenship"
+    legal_preparedness_role: civil_registry_and_electoral_rolls
+    manual_review_required: false
+    notes: "Decisions appealable to TSE (Art. 104 Fr. 2 CPCR)."
+
+  - actor_id: CRC-ACT-003
+    actor_name: "Juntas Electorales"
+    actor_type: subordinate_electoral_body
+    constitutional_or_statutory_basis:
+      - "CPCR Art. 102 Fr. 2 (TSE appoints Juntas Electorales members)"
+      - "CPCR Art. 99 (Registro Civil and Juntas under TSE)"
+      - "Código Electoral"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-CE
+    mechanisms:
+      - vote
+    functions:
+      - "Receive votes on election/referendum day"
+      - "Operate as Juntas Receptoras de Votos"
+      - "Report results to TSE"
+    legal_preparedness_role: voting_day_administrator
+    manual_review_required: false
+    notes: "Decisions appealable to TSE."
+
+  - actor_id: CRC-ACT-004
+    actor_name: "Sala Constitucional (Sala IV)"
+    actor_type: constitutional_court
+    constitutional_or_statutory_basis:
+      - "CPCR Art. 10 (Sala Constitucional)"
+      - "CPCR Art. 48 (amparo and habeas corpus)"
+      - "Ley de la Jurisdicción Constitucional N.° 7135"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-LJC
+      - CRC-LCPREF
+    mechanisms:
+      - constitutional_remedies
+      - consultative_referendum_or_preliminary_consultation
+    functions:
+      - "Amparo for fundamental rights protection"
+      - "Habeas corpus"
+      - "Unconstitutionality actions (acción de inconstitucionalidad)"
+      - "Consultation on constitutionality of referendum subject matter"
+      - "Conflict of competences between powers"
+    legal_preparedness_role: constitutional_court
+    manual_review_required: false
+    notes: >
+      Sala IV jurisprudence on political rights not in corpus.
+      Note interaction with TSE: Sala IV defers to TSE on strictly electoral matters
+      but retains jurisdiction over fundamental rights.
+
+  - actor_id: CRC-ACT-005
+    actor_name: "Asamblea Legislativa"
+    actor_type: legislative_body
+    constitutional_or_statutory_basis:
+      - "CPCR Arts. 105–129 (legislative power)"
+      - "CPCR Art. 97 (must consult TSE on electoral legislation)"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-CE
+      - CRC-LREF
+      - CRC-LIP
+      - CRC-RAL
+    mechanisms:
+      - citizen_initiative
+      - referendum
+      - legislative_petition_or_participation
+      - political_parties
+    functions:
+      - "Enact electoral laws (must consult TSE per Art. 97)"
+      - "Process citizen legislative initiatives"
+      - "Request or approve referendums"
+      - "Electoral legislation approval (2/3 majority to override TSE opinion)"
+    legal_preparedness_role: legislature
+    manual_review_required: false
+    notes: >
+      Art. 97 CPCR: Assembly must consult TSE on electoral legislation.
+      To override TSE opinion requires 2/3 majority; during electoral period,
+      cannot convert bills to law if TSE expressed disagreement.
+
+  - actor_id: CRC-ACT-006
+    actor_name: "Partidos Políticos"
+    actor_type: political_organization
+    constitutional_or_statutory_basis:
+      - "CPCR Art. 98 (constitutional recognition; democratic structure)"
+      - "CPCR Art. 96 (state financing)"
+      - "Código Electoral (registration, statutes, financing)"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-CE
+    mechanisms:
+      - political_parties
+      - vote
+      - right_to_stand_for_election
+    functions:
+      - "Nominate candidates for election"
+      - "Participate in electoral campaigns"
+      - "Receive and administer state financing"
+      - "Internal democratic governance"
+      - "Report finances to TSE"
+    legal_preparedness_role: political_actor
+    manual_review_required: false
+    notes: "Parties registered with TSE; must maintain democratic internal structure (Art. 98 CPCR)."
+
+  - actor_id: CRC-ACT-007
+    actor_name: "Ciudadanos / Ciudadanas"
+    actor_type: rights_holder
+    constitutional_or_statutory_basis:
+      - "CPCR Arts. 90–95 (citizenship; suffrage as right and obligation)"
+      - "CPCR Art. 105 (citizens as holders of legislative sovereignty)"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-CE
+      - CRC-LREF
+      - CRC-LIP
+    mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - citizen_initiative
+      - referendum
+      - legislative_petition_or_participation
+    functions:
+      - "Exercise active suffrage (obligatory)"
+      - "Stand for election"
+      - "Submit citizen initiatives (5% threshold)"
+      - "Request referendum (5% threshold)"
+      - "Exercise right of petition"
+    legal_preparedness_role: primary_rights_holder
+    manual_review_required: false
+    notes: "Costa Rican citizens 18+. Naturalized citizens: 12 months before first vote (Art. 94 CPCR)."
+
+  - actor_id: CRC-ACT-008
+    actor_name: "Poder Ejecutivo"
+    actor_type: executive_power
+    constitutional_or_statutory_basis:
+      - "CPCR Arts. 130–189"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-LREF
+    mechanisms:
+      - referendum
+    functions:
+      - "Can request referendum (Ley Referéndum)"
+      - "Propose electoral legislation (must be consulted)"
+    legal_preparedness_role: secondary_political_actor
+    manual_review_required: false
+    notes: "Limited electoral role; primary function is general executive governance."
+
+  - actor_id: CRC-ACT-009
+    actor_name: "Corte Suprema de Justicia"
+    actor_type: supreme_court
+    constitutional_or_statutory_basis:
+      - "CPCR Art. 100 (appoints TSE Magistrados by 2/3 vote)"
+    relevant_sources:
+      - CRC-CPOL
+      - CRC-LOTSRC
+    mechanisms:
+      - electoral_authority_internal_governance
+    functions:
+      - "Appoints TSE Magistrados (propietarios and suplentes)"
+      - "Hosts Sala Constitucional"
+    legal_preparedness_role: appointing_body_for_tse
+    manual_review_required: false
+    notes: "Distinctive feature: TSE Magistrados appointed by Corte, not by political process."

@@ -1,0 +1,583 @@
+# Principle Traceability Rules — International Standards Layer
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+purpose: >
+  Deterministic rules for the principle traceability pipeline. Defines how
+  domestic provisions are evaluated against each of the 12 legal preparedness
+  principles, how implementation_readiness_score is computed, and how
+  mechanism-principle requirement rows are constructed. All logic is
+  deterministic at runtime — no LLM inference. Scoring is diagnostic only.
+
+---
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 1: SCORING RUBRIC
+# ─────────────────────────────────────────────────────────────────────────────
+
+scoring_rubric:
+  description: >
+    implementation_readiness_score (0–5) measures how operationally prepared
+    domestic law is to satisfy the principle requirement, based on the
+    provisions found in the domestic corpus. NOT a compliance finding.
+    NOT a judicial determination. Diagnostic legal preparedness only.
+
+  levels:
+    - score: 0
+      label: absent
+      condition: >
+        No domestic provision in the corpus addresses this principle-mechanism
+        combination. Zero matched provisions, OR all matched provisions are
+        derogated/blank. Mechanism may simply be absent from domestic law.
+
+    - score: 1
+      label: declaratory_only
+      condition: >
+        One or more provisions exist but are purely declaratory: no process
+        defined, no actor assigned, no timeline, no remedy. Typically
+        constitutional declarations without implementing legislation.
+        Anchor strength ≤ 1 for all matched provisions.
+
+    - score: 2
+      label: partial_basis
+      condition: >
+        Legal basis exists (anchor_strength ≥ 2) but the provision is
+        operationally incomplete: process OR actor present but not both;
+        no timeline or remedy. May include only a regulatory-level reference
+        with no statutory enabling provision.
+
+    - score: 3
+      label: functional_basis
+      condition: >
+        Legal basis with both actor AND process present in at least one
+        matched provision. Missing at least one of: timeline, accessibility
+        safeguard, equality measure, effective remedy, or territorial
+        specification where required by the principle.
+
+    - score: 4
+      label: strong_basis
+      condition: >
+        Legal basis, actor, process, AND at least one of: remedy/accountability
+        mechanism, specific timeline/deadline, accessibility or equality
+        safeguard. Operationally complete for primary use case but may lack
+        cross-cutting safeguards (e.g., disability accessibility, indigenous
+        languages) or territorial coverage.
+
+    - score: 5
+      label: integrated_basis
+      condition: >
+        Full operational integration: legal basis (constitutional or statutory),
+        designated actor with competence, defined process, timeline or deadline,
+        AND at least two of the following cross-cutting safeguards present:
+        accessibility/disability accommodation, equality/parity measures,
+        effective remedy, transparency/audit mechanism, territorial or
+        multilevel coverage (indigenous or subnational). No significant
+        structural gap identified.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 2: DIMENSION CHECKS
+# Defines what each operational_dimension means in terms of
+# detectable features in domestic provisions.
+# ─────────────────────────────────────────────────────────────────────────────
+
+dimension_checks:
+
+  constitutional_or_statutory_anchor_exists:
+    check: anchor_strength >= 4
+    note: "Constitution or organic law — source_type in [constitution, organic_law, codigo_ley]"
+    contributes_to_score: [3, 4, 5]
+
+  provision_text_is_accessible_and_precise:
+    check: provision_text_length >= 60
+    note: "Proxy: substantive text longer than minimal declaration"
+    contributes_to_score: [3, 4, 5]
+
+  legal_hierarchy_consistent_and_non_contradictory:
+    check: manual_review_required == false
+    note: "Provisions not flagged for legal conflict or ambiguity"
+    contributes_to_score: [4, 5]
+
+  enabling_legislation_or_implementing_regulation_present:
+    check: >
+      source_type in [statutory, codigo_ley, organic_law, tse_reglamento,
+      ine_reglamento, regulatory_or_legislative_procedural]
+    note: "More than constitutional basis; has implementing instrument"
+    contributes_to_score: [3, 4, 5]
+
+  non_discrimination_clause_present:
+    check: mechanism matches r"(sin discriminaci[oó]n|igualdad|igual[ií]|no discriminaci[oó]n|paridad)"
+    note: "Explicit non-discrimination or equality in provision text"
+    contributes_to_score: [3, 4, 5]
+
+  parity_or_gender_equality_measure_present:
+    check: mechanism matches r"(paridad|cuota|igualdad de g[eé]nero|50.50|medidas.*especiales)"
+    contributes_to_score: [4, 5]
+
+  ethnic_or_indigenous_inclusion_provision_present:
+    check: mechanism matches r"(ind[íi]gena|pueblo.*originario|comunidad.*ind[íi]gena|consulta previa)"
+    contributes_to_score: [4, 5]
+
+  disability_or_accessibility_measure_present:
+    check: mechanism matches r"(discapacidad|accesib|ajuste razonable|asistencia.*voto|voto.*asistido)"
+    contributes_to_score: [4, 5]
+
+  process_defined:
+    check: mechanism in PROCESS_MECHANISM_TYPES
+    note: >
+      PROCESS_MECHANISM_TYPES: mechanisms that define a procedural sequence
+      (e.g., vote, recall, citizen_initiative, popular_consultation, referendum,
+      electoral_remedies, constitutional_remedies)
+    contributes_to_score: [3, 4, 5]
+
+  actor_assigned:
+    check: actor_id is not null in matched provision
+    note: "At least one actor assigned in actor_mechanism_edges for this mechanism"
+    contributes_to_score: [3, 4, 5]
+
+  timeline_or_deadline_present:
+    check: mechanism matches r"(plazo|t[eé]rmino|d[ií]as|horas|dentro de|a m[aá]s tardar|calendario|peri[oó]dico)"
+    contributes_to_score: [4, 5]
+
+  remedy_or_accountability_mechanism_present:
+    check: mechanism in [electoral_remedies, constitutional_remedies]
+    note: "Or: provision text matches r'(recurso|impugnar|inconformidad|nulidad|sanci[oó]n|juicio)'"
+    contributes_to_score: [4, 5]
+
+  territorial_or_multilevel_coverage:
+    check: mechanism matches r"(municipal|local|territorial|nivel.*federal|estado.*municipio|comunidad.*ind[íi]gena|circunscripci[oó]n)"
+    contributes_to_score: [4, 5]
+
+  restriction_has_objective_criteria:
+    check: mechanism matches r"(criterio.*objetivo|proporcion|necesario|fin leg[íi]timo|ley.*establece)"
+    contributes_to_score: [3, 4, 5]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 3: MECHANISM-TO-PRINCIPLE MAPPING
+# For each principle, which mechanisms are expected to evidence it.
+# Used to build the mechanism_principle_requirements table.
+# ─────────────────────────────────────────────────────────────────────────────
+
+mechanism_principle_mapping:
+
+  PRIN-001:
+    name: legality_and_sufficient_legal_basis
+    expected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - independent_candidacies
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - referendum
+      - electoral_remedies
+      - constitutional_remedies
+      - electoral_authority_internal_governance
+      - civil_registry_electoral_functions
+    min_anchor_for_full_credit: 4
+    key_dimensions: [constitutional_or_statutory_anchor_exists, enabling_legislation_or_implementing_regulation_present]
+
+  PRIN-002:
+    name: equality_and_non_discrimination
+    expected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - electoral_remedies
+    min_anchor_for_full_credit: 3
+    key_dimensions: [non_discrimination_clause_present, parity_or_gender_equality_measure_present, ethnic_or_indigenous_inclusion_provision_present]
+
+  PRIN-003:
+    name: accessibility_and_reasonable_accommodation
+    expected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - civil_registry_electoral_functions
+    min_anchor_for_full_credit: 3
+    key_dimensions: [disability_or_accessibility_measure_present]
+
+  PRIN-004:
+    name: effective_participation
+    expected_mechanisms:
+      - vote
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - referendum
+      - political_parties
+      - right_to_stand_for_election
+    min_anchor_for_full_credit: 3
+    key_dimensions: [process_defined, actor_assigned, timeline_or_deadline_present]
+
+  PRIN-005:
+    name: pluralism_and_collective_representation
+    expected_mechanisms:
+      - political_parties
+      - independent_candidacies
+      - right_to_stand_for_election
+    min_anchor_for_full_credit: 3
+    key_dimensions: [constitutional_or_statutory_anchor_exists, enabling_legislation_or_implementing_regulation_present]
+
+  PRIN-006:
+    name: due_process_and_effective_remedy
+    expected_mechanisms:
+      - electoral_remedies
+      - constitutional_remedies
+    min_anchor_for_full_credit: 4
+    key_dimensions: [process_defined, actor_assigned, timeline_or_deadline_present, remedy_or_accountability_mechanism_present]
+
+  PRIN-007:
+    name: transparency_and_accountability
+    expected_mechanisms:
+      - political_parties
+      - electoral_authority_internal_governance
+      - civil_registry_electoral_functions
+      - vote
+    min_anchor_for_full_credit: 3
+    key_dimensions: [actor_assigned, enabling_legislation_or_implementing_regulation_present]
+
+  PRIN-008:
+    name: institutional_competence_and_independence
+    expected_mechanisms:
+      - electoral_authority_internal_governance
+      - electoral_remedies
+      - constitutional_remedies
+    min_anchor_for_full_credit: 4
+    key_dimensions: [constitutional_or_statutory_anchor_exists, actor_assigned]
+
+  PRIN-009:
+    name: procedural_certainty_and_time_limits
+    expected_mechanisms:
+      - vote
+      - electoral_remedies
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - referendum
+      - civil_registry_electoral_functions
+    min_anchor_for_full_credit: 3
+    key_dimensions: [timeline_or_deadline_present, process_defined]
+
+  PRIN-010:
+    name: territorial_and_multilevel_implementation
+    expected_mechanisms:
+      - vote
+      - citizen_initiative
+      - popular_consultation
+      - recall
+      - civil_registry_electoral_functions
+    min_anchor_for_full_credit: 3
+    key_dimensions: [territorial_or_multilevel_coverage, enabling_legislation_or_implementing_regulation_present]
+
+  PRIN-011:
+    name: administrative_capacity_and_resources
+    expected_mechanisms:
+      - electoral_authority_internal_governance
+      - civil_registry_electoral_functions
+      - vote
+    min_anchor_for_full_credit: 3
+    key_dimensions: [actor_assigned, enabling_legislation_or_implementing_regulation_present]
+
+  PRIN-012:
+    name: restriction_legality_necessity_proportionality
+    expected_mechanisms:
+      - vote
+      - right_to_stand_for_election
+      - political_parties
+      - independent_candidacies
+      - electoral_remedies
+    min_anchor_for_full_credit: 4
+    key_dimensions: [restriction_has_objective_criteria, constitutional_or_statutory_anchor_exists]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 4: SCORE COMPUTATION ALGORITHM
+# ─────────────────────────────────────────────────────────────────────────────
+
+score_computation:
+  description: >
+    For each (country, principle, mechanism) triplet, the pipeline evaluates
+    provisions in the domestic corpus that match the mechanism and applies
+    the following algorithm to assign implementation_readiness_score (0–5).
+    All checks are deterministic keyword/structural tests.
+
+  algorithm:
+    step_1_filter:
+      description: >
+        Select all domestic provisions where mechanism == target_mechanism
+        and mechanism is in principle.expected_mechanisms.
+      result: matched_provisions list
+
+    step_2_empty_check:
+      condition: len(matched_provisions) == 0
+      assign_score: 0
+      assign_label: absent
+
+    step_3_anchor_check:
+      condition: max(anchor_strength for p in matched_provisions) <= 1
+      assign_score: 1
+      assign_label: declaratory_only
+
+    step_4_dimension_scoring:
+      description: >
+        Count how many key_dimensions are satisfied by at least one matched
+        provision. Each dimension contributes 1 point to a raw_dimension_count.
+      checks:
+        - actor_check: any provision has an actor_id in actor_mechanism_edges
+        - process_check: mechanism in PROCESS_MECHANISM_TYPES
+        - timeline_check: any provision text matches timeline_pattern
+        - remedy_check: mechanism in remedy_mechanisms OR text matches remedy_pattern
+        - equality_check: any provision text matches equality_pattern
+        - accessibility_check: any provision text matches accessibility_pattern
+        - territorial_check: any provision text matches territorial_pattern
+        - anchor_statutory: any provision has anchor_strength >= 3
+
+    step_5_score_assignment:
+      rules:
+        - condition: raw_dimension_count == 0
+          assign_score: 1
+        - condition: raw_dimension_count == 1
+          assign_score: 2
+        - condition: raw_dimension_count == 2
+          assign_score: 3
+        - condition: raw_dimension_count >= 3 AND raw_dimension_count <= 4
+          assign_score: 4
+        - condition: raw_dimension_count >= 5
+          assign_score: 5
+      anchor_cap:
+        rule: >
+          If max(anchor_strength) == 2 (all provisions are administrative/reglamentary
+          with no statutory or constitutional basis), cap score at 3 regardless of
+          dimension count. This prevents over-crediting purely regulatory frameworks.
+        applies_when: max_anchor_strength_in_matched_provisions <= 2
+
+    step_6_manual_review_flag:
+      condition: >
+        any provision in matched_provisions has manual_review_required == true
+        AND that provision is the primary basis for a score >= 4
+      action: set needs_review = true in output row; do not modify score
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 5: INTERNATIONAL STANDARD PROVISION MATCHING
+# Rules for extracting provisions from international MD files.
+# ─────────────────────────────────────────────────────────────────────────────
+
+international_provision_extraction:
+  description: >
+    For each source in standard_extraction_rules.yml, provisions are extracted
+    from corpus/international/md/ using the heading_pattern or paragraph_pattern
+    defined per source. Extracted provisions are stored in the
+    international_standard_provisions table.
+
+  process:
+    - step: identify_source_file
+      description: "Match source_id to filename_stem in international_standards_profile.yml"
+    - step: apply_extraction_pattern
+      description: >
+        Use heading_pattern to detect article starts; accumulate text until
+        next heading. For paragraph-based sources (GC25, GR23, OC-28/21),
+        use paragraph_pattern to identify numbered paragraphs.
+    - step: apply_global_strip_rules
+      description: "Remove navigation boilerplate per global_rules in standard_extraction_rules.yml"
+    - step: filter_targeted
+      description: >
+        If targeted_articles defined: keep only those article numbers.
+        If targeted_paragraphs == 'all': keep all paragraphs.
+        If targeted_paragraphs == 'selective': keep only paragraphs
+        matching at least one principle keyword from principle_assignment_keywords.
+    - step: assign_principles
+      description: >
+        For each extracted provision, run principle_assignment_keywords checks
+        to assign candidate principle IDs. A provision may match multiple principles.
+    - step: assign_normative_weight
+      description: "Look up source_id in international_source_hierarchy.yml; assign tier and normative_weight."
+
+  oc2821_special_rule:
+    description: >
+      For INT-OC2821: restrict to paragraphs that contain at minimum one of
+      [derecho político, artículo 23, restricción, reelección, continuidad
+      democrática, integridad electoral]. All OC-28/21 provisions must have
+      manual_review_required=true. Do not use as domestic rule source.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 6: GAP DETECTION RULES
+# ─────────────────────────────────────────────────────────────────────────────
+
+gap_detection:
+  description: >
+    A gap is recorded when a binding treaty obligation (tier 1 source)
+    requires a domestic legal provision for a specific principle-mechanism
+    combination but no adequate domestic provision is found (score 0–2).
+
+  gap_severity_levels:
+    - level: critical
+      condition: score == 0 AND source_tier == 1
+      description: "No domestic provision whatsoever for a binding treaty obligation"
+    - level: significant
+      condition: score in [1, 2] AND source_tier == 1
+      description: "Only declaratory or partial basis for a binding treaty obligation"
+    - level: moderate
+      condition: score in [1, 2, 3] AND source_tier == 2
+      description: "Gaps against authoritative interpretive standards"
+    - level: minor
+      condition: score in [1, 2] AND source_tier in [3, 4]
+      description: "Gaps against soft law standards only"
+
+  gap_record_fields:
+    - country_code
+    - principle_id
+    - mechanism_id
+    - international_source_id
+    - source_tier
+    - gap_severity
+    - score
+    - gap_description (generated from principle.legal_preparedness_question + zero-match findings)
+    - recommended_action
+
+  gap_threshold_for_reporting: score <= 2
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 7: CROSS-COUNTRY COMPARISON RULES
+# ─────────────────────────────────────────────────────────────────────────────
+
+cross_country_comparison:
+  description: >
+    The principle_gap_analysis_comparison table compares Mexico and Costa Rica
+    scores per principle-mechanism combination. Comparison is purely arithmetic —
+    no normative judgment about which country is "better." Differences reflect
+    corpus coverage, legislative design, and institutional structure, not legal
+    compliance rankings.
+
+  comparison_fields:
+    - principle_id
+    - mechanism_id
+    - mexico_score
+    - costa_rica_score
+    - score_delta (mexico_score - costa_rica_score; negative = Costa Rica higher)
+    - convergence_level:
+        aligned: abs(delta) <= 1
+        divergent: abs(delta) == 2
+        highly_divergent: abs(delta) >= 3
+    - notes (flagged gaps or corpus caveats)
+
+  caveat: >
+    Score differences may partly reflect corpus composition (e.g., Mexico has
+    more legislative sources digitised; Costa Rica has RAL commentary contamination
+    and LGAP absent). Always read scores with corpus_coverage_note.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 8: OUTPUT TABLE DEFINITIONS
+# ─────────────────────────────────────────────────────────────────────────────
+
+output_tables:
+
+  - table_id: INT-OUT-01
+    table_name: international_standard_provisions
+    description: "All provisions extracted from international corpus MD files"
+    key_fields:
+      - provision_id (INT-{SOURCE_ID}-{N:04d})
+      - source_id
+      - source_title_short
+      - article_or_paragraph
+      - provision_text
+      - word_count
+      - assigned_principles (pipe-separated list of PRIN-IDs)
+      - normative_weight
+      - legal_character
+      - manual_review_required
+    csv_separator: ";"
+    json_array_key: international_standard_provisions
+
+  - table_id: INT-OUT-02
+    table_name: principle_definitions
+    description: "Canonical reference table for all 12 principles"
+    key_fields:
+      - principle_id
+      - principle_name
+      - short_label
+      - description
+      - legal_preparedness_question
+      - operational_dimensions (pipe-separated)
+      - primary_sources (pipe-separated)
+      - related_mechanisms (pipe-separated)
+    csv_separator: ";"
+    json_array_key: principles
+
+  - table_id: INT-OUT-03
+    table_name: mechanism_principle_requirements
+    description: >
+      Cross-reference of mechanism × principle × international source,
+      one row per (principle, mechanism, source) triplet.
+    key_fields:
+      - requirement_id (REQ-{PRIN}-{MECH}-{SOURCE})
+      - principle_id
+      - mechanism_id
+      - source_id
+      - source_tier
+      - normative_weight
+      - requirement_type (mandatory_binding | strongly_recommended | recommended_good_practice | complementary)
+      - requirement_description (brief text from provision)
+      - manual_review_required
+    csv_separator: ";"
+    json_array_key: requirements
+
+  - table_id: INT-OUT-04
+    table_name: domestic_mechanism_principle_scores_MEX
+    description: "Implementation readiness scores for Mexico, per principle × mechanism"
+    key_fields:
+      - score_id (SCR-MEX-{PRIN}-{MECH})
+      - country_code (MEX)
+      - principle_id
+      - mechanism_id
+      - matched_provision_count
+      - max_anchor_strength
+      - actor_count
+      - implementation_readiness_score (0–5)
+      - score_label
+      - dimension_checks_passed (pipe-separated)
+      - needs_review
+      - corpus_coverage_note
+    csv_separator: ";"
+    json_array_key: scores
+
+  - table_id: INT-OUT-05
+    table_name: domestic_mechanism_principle_scores_CRC
+    description: "Implementation readiness scores for Costa Rica, per principle × mechanism"
+    key_fields: [same as INT-OUT-04 with country_code=CRC and CRC mechanism names]
+    csv_separator: ";"
+    json_array_key: scores
+
+  - table_id: INT-OUT-06
+    table_name: principle_gap_analysis_comparison
+    description: "Side-by-side comparison of Mexico and Costa Rica per principle × mechanism"
+    key_fields:
+      - comparison_id (CMP-{PRIN}-{MECH})
+      - principle_id
+      - mechanism_id
+      - mexico_score
+      - mexico_label
+      - costa_rica_score
+      - costa_rica_label
+      - score_delta
+      - convergence_level
+      - gap_severity_mexico
+      - gap_severity_costa_rica
+      - notes
+    csv_separator: ";"
+    json_array_key: comparisons
+
+  - table_id: INT-OUT-07
+    table_name: principle_summary_by_country
+    description: "Country-level summary: average score and gap count per principle"
+    key_fields:
+      - principle_id
+      - principle_name
+      - mexico_avg_score
+      - mexico_gap_count (scores 0–2)
+      - mexico_critical_gaps (score 0)
+      - costa_rica_avg_score
+      - costa_rica_gap_count
+      - costa_rica_critical_gaps
+      - binding_sources_count (tier 1 sources for this principle)
+      - overall_preparedness_flag (adequate|partial|insufficient)
+    csv_separator: ";"
+    json_array_key: principle_summary

@@ -1,0 +1,225 @@
+# Mexico Legal Anchor Rules — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+# Status: preliminary — requires expert legal validation
+
+country: Mexico
+
+purpose: >
+  These rules govern how the pipeline assigns legal_anchor_type and anchor_strength
+  to extracted provisions and mechanisms. Rules are deterministic: they do not require
+  LLM inference at runtime. Classification follows source hierarchy and keyword/structural
+  patterns. Where rules conflict or evidence is ambiguous, conservative defaults apply
+  and manual_review_required is set to true.
+
+anchor_type_assignment_rules:
+
+  - rule_id: ANCH-001
+    anchor_type: constitutional
+    condition: >
+      Source metadata instrument_type contains "constitution" OR "constitución"
+      AND the provision is an operative article (not a transitory or reform decree text).
+    override: null
+    notes: "CPEUM articles are constitutional anchors."
+
+  - rule_id: ANCH-002
+    anchor_type: statutory
+    condition: >
+      Source metadata instrument_type contains "Ley" (general law or federal law)
+      AND rank <= 4 in source hierarchy.
+      Applies to: LGIPE, LGPP, LGSMIME, LGDE, LFCP, LFRM, LGRA, LGTAIP, LOAPF, LFPA.
+    override: null
+    notes: "All Congreso-enacted laws classified as statutory anchors."
+
+  - rule_id: ANCH-003
+    anchor_type: regulatory_or_parliamentary_procedural
+    condition: >
+      Source metadata instrument_type contains "Reglamento" AND issuing_body
+      is a legislative chamber (Cámara de Diputados, Senado, Congreso General).
+    override: null
+    notes: >
+      Parliamentary reglamentos are NOT executive regulations. They govern
+      internal procedure of the legislature. Classify as
+      regulatory_or_parliamentary_procedural, not electoral_administrative.
+
+  - rule_id: ANCH-004
+    anchor_type: electoral_administrative
+    condition: >
+      Source metadata instrument_type contains any of:
+      "Acuerdo", "Lineamientos", "Lineamiento", "Reglamento Interior",
+      "Protocolo", "Acuerdo del Consejo General"
+      AND issuing_body contains "Instituto Nacional Electoral" OR "INE".
+    override: >
+      CRITICAL: This rule overrides any apparent content-based upgrade.
+      Even if an INE lineamiento describes a mechanism in detail, the anchor
+      type remains electoral_administrative. Only a constitutional or statutory
+      source can provide higher anchoring.
+    notes: >
+      INE administrative instruments: Reglamento Interior INE 2025,
+      Lineamientos Consulta Popular 2021, Lineamientos Revocación de Mandato 2022.
+
+  - rule_id: ANCH-005
+    anchor_type: jurisprudential_interpretive
+    condition: >
+      Source is a SCJN tesis, TEPJF tesis, sentencia, or criterio jurisprudencial.
+    override: null
+    notes: "No jurisprudence files in current corpus. This rule applies only if new sources are added."
+
+  - rule_id: ANCH-006
+    anchor_type: no_identifiable_anchor
+    condition: >
+      No matching rule above applies, OR source_id is not matched to any
+      known source in the source hierarchy, OR provision text is entirely
+      from a reform annotation or editorial header.
+    override: null
+    notes: "Default fallback. Set manual_review_required: true."
+
+anchor_strength_assignment_rules:
+
+  - rule_id: STRN-001
+    anchor_strength: 5
+    condition: >
+      Provision is constitutional (ANCH-001) AND mechanism also has
+      statutory development in corpus (general law or federal law present
+      for same mechanism_id). Integrated constitutional-statutory-procedural.
+    mechanisms: [vote, right_to_stand_for_election, political_parties, independent_candidacies, popular_consultation, recall, electoral_remedies, electoral_crimes, electoral_authority_internal_governance]
+
+  - rule_id: STRN-002
+    anchor_strength: 4
+    condition: >
+      Provision is statutory (ANCH-002) AND mechanism has operational
+      development in administrative sources. Strong statutory anchor with
+      operational development. Minor gaps only.
+    mechanisms: [transparency_and_accountability, administrative_responsibility, legislative_petition_or_participation]
+
+  - rule_id: STRN-003
+    anchor_strength: 3
+    condition: >
+      Provision is statutory (ANCH-002) BUT mechanism has significant gaps:
+      no implementing regulation, key elements missing, or cross-reference
+      to absent law. Partial statutory anchor.
+    mechanisms: [citizen_initiative, legislative_petition_or_participation]
+
+  - rule_id: STRN-004
+    anchor_strength: 2
+    condition: >
+      Provision comes from electoral_administrative source (ANCH-004) only,
+      with no constitutional or statutory source identified for the same
+      mechanism in this corpus.
+    mechanisms: []
+    notes: "Administrative or operational anchor only. Flag administrative_overdependence."
+
+  - rule_id: STRN-005
+    anchor_strength: 1
+    condition: >
+      Only indirect or contextual constitutional/statutory reference exists.
+      The specific mechanism is not directly named or developed in any corpus source.
+    mechanisms: []
+    notes: "Indirect contextual anchor. Set manual_review_required: true."
+
+  - rule_id: STRN-006
+    anchor_strength: 0
+    condition: >
+      No provision in corpus supports the mechanism or right.
+    mechanisms: []
+    notes: "No identifiable anchor. Set manual_review_required: true and gap_type: legal_silence."
+
+operational_dependence_rules:
+
+  - rule_id: OD-001
+    operational_dependence: low
+    condition: >
+      Mechanism is self-executing from constitution or statute. No secondary
+      regulatory or administrative instrument required for the right to be exercised.
+    examples: [vote (passive), electoral_remedies, electoral_crimes]
+
+  - rule_id: OD-002
+    operational_dependence: medium
+    condition: >
+      Mechanism requires INE administrative procedure for implementation
+      (e.g., voter roll management, candidate registration, signature verification)
+      but the administrative framework is established and stable.
+    examples: [right_to_stand_for_election, popular_consultation, recall, citizen_initiative]
+
+  - rule_id: OD-003
+    operational_dependence: high
+    condition: >
+      Mechanism depends heavily on secondary instruments (reglamentos, lineamientos,
+      protocols) that are not always current or comprehensive, or where operational
+      gaps are identified.
+    examples: [legislative_petition_or_participation]
+
+  - rule_id: OD-004
+    operational_dependence: critical
+    condition: >
+      Mechanism cannot function without an operational instrument that is absent,
+      outdated, or uncertain.
+    examples: []
+
+  - rule_id: OD-005
+    operational_dependence: unknown
+    condition: >
+      Insufficient information in corpus to assess. Set manual_review_required: true.
+
+gap_type_detection_rules:
+
+  - gap_type: legal_silence
+    trigger: "anchor_strength == 0 OR no source identified"
+
+  - gap_type: thin_statutory_anchoring
+    trigger: >
+      Constitutional right exists but no dedicated statute in corpus develops
+      the procedure (e.g., citizen initiative: Art. 35 Fr. VII refers to
+      'Ley del Congreso' but no such specific law found in corpus).
+
+  - gap_type: administrative_overdependence
+    trigger: >
+      Mechanism is primarily anchored in electoral_administrative source (INE
+      lineamiento or acuerdo) with no or thin statutory development.
+
+  - gap_type: procedural_gap
+    trigger: >
+      Statutory right exists but key procedural rules are absent or only
+      found in administrative instruments.
+
+  - gap_type: remedy_gap
+    trigger: >
+      Mechanism has no impugnation or appeal route identified in corpus.
+
+  - gap_type: corpus_incomplete
+    trigger: >
+      Relevant source is known to exist (e.g., Ley del Congreso for citizen
+      initiative) but is not in the current corpus.
+
+  - gap_type: update_review_needed
+    trigger: >
+      Source was subject to SCJN invalidation or significant reform after
+      corpus date. Provisions require manual review of current vigent text.
+
+  - gap_type: federal_or_subnational_implementation_gap
+    trigger: >
+      Mechanism implementation at state level depends on state legislation
+      not in corpus (e.g., OPLEs, state electoral systems).
+
+  - gap_type: accessibility_gap
+    trigger: >
+      No provisions addressing disability, indigenous language access, or
+      other accessibility dimensions found for the mechanism.
+
+  - gap_type: equality_or_non_discrimination_gap
+    trigger: >
+      Parity or non-discrimination provisions absent or incomplete for the mechanism.
+
+  - gap_type: none_detected
+    trigger: "Mechanism has comprehensive constitutional + statutory + procedural anchoring."
+
+manual_review_triggers:
+  - "metadata uncertain or missing"
+  - "SCJN invalidation annotation in source text"
+  - "source_file not matched to metadata"
+  - "instrument_type ambiguous"
+  - "anchor_strength <= 2"
+  - "corpus_incomplete gap detected"
+  - "jurisprudential source cited but not in corpus"
+  - "international standard cited but not in corpus"
+  - "state-level implementation relevant"

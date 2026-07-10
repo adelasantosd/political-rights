@@ -1,0 +1,80 @@
+# International Source Hierarchy — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+purpose: >
+  Defines the normative hierarchy and evidential weight of international
+  standard sources for use in the principle traceability layer.
+  The hierarchy determines how sources contribute to principle requirements
+  and what weight they carry in gap analysis. Does not determine domestic
+  enforceability — that depends on country-specific constitutional reception.
+
+hierarchy:
+
+  - tier: 1
+    tier_name: binding_treaty
+    legal_character: binding
+    normative_weight: 5
+    sources: [INT-ICCPR, INT-ACHR, INT-CEDAW, INT-CRPD-A29, INT-ILO169]
+    notes: >
+      Core binding treaties ratified by Mexico and Costa Rica. Form the
+      primary basis for international law obligations on political rights.
+      Their provisions constitute minimum requirements that domestic law
+      must address for legal preparedness.
+
+  - tier: 2
+    tier_name: authoritative_interpretive
+    legal_character: authoritative_interpretive
+    normative_weight: 4
+    sources: [INT-HRC-GC25, INT-CEDAW-GR23, INT-OC2821]
+    notes: >
+      Treaty body general comments/recommendations and IACtHR advisory opinions.
+      Not independently binding but constitute authoritative interpretation of
+      binding treaty obligations. States parties are expected to conform.
+      OC-28/21 is restricted to democratic institutional principles only.
+
+  - tier: 3
+    tier_name: soft_law_with_political_commitment
+    legal_character: soft_law
+    normative_weight: 3
+    sources: [INT-IADC]
+    notes: >
+      Inter-American Democratic Charter. Adopted as OAS General Assembly
+      resolution — political commitment, not treaty law. Establishes
+      normative framework for democratic governance in the hemisphere.
+      Relevant for institutional_competence_and_independence and pluralism.
+
+  - tier: 4
+    tier_name: soft_law_declaration
+    legal_character: soft_law
+    normative_weight: 2
+    sources: [INT-UNDRIP]
+    notes: >
+      UN Declaration — not a binding treaty. Growing recognition as
+      reflecting customary international law norms, particularly FPIC.
+      Complements ILO 169 for indigenous political participation analysis.
+
+principle_requirement_weight_rules:
+  description: >
+    When assigning principle requirements to mechanisms, the minimum
+    requirement tier determines the evidential basis required.
+  rules:
+    - requirement_type: mandatory_binding
+      source_tier: 1
+      description: "Derived from binding treaty; domestic law must address"
+    - requirement_type: strongly_recommended
+      source_tier: 2
+      description: "Derived from authoritative interpretation; domestic law should address"
+    - requirement_type: recommended_good_practice
+      source_tier: 3
+      description: "Derived from soft law with political commitment; domestic law could address"
+    - requirement_type: complementary
+      source_tier: 4
+      description: "Derived from soft law declarations; relevant for indigenous/specific group contexts"
+
+oc2821_restriction: >
+  OC-28/21 provisions must NOT be used to derive general domestic law rules.
+  Use only for: (a) interpreting proportionality of restrictions on ACHR Art. 23
+  rights; (b) assessing institutional independence of electoral bodies;
+  (c) democratic continuity principles. Always set manual_review_required=true
+  for provisions attributed to OC-28/21 as primary source.

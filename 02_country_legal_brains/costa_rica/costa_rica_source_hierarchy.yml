@@ -1,0 +1,156 @@
+# Costa Rica Source Hierarchy — Political Rights
+# NormTrace Political Rights
+# Generated: 2026-05-18
+
+country: "Costa Rica"
+
+hierarchy:
+  - source_type: constitution
+    rank: 1
+    function: >
+      Constitución Política 1949 (with reforms). Establishes fundamental political
+      rights, the TSE as a constitutional body, citizen rights and duties, suffrage,
+      political parties, referendum, and the Sala Constitucional.
+    legal_preparedness_value: highest
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      Reform annotations in the corpus text (e.g., "Reforma Constitucional N.° XXXX")
+      are editorial references, not operative text. Extract article content only.
+      Some articles may have been amended — verify current text against official source.
+
+  - source_type: organic_law
+    rank: 2
+    function: >
+      Leyes orgánicas enacted by the Asamblea Legislativa. In Costa Rica, the Ley
+      Orgánica del TSE y del Registro Civil (1965, with reforms) governs the
+      composition, competences, and operation of the TSE and the Registro Civil.
+      Organic laws require special majorities and are hierarchically above ordinary laws.
+    legal_preparedness_value: high
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      The Ley Orgánica TSE is from 1965 with multiple reforms — verify currency.
+      The metadata notes "texto con reformas según fuente / sujeto a verificación".
+
+  - source_type: codigo_ley
+    rank: 3
+    function: >
+      The Código Electoral (2009, Decreto Legislativo N.° 8765) is the comprehensive
+      electoral code governing all aspects of elections, party organization, candidate
+      registration, campaign finance, electoral procedures, and TSE competences.
+      Functionally equivalent to an ordinary law but comprehensive in scope.
+    legal_preparedness_value: high
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      Status: "vigente según fuente / sujeto a verificación". Verify for any
+      subsequent reforms. Contains parity (Art. 2) and party financing (Art. 96
+      reference) rules.
+
+  - source_type: statutory_law
+    rank: 4
+    function: >
+      Leyes ordinarias enacted by the Asamblea Legislativa. Includes: Ley de
+      Regulación del Referéndum (2006), Ley de Iniciativa Popular (2006), Ley de la
+      Jurisdicción Constitucional (1989), Ley para incorporar Consulta Previa en
+      Referéndum (2021). These develop constitutional mandates for specific mechanisms.
+    legal_preparedness_value: high
+    can_create_core_right_or_mechanism: true
+    can_create_restrictions: true
+    can_create_remedies: true
+    caution: >
+      All statutory laws noted as "vigente según fuente / sujeto a verificación" —
+      verify currency. Ley de la Jurisdicción Constitucional is from 1989 with reforms.
+
+  - source_type: tse_reglamento
+    rank: 5
+    function: >
+      Reglamentos issued by the TSE under its constitutional mandate (Art. 102 Fr. 9
+      and Código Electoral). TSE reglamentos have higher normative weight than
+      purely administrative regulations because of the TSE's constitutional status,
+      but remain subordinate to constitution and statute. Examples: Reglamento
+      para los Procesos de Referéndum, Reglamento aplicación art. 3 Ley Iniciativa Popular.
+    legal_preparedness_value: medium_to_high
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: true
+    can_create_remedies: false
+    caution: >
+      IMPORTANT: TSE reglamentos have greater normative weight than purely
+      administrative acuerdos, but cannot create new fundamental rights or
+      override statutory provisions. Classify as regulatory_or_legislative_procedural
+      when the TSE acts within its constitutional mandate to organize elections.
+      Classify as electoral_administrative when the document is purely operational.
+      Verify vigency — procesos_referendum.md: "verificar vigencia antes de uso jurídico fino".
+
+  - source_type: legislative_reglamento
+    rank: 6
+    function: >
+      Reglamento de la Asamblea Legislativa — governs internal parliamentary
+      procedure (committee structure, debate rules, initiative processing, quorum).
+      Adopted autonomously by the Asamblea Legislativa.
+    legal_preparedness_value: medium
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      CRITICAL: The source in corpus (reglamento_asamblea_legislativa_comentado.md)
+      is a COMMENTED compilation (RAL 2014) with Sala IV resolutions and editorial
+      notes interspersed with the operative text. DO NOT extract commentary, Sala IV
+      resolution text, or editorial annotations as operative legal provisions.
+      Only extract the article text itself. Set manual_review_required: true for
+      all provisions from this source.
+
+  - source_type: administrative_reglamento
+    rank: 7
+    function: >
+      Internal administrative regulations of TSE (e.g., Reglamento Autónomo de
+      Servicios TSE — governs employment conditions, work schedules, duties of TSE
+      personnel). Purely internal operational instruments.
+    legal_preparedness_value: low
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      Reglamento Autónomo de Servicios TSE governs internal TSE employment matters.
+      It has minimal relevance to political rights mechanisms.
+      Classify as electoral_administrative. Anchor_strength max = 1 for political rights.
+
+  - source_type: excluded_image_based
+    rank: 99
+    function: "Source not extractable — image-based PDF"
+    legal_preparedness_value: unknown
+    can_create_core_right_or_mechanism: false
+    can_create_restrictions: false
+    can_create_remedies: false
+    caution: >
+      ley_general_administracion_publica.md: image-based source. Skip entirely
+      in pipeline. Flag corpus_incomplete where LGAP provisions would be relevant.
+
+anchor_type_to_source_type_mapping:
+  constitutional: constitution
+  statutory: organic_law, codigo_ley, statutory_law
+  regulatory_or_legislative_procedural: tse_reglamento, legislative_reglamento
+  electoral_administrative: administrative_reglamento, tse_reglamento (operational only)
+  jurisprudential_interpretive: TSE resolutions, Sala IV jurisprudence (not in corpus)
+  operational_practice_only: administrative_reglamento
+  no_identifiable_anchor: none
+
+anchor_strength_rules:
+  0: "No provision in corpus supports the mechanism or right"
+  1: "Contextual or implicit reference only; purely administrative operational source"
+  2: "Administrative or regulatory instrument only; no statutory development"
+  3: "Statutory or TSE-regulatory basis but incomplete — procedural gaps or absent implementing rules"
+  4: "Statutory basis with operational development; minor gaps"
+  5: "Integrated constitutional + statutory + procedural anchoring; comprehensive"
+
+tse_special_note: >
+  The TSE's exclusive and constitutionally grounded jurisdiction means that
+  TSE reglamentos carry more normative weight than purely administrative acuerdos.
+  However, for anchor classification purposes, a TSE reglamento that implements
+  a statutory mandate is classified as regulatory_or_legislative_procedural
+  with anchor_strength reduced by 1 from the statutory level (not exceeding 4).
+  Only constitutional + statutory + TSE-regulatory combinations reach anchor_strength 5.
