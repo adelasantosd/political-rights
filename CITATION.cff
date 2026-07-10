@@ -1,25 +1,38 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite it using the metadata below."
+
 title: "NormTrace-Political Rights: Legal-Institutional Activation Mapping of Political Participation Rights in Mexico and Costa Rica"
+
 type: software
-version: 0.1.0
-date-released: 2026-07-10
+version: "0.1.1"
+date-released: "2026-07-10"
+
 authors:
   - family-names: "Santos Domínguez"
     given-names: "Adela B."
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
 repository-code: "https://github.com/adelasantosd/political-rights"
 url: "https://github.com/adelasantosd/political-rights"
+
 abstract: >-
   Academic open-methodology infrastructure for mapping the legal-institutional
   conditions under which citizens can activate political participation rights
-  in Mexico and Costa Rica.
+  in Mexico and Costa Rica. The repository contains original software,
+  methodological documentation, structured analytical tables, metadata,
+  annotations, and official legal and institutional source materials.
+  Analytical outputs are preliminary and require expert legal review.
+
 keywords:
   - political rights
   - citizen participation
   - legal activation
+  - legal-institutional barriers
   - comparative law
+  - comparative constitutional law
+  - electoral law
   - Mexico
   - Costa Rica
-license:
-  - CC-BY-4.0
-  - MIT
+  - NormTrace
+
+license-url: "https://github.com/adelasantosd/political-rights/blob/main/LICENSE.md"
