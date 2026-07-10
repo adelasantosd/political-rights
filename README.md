@@ -100,7 +100,6 @@ The output is not a ranking of democratic quality. It is a structured legal-inst
   exports/
   figures/
   validation_reports/
-05_webapp/            — Webapp interface (future development)
 06_scripts/           — Conversion, build, validation and export scripts
 99_archive/           — Superseded sources and experimental outputs
 ```
