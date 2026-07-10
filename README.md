@@ -161,4 +161,6 @@ See `CITATION.cff` for the preferred citation format.
 
 ## License
 
-See `LICENSE` for terms of use.
+## License and rights
+
+See [LICENSE.md](LICENSE.md) for the licensing and rights conditions applicable to the software, original research materials, official legal sources, and third-party materials included in this repository.
