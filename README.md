@@ -155,7 +155,7 @@ See `00_project/ai_use_disclosure.md` for the full AI use policy.
 
 ## Citation
 
-See `CITATION.cff` for the preferred citation format.
+Santos Domínguez, A. B. (2026). *NormTrace-Political Rights: Legal-Institutional Activation Mapping of Political Participation Rights in Mexico and Costa Rica* (Version 0.1.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21296393 
 
 ---
 
