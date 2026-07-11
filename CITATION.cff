@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this repository, please cite it using the metadata below."
 
 title: "NormTrace-Political Rights: Legal-Institutional Activation Mapping of Political Participation Rights in Mexico and Costa Rica"
+doi: "10.5281/zenodo.21296393"
 
 type: software
 version: "0.1.1"
